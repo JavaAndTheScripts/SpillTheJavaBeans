@@ -28,7 +28,7 @@
     <header>
         <h1>Testing</h1>
         <nav>
-
+			<a href="/logReg">login and registration</a>
         </nav>
     </header>
     <!-- MAIN -->
