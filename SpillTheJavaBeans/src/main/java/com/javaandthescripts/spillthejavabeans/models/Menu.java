@@ -38,6 +38,7 @@ public class Menu {
 // ==========================
 //       RELATIONSHIPS
 // ========================== 
+   // single cafe 
    // list of DrinkOnMenu
     
 // ==========================
@@ -50,10 +51,20 @@ public class Menu {
 // ==========================
     @PrePersist
     protected void onCreate(){	this.createdAt = new Date();}
+	public Date getCreatedAt() {	return createdAt;	}
+	public void setCreatedAt(Date createdAt) {	this.createdAt = createdAt;	}
+	
     @PreUpdate
     protected void onUpdate(){	this.updatedAt = new Date();}
+	public Date getUpdatedAt() {	return updatedAt;	}
+	public void setUpdatedAt(Date updatedAt) {	this.updatedAt = updatedAt;	}
     // add getters/setters for ALL attributes 
-    // **HERE**
+
+	public Long getId() {	return id;	}
+	public void setId(Long id) {	this.id = id;	}
+
+	public String getName() {	return name;	}
+	public void setName(String name) {	this.name = name;	}    
     
     // TODO: Relationship getters and setters
 }
