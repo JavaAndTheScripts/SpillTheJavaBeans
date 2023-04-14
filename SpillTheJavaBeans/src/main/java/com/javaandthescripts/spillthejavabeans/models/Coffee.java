@@ -1,12 +1,17 @@
 package com.javaandthescripts.spillthejavabeans.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -52,10 +57,15 @@ public class Coffee {
 	// a single cafe
 	// One-to-One Dominate Side
 	// Coffee ---- cafe
-//	@OneToOne(mappedBy="monthlyCoffee", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-//	private Cafe cafe;
+	@OneToOne(mappedBy="monthlyCoffee", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Cafe cafe;
 
+	// One-to-Many - many coffee to many drinks
+	// <Coffee> ---< <drinks>
 	// list of drinks
+	@OneToMany(mappedBy="coffee", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Drink> drinks;
+	
 
 // ==========================
 //        CONSTRUCTOR
@@ -124,8 +134,37 @@ public class Coffee {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
+	
 	// TODO: Relationship getters and setters
+	/**
+	 * @return the drinks
+	 */
+	
+	/**
+	 * @return the cafe
+	 */
+	public Cafe getCafe() {
+		return cafe;
+	}
+
+	/**
+	 * @param cafe the cafe to set
+	 */
+	public void setCafe(Cafe cafe) {
+		this.cafe = cafe;
+	}
+	
+	public List<Drink> getDrinks() {
+		return drinks;
+	}
+
+	/**
+	 * @param drinks the drinks to set
+	 */
+	public void setDrinks(List<Drink> drinks) {
+		this.drinks = drinks;
+	}
+	
 
 	// ==========================
 	// METHODS

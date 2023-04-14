@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -61,6 +64,12 @@ public abstract class User {
 //==========================
 //      RELATIONSHIPS
 //==========================
+	// Many-to-One
+	// <User> >--- <cafe>
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="cafe_id")
+//	private Cafe cafe;
+	
 
 //==========================
 //       CONSTRUCTOR
@@ -97,5 +106,22 @@ public abstract class User {
 	public void setPassword(String password) {	this.password = password; }
 	
 	public String getConfirm() {	return confirm;	}
-	public void setConfirm(String confirm) {	this.confirm = confirm;	}	
+	public void setConfirm(String confirm) {	this.confirm = confirm;	}
+
+	//Relationships - getters and setters
+
+	/**
+	 * @return the cafe
+	 */
+//	public Cafe getCafe() {
+//		return cafe;
+//	}
+//
+//	/**
+//	 * @param cafe the cafe to set
+//	 */
+//	public void setCafe(Cafe cafe) {
+//		this.cafe = cafe;
+//	}
+		
 }
