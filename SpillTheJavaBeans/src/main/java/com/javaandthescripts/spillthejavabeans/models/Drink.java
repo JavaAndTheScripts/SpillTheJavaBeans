@@ -52,7 +52,7 @@ public class Drink {
 //       RELATIONSHIPS
 // ==========================  
     // single coffee
-    // list of DrinkOnMenu
+    // single menu
     
 // ==========================
 //        CONSTRUCTOR
