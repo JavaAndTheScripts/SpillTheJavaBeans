@@ -26,15 +26,19 @@
 <body>
     <!-- HEADER -->
     <header>
-        <h1>Testing</h1>
+        <h1>Coffee</h1>
         <nav>
-			<a href="/subs/login">Subscription Login</a>
-            <a href="/mana/login">Manager Login</a>
-            <a href="/coffee">Coffee</a>
+			<h1>Different Types of Coffee</h1>
+			<h2> table or chart</h2>
+			<a href="/coffee/create">Create a Coffee</a>
+			
         </nav>
     </header>
     <!-- MAIN -->
     <main>
+    	<c:forEach items="${allCoffee}" var="c">
+    		<p>${c.region}</p>
+		</c:forEach>
 
     </main>
     <!-- FOOTER -->
