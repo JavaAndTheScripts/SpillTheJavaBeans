@@ -38,10 +38,12 @@
     </header>
     <!-- MAIN -->
     <main>
-    	<form:form action="/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
+        <!-- register box -->
+        <form:form action="/mana/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
             <div class="border text-center py-3">
                 <h3>Register</h3>
             </div>
+            <!-- firstName and lastName -->
             <div class="d-flex flex-row border py-2">
                 <div class="d-flex flex-column w-50">
                     <section class="d-flex flex-row">
@@ -59,14 +61,16 @@
                 </div>
             </div>
 
+            <!-- phoneNum -->
             <div class="border py-2">
                 <section class="">
-                    <form:label path="birthday" class="border-end w-50 ps-2 me-1">Birthday:</form:label>
-                    <input type="date" name="birthday">
+                    <form:label path="phoneNum" class="border-end w-50 ps-2 me-1">Phone Number:</form:label>
+                    <input type="text" name="phoneNum" pattern="[0-9]{10}" title="10 digits required.">
                 </section>
-                <form:errors path="birthday" class="text-danger ps-2" />
+                <form:errors path="phoneNum" class="text-danger ps-2" />
             </div>
 
+            <!-- email -->
             <div class="border py-2">
                 <section>
                     <form:label path="email" class="border-end w-50 ps-2 me-1">Email:</form:label>
@@ -75,6 +79,43 @@
                 <form:errors path="email" class="text-danger ps-2" />
             </div>
 
+            <!-- address -->
+            <div class="border py-2">
+                <section>
+                    <form:label path="address" class="border-end w-50 ps-2 me-1">Street Address:</form:label>
+                    <form:input type="text" class="input" path="address" />
+                </section>
+                <form:errors path="address" class="text-danger ps-2" />
+            </div>
+
+            <!-- city -->
+            <div class="border py-2">
+                <section>
+                    <form:label path="city" class="border-end w-50 ps-2 me-1">City:</form:label>
+                    <form:input type="text" class="input" path="city" />
+                </section>
+                <form:errors path="city" class="text-danger ps-2" />
+            </div>
+
+            <!-- state -->
+            <div class="border py-2">
+                <section>
+                    <form:label path="state" class="border-end w-50 ps-2 me-1">State:</form:label>
+                    <form:input type="text" class="input" path="state" />
+                </section>
+                <form:errors path="state" class="text-danger ps-2" />
+            </div>
+
+            <!-- zipcode -->
+            <div class="border py-2">
+                <section>
+                    <form:label path="zipcode" class="border-end w-50 ps-2 me-1">Zip Code:</form:label>
+                    <form:input type="text" class="input" path="zipcode" />
+                </section>
+                <form:errors path="zipcode" class="text-danger ps-2" />
+            </div>
+
+            <!-- password -->
             <div class="border py-2">
                 <section>
                     <form:label path="password" class="border-end w-50 ps-2 me-1">Password:</form:label>
@@ -82,7 +123,6 @@
                 </section>
                 <form:errors path="password" class="text-danger text-right" />
             </div>
-
             <div class="border py-2">
                 <section>
                     <form:label path="confirm" class="border-end w-50 ps-2 me-1">Confirm Password:</form:label>
@@ -93,31 +133,6 @@
 
             <button class="btn btn-secondary my-1 w-100">Register</button>
         </form:form>
-        
-        <!-- login box -->
-        <form:form action="/login" method="POST" modelAttribute="newLogin" class="mx-5 mt-3">
-            <div class="border text-center py-3">
-                <h3>Login</h3>
-            </div>
-            <div class="border py-2">
-                <section>
-                    <form:label path="email" class="border-end w-50 ps-2 me-1">Email</form:label>
-                    <form:input type="email" class="input" path="email" />
-                </section>
-                <form:errors path="email" class="text-danger" />
-            </div>
-
-            <div class="border py-2">
-                <section>
-                    <form:label path="password" class="border-end w-50 ps-2 me-1">Password</form:label>
-                    <form:input type="password" class="input" path="password" />
-                </section>
-                <form:errors path="password" class="text-danger" />
-            </div>
-
-            <button class="btn btn-primary my-1 w-100">Login</button>
-        </form:form>
-
     </main>
     <!-- FOOTER -->
     <footer>

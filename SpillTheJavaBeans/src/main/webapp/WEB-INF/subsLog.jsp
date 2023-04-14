@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -26,14 +32,36 @@
 <body>
     <!-- HEADER -->
     <header>
-        <h1>Testing</h1>
         <nav>
-			<a href="/subs/login">Subscription Login</a>
-            <a href="/mana/login">Manager Login</a>
+            <a href="/">Back</a>
+            <a href="/subs/register">Register</a>
         </nav>
     </header>
     <!-- MAIN -->
     <main>
+        <!-- login box -->
+        <form:form action="/subs/login" method="POST" modelAttribute="newLogin" class="mx-5 mt-3">
+            <div class="border text-center py-3">
+                <h3>Login</h3>
+            </div>
+            <div class="border py-2">
+                <section>
+                    <form:label path="email" class="border-end w-50 ps-2 me-1">Email</form:label>
+                    <form:input type="email" class="input" path="email" />
+                </section>
+                <form:errors path="email" class="text-danger" />
+            </div>
+
+            <div class="border py-2">
+                <section>
+                    <form:label path="password" class="border-end w-50 ps-2 me-1">Password</form:label>
+                    <form:input type="password" class="input" path="password" />
+                </section>
+                <form:errors path="password" class="text-danger" />
+            </div>
+
+            <button class="btn btn-primary my-1 w-100">Login</button>
+        </form:form>
 
     </main>
     <!-- FOOTER -->

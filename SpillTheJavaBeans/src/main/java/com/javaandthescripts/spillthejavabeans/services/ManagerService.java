@@ -5,12 +5,10 @@ import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
 import com.javaandthescripts.spillthejavabeans.models.LoginUser;
-import com.javaandthescripts.spillthejavabeans.models.Manager;
 import com.javaandthescripts.spillthejavabeans.models.Manager;
 import com.javaandthescripts.spillthejavabeans.models.User;
 import com.javaandthescripts.spillthejavabeans.repositories.UserRepo;
