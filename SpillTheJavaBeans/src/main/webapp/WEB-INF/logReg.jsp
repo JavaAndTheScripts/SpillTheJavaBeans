@@ -42,12 +42,29 @@
             <div class="border text-center py-3">
                 <h3>Register</h3>
             </div>
+            <div class="d-flex flex-row border py-2">
+                <div class="d-flex flex-column w-50">
+                    <section class="d-flex flex-row">
+                        <form:label path="firstName" class="border-end w-50 ps-2 me-1">First Name:</form:label>
+                        <form:input type="text" class="input" path="firstName" />
+                    </section>
+                    <form:errors path="firstName" class="text-danger ps-2" />
+                </div>
+                <div class="d-flex flex-column">
+                    <section class="d-flex flex-row">
+                        <form:label path="lastName" class="border-end w-50 ps-2 me-1">Last Name:</form:label>
+                        <form:input type="text" class="input" path="lastName" />
+                    </section>
+                    <form:errors path="lastName" class="text-danger ps-2" />
+                </div>
+            </div>
+
             <div class="border py-2">
-                <section>
-                    <form:label path="userName" class="border-end w-50 ps-2 me-1">User Name:</form:label>
-                    <form:input type="text" class="input" path="userName" />
+                <section class="">
+                    <form:label path="birthday" class="border-end w-50 ps-2 me-1">Birthday:</form:label>
+                    <input type="date" name="birthday">
                 </section>
-                <form:errors path="userName" class="text-danger ps-2" />
+                <form:errors path="birthday" class="text-danger ps-2" />
             </div>
 
             <div class="border py-2">

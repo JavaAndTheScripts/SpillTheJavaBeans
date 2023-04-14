@@ -12,35 +12,35 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.javaandthescripts.spillthejavabeans.models.LoginUser;
-import com.javaandthescripts.spillthejavabeans.models.User;
-import com.javaandthescripts.spillthejavabeans.services.UserService;
+import com.javaandthescripts.spillthejavabeans.models.Subscriber;
+import com.javaandthescripts.spillthejavabeans.services.SubscriberService;
 
 @Controller
 public class UserController {
 
 	
 	    @Autowired
-	    private UserService userServ;
+	    private SubscriberService subServ;
 
 	    @GetMapping("/logReg")
 	    public String logReg(Model model, HttpSession session){
 	        // check for session
 	        if(session.getAttribute("userID") != null) {
-	            return "redirect:/dashboard";
+	            return "redirect:/";
 	        }
-	        // Bind empty User and LoginUser objects to the JSP
+	        // Bind empty Subscriber and LoginUser objects to the JSP
 	        // to capture the form input
-	        model.addAttribute("newUser", new User());
+	        model.addAttribute("newUser", new Subscriber());
 	        model.addAttribute("newLogin", new LoginUser());
 	        return "logReg.jsp";
 	    }
 
 	    @PostMapping("/register")
-	    public String register(@Valid @ModelAttribute("newUser") User newUser, 
+	    public String register(@Valid @ModelAttribute("newUser") Subscriber newUser, 
 	            BindingResult result, Model model, HttpSession session) {
 	        // call a register method in the service 
 	        // to do some extra validations and create a new user!
-	        userServ.register(newUser, result);
+	        subServ.register(newUser, result);
 	        if(result.hasErrors()) {
 	            // Be sure to send in the empty LoginUser before 
 	            // re-rendering the page.
@@ -58,10 +58,10 @@ public class UserController {
 	    public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
 	            BindingResult result, Model model, HttpSession session) {    
 	        // Add once service is implemented:
-	        User user = userServ.login(newLogin, result);
+	        Subscriber user = (Subscriber) subServ.login(newLogin, result);
 
 	        if(result.hasErrors()) {
-	            model.addAttribute("newUser", new User());
+	            model.addAttribute("newUser", new Subscriber());
 	            return "logReg.jsp";
 	        }
 

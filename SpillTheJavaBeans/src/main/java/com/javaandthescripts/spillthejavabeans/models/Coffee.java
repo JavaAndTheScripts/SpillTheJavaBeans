@@ -31,7 +31,7 @@ public class Coffee {
     @NotNull
     @Min(0)
     @Max(2)
-    private Integer Roast; // 0 - Light, 1 - Medium, 2 - Dark
+    private Short Roast; // 0 - Light, 1 - Medium, 2 - Dark
     
     @NotBlank
     private String Region;
@@ -75,8 +75,8 @@ public class Coffee {
 	public Long getId() {	return id;	}
 	public void setId(Long id) {	this.id = id;	}
 
-	public Integer getRoast() {	return Roast;	}
-	public void setRoast(Integer roast) {	Roast = roast; }
+	public Short getRoast() {	return Roast;	}
+	public void setRoast(Short roast) {	Roast = roast; }
 
 	public String getRegion() {	return Region;	}
 	public void setRegion(String region) {	Region = region;	}
