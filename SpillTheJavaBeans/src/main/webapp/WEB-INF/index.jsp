@@ -30,6 +30,7 @@
         <nav>
 			<a href="/subs/login">Subscription Login</a>
             <a href="/mana/login">Manager Login</a>
+            <a href="/coffee">Coffee</a>
         </nav>
     </header>
     <!-- MAIN -->

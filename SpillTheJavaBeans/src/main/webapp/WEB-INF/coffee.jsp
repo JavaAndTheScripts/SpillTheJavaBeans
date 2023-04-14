@@ -30,10 +30,15 @@
         <nav>
 			<h1>Different Types of Coffee</h1>
 			<h2> table or chart</h2>
+			<a href="/coffee/create">Create a Coffee</a>
+			
         </nav>
     </header>
     <!-- MAIN -->
     <main>
+    	<c:forEach items="${allCoffee}" var="c">
+    		<p>${c.region}</p>
+		</c:forEach>
 
     </main>
     <!-- FOOTER -->
