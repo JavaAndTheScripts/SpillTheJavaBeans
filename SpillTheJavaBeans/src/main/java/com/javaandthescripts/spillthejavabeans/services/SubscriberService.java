@@ -9,11 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
 import com.javaandthescripts.spillthejavabeans.models.LoginUser;
+import com.javaandthescripts.spillthejavabeans.models.Subscriber;
 import com.javaandthescripts.spillthejavabeans.models.User;
 import com.javaandthescripts.spillthejavabeans.repositories.UserRepo;
 
+// TODO: Verify this works with the User for login/registration 
+
 @Service
-public class UserService {
+public class SubscriberService {
 
     @Autowired
     private UserRepo userRepo;
@@ -21,13 +24,14 @@ public class UserService {
 // ==========================
 //        REGISTRATION
 // ==========================
-    public User register(User newUser, BindingResult result) {
+    public Subscriber register(Subscriber newSub, BindingResult result) {
         // if email already in use
-        if(userRepo.findByEmail(newUser.getEmail()).isPresent()) {
+        if(userRepo.findByEmail(newSub.getEmail()).isPresent()) {
             result.rejectValue("email", "Unique", "This email is already in use!");
         }
+
         // if the passwords do not match
-        if(!newUser.getPassword().equals(newUser.getConfirm())) {
+        if(!newSub.getPassword().equals(newSub.getConfirm())) {
             result.rejectValue("confirm", "Matches", "The Confirm Password must match Password!");
         }
         // where there errors in the last checks or form?
@@ -35,55 +39,63 @@ public class UserService {
             return null;
         } else {
             // encrypting the password
-            String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
-            newUser.setPassword(hashed);
-            return userRepo.save(newUser);
+            String hashed = BCrypt.hashpw(newSub.getPassword(), BCrypt.gensalt());
+            newSub.setPassword(hashed);
+            return userRepo.save(newSub);
         }
     }
 
 // ==========================
 //          LOGIN
 // ==========================
-    public User login(LoginUser newLogin, BindingResult result) {
-        // is the email valid?
+    public Subscriber login(LoginUser newLogin, BindingResult result) {
         Optional<User> potentialUser = userRepo.findByEmail(newLogin.getEmail());
+        // is the email is not valid
         if(!potentialUser.isPresent()) {
             result.rejectValue("email", "Unique", "Unknown email!");
             return null;
         }
+        
+        Subscriber subscriber = (Subscriber)potentialUser.get();
         // if the passwords do not match
-        User user = potentialUser.get();
-        if(!BCrypt.checkpw(newLogin.getPassword(), user.getPassword())) {
+        if(!BCrypt.checkpw(newLogin.getPassword(), subscriber.getPassword())) {
             result.rejectValue("password", "Matches", "Invalid Password!");
         }
-        // where there errors in the last checks or form?
+        
+        // if there are errors
         if(result.hasErrors()) {
             return null;
-        } else {
-            return user;
+        } 
+        
+        else {
+            return subscriber;
         }
     }
 
 // ==========================
-//  CRUD METHODS
+//  	 CRUD METHODS
 // ==========================
-    // create
-    public User createOne(User i) {
+    // CREATE SUBSCRIBER
+    public Subscriber createOne(Subscriber i) {
       return userRepo.save(i);
     }
-    // read all 
-    public List<User> getAll() {
-      return userRepo.findAll();
+    
+    // READ ALL (Subscriber) - will most likely never be used but in here just in case
+    public List<Subscriber> getAll() {
+      return userRepo.findAllSubscribers();
     }
-    // read one
-    public User getOne(Long id) {
-      return userRepo.findById(id).orElse(null);
+
+    // READ ONE (Subscriber)
+    public Subscriber getOne(Long id) {
+      return (Subscriber) userRepo.findById(id).orElse(null);
     }
-    // update
-    public User updateOne(User i) {
+    
+    // UPDATE (Subscriber)
+    public Subscriber updateOne(Subscriber i) {
       return userRepo.save(i);
     }
-    // delete
+    
+    // DELETE 
     public void deleteOne(Long id) {
       userRepo.deleteById(id);
     }

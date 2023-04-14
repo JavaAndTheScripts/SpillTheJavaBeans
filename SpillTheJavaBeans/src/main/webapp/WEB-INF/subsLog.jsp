@@ -33,52 +33,14 @@
     <!-- HEADER -->
     <header>
         <nav>
-
+            <a href="/">Back</a>
+            <a href="/subs/register">Register</a>
         </nav>
     </header>
     <!-- MAIN -->
     <main>
-    	<form:form action="/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
-            <div class="border text-center py-3">
-                <h3>Register</h3>
-            </div>
-            <div class="border py-2">
-                <section>
-                    <form:label path="userName" class="border-end w-50 ps-2 me-1">User Name:</form:label>
-                    <form:input type="text" class="input" path="userName" />
-                </section>
-                <form:errors path="userName" class="text-danger ps-2" />
-            </div>
-
-            <div class="border py-2">
-                <section>
-                    <form:label path="email" class="border-end w-50 ps-2 me-1">Email:</form:label>
-                    <form:input type="email" class="input" path="email" />
-                </section>
-                <form:errors path="email" class="text-danger ps-2" />
-            </div>
-
-            <div class="border py-2">
-                <section>
-                    <form:label path="password" class="border-end w-50 ps-2 me-1">Password:</form:label>
-                    <form:input type="password" class="input" path="password" />
-                </section>
-                <form:errors path="password" class="text-danger text-right" />
-            </div>
-
-            <div class="border py-2">
-                <section>
-                    <form:label path="confirm" class="border-end w-50 ps-2 me-1">Confirm Password:</form:label>
-                    <form:input type="password" class="input" path="confirm" />
-                </section>
-                <form:errors path="confirm" class="text-danger ps-2" />
-            </div>
-
-            <button class="btn btn-secondary my-1 w-100">Register</button>
-        </form:form>
-        
         <!-- login box -->
-        <form:form action="/login" method="POST" modelAttribute="newLogin" class="mx-5 mt-3">
+        <form:form action="/subs/login" method="POST" modelAttribute="newLogin" class="mx-5 mt-3">
             <div class="border text-center py-3">
                 <h3>Login</h3>
             </div>
