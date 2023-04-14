@@ -4,9 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -52,7 +55,18 @@ public class Drink {
 //       RELATIONSHIPS
 // ==========================  
     // single coffee
-    // single menu
+    // Many-to-One
+    // <Drink> >--- <coffee>
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="coffee_id")
+    private Coffee coffee;
+    
+    // single cafe
+    // Many-to-One
+    // <Drink> >--- <cafe>
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="cafe_id")
+    private Cafe cafe;
     
 // ==========================
 //        CONSTRUCTOR
@@ -91,6 +105,35 @@ public class Drink {
 
 	public Double getPrice() {	return price;	}
 	public void setPrice(Double price) {	this.price = price;	}
-    
-    // TODO: Relationship getters and setters
+
+    // Relationship getters and setters
+
+	/**
+	 * @return the coffee
+	 */
+	public Coffee getCoffee() {
+		return coffee;
+	}
+
+	/**
+	 * @param coffee the coffee to set
+	 */
+	public void setCoffee(Coffee coffee) {
+		this.coffee = coffee;
+	}
+
+	/**
+	 * @return the cafe
+	 */
+	public Cafe getCafe() {
+		return cafe;
+	}
+
+	/**
+	 * @param cafe the cafe to set
+	 */
+	public void setCafe(Cafe cafe) {
+		this.cafe = cafe;
+	}	
+	
 }
