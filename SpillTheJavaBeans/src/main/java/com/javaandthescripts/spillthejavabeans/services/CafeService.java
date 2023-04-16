@@ -20,15 +20,16 @@ public class CafeService {
     public Cafe createOne(Cafe i) {
         return cafeRepo.save(i);
     }
+    
     // read all 
-    public List<Cafe> getAll() {
-        return cafeRepo.findAll();
+    public Cafe getCafe() {
+        return cafeRepo.findCafe();
     }
 
 	// read one
-	public Cafe getOne(Long id) {
-	        return cafeRepo.findById(id).orElse(null);
-	    }
+//	public Cafe getOne(Long id) {
+//	        return cafeRepo.findById(id).orElse(null);
+//    }
 
 	// update
 	public Cafe updateOne(Cafe i) {
