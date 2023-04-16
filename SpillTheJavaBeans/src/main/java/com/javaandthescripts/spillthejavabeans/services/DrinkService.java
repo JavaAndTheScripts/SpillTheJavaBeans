@@ -1,42 +1,45 @@
 package com.javaandthescripts.spillthejavabeans.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.javaandthescripts.spillthejavabeans.models.Drink;
+import com.javaandthescripts.spillthejavabeans.repositories.DrinkRepo;
 
 @Service
 public class DrinkService {
 	
-//	@Autowired
-//    private <REPO_NAME> <repo_name>;
-//
-//// ==========================
-////        CRUD METHODS
-//// ==========================
-//    // create
-//    public <MODEL_NAME> createOne(<MODEL_NAME> i) {
-//        return <repo_name>.save(i);
-//    }
-//    // read all 
-//    public List<<MODEL_NAME>>
-//
-//getAll() {
-//        return <repo_name>.findAll();
-//    }
-//
-//// read one
-//public <MODEL_NAME> getOne(Long id) {
-//        return <repo_name>.findById(id).orElse(null);
-//    }
-//
-//// update
-//public <MODEL_NAME> updateOne(<MODEL_NAME> i) {
-//        return <repo_name>.save(i);
-//    }
-//
-//// delete
-//public void deleteOne(Long id) {
-//        <repo_name>.deleteById(id);
-//    }
-//
+	@Autowired
+    private DrinkRepo drinkRepo;
+
+// ==========================
+//        CRUD METHODS
+// ==========================
+    // create
+    public Drink createOne(Drink i) {
+        return drinkRepo.save(i);
+    }
+    // read all 
+    public List<Drink> getAll() {
+        return drinkRepo.findAll();
+    }
+
+	// read one
+	public Drink getOne(Long id) {
+        return drinkRepo.findById(id).orElse(null);
+    }
+
+	// update
+	public Drink updateOne(Drink i) {
+        return drinkRepo.save(i);
+    }
+
+	// delete
+	public void deleteOne(Long id) {
+        drinkRepo.deleteById(id);
+    }
+
 }
 
