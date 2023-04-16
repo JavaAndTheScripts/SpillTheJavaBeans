@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.javaandthescripts.spillthejavabeans.repositories;
 
 import java.util.List;
