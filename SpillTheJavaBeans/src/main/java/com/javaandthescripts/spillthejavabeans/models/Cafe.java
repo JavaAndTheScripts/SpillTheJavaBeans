@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,6 +30,9 @@ public class Cafe {
     @Id		
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @NotBlank
+    private String name;
 
     private String puzzle;
     
@@ -53,10 +57,6 @@ public class Cafe {
 	 @OneToMany(mappedBy="cafe", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	 private List<Drink> menu;
     
-    // list of users
-//    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-//    private List<User> users;
-    
 // ==========================
 //        CONSTRUCTOR
 // ==========================
@@ -78,53 +78,17 @@ public class Cafe {
     // add getters/setters for ALL attributes 
 	public Long getId() {	return id;	}
 	public void setId(Long id) {	this.id = id;	}
+
+	public String getName() {	return name;	}
+	public void setName(String name) {	this.name = name;	}	
 	
 	public String getPuzzle() {	return puzzle;	}
 	public void setPuzzle(String puzzle) {	this.puzzle = puzzle;	}
 
 	// Relationship getters and setters
+	public Coffee getMonthlyCoffee() {	return monthlyCoffee;	}
+	public void setMonthlyCoffee(Coffee monthlyCoffee) {	this.monthlyCoffee = monthlyCoffee;	}
 
-	/**
-	 * @return the monthlyCoffee
-	 */
-	public Coffee getMonthlyCoffee() {
-		return monthlyCoffee;
-	}
-
-	/**
-	 * @param monthlyCoffee the monthlyCoffee to set
-	 */
-	public void setMonthlyCoffee(Coffee monthlyCoffee) {
-		this.monthlyCoffee = monthlyCoffee;
-	}
-
-	/**
-	 * @return the menu
-	 */
-	public List<Drink> getMenu() {
-		return menu;
-	}
-
-	/**
-	 * @param menu the menu to set
-	 */
-	public void setMenu(List<Drink> menu) {
-		this.menu = menu;
-	}
-
-	/**
-	 * @return the users
-	 */
-//	public List<User> getUsers() {
-//		return users;
-//	}
-//
-//	/**
-//	 * @param users the users to set
-//	 */
-//	public void setUsers(List<User> users) {
-//		this.users = users;
-//	}
-	
-	
-}
+	public List<Drink> getMenu() {	return menu;	}
+	public void setMenu(List<Drink> menu) {		this.menu = menu;	}		
+}//Cafe

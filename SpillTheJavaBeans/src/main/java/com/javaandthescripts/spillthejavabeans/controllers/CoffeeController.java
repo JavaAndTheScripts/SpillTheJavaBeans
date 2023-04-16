@@ -28,17 +28,12 @@ public class CoffeeController {
 		model.addAttribute("allCoffee", coffeeServ.getAll());
 		return "coffee.jsp";
 	}
-	
-//	GetMapping  - add coffee page (/add coffee)
+    // CREATE COFFEE	
+	//	GetMapping  - add coffee page (/add coffee)
 	@GetMapping("/coffee/create")
-	public String createCoffee(HttpSession session, Model model) {
-		
-//		Student oneStudent = studentServ.getOne(student_id);
-//		model.addAttribute("s", oneStudent);
-//		
+	public String createCoffee(HttpSession session, Model model) {	
 		return "createCoffee.jsp";
-	} //end of create coffee 
-	
+	} //end of create coffee (get)	
 	// PostMapping - coffee create (/coffee create)
 	@PostMapping("/coffee/create")
 	public String createCoffee(@Valid @ModelAttribute("coffeeForm") Coffee newCoffee, BindingResult result, Model model) {
@@ -49,8 +44,12 @@ public class CoffeeController {
 			coffeeServ.createOne(newCoffee);
 			return "redirect:/coffee";
 		}
-	} // end of create coffee
-	
-	
+	} // end of create coffee (post)
+    
+    // READ COFFEES
+    
+    // UPDATE COFFEE
+    
+    // DELETE COFFEE
 	
 } // end of coffee controller

@@ -11,8 +11,16 @@ public class DrinkController {
     @Autowired
     private DrinkService drinkServ;
 
-    @GetMapping("/menu")
-    public String menu() {
-        return "menu.jsp";
+    @GetMapping("/drink")
+    public String drink() {
+        return "drink.jsp";
     }
+    
+    // CREATE DRINK
+    
+    // READ DRINKS
+    
+    // UPDATE DRINK
+    
+    // DELETE DRINK
 }
