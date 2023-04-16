@@ -39,9 +39,7 @@
         <h1>Welcome</h1>
         <form:form action="/cafe/create" method="post" modelAttribute="modelForm">                
             <input value="${cafeName}" name="name" hidden>
-            <!-- Validation Error -->
-            <form:errors path="<attribute_name>" class="text-warning"/>
-            <button>Open Cafe</button>
+            <button>Open ${cafeName}</button>
         </form:form>
     </main>
     <!-- FOOTER -->
