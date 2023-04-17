@@ -152,10 +152,10 @@ public class UserController {
     }
     @PostMapping("/mana/register")
     public String manaReg(@Valid @ModelAttribute("newUser") Manager newUser, 
-            BindingResult result, Model model, HttpSession session) {
+            BindingResult result, Model model, HttpSession session) {    	
         // call a register method in the service 
         // to do some extra validations and create a new user!
-        manaServ.register(newUser, result);
+        manaServ.register(session, newUser, result);
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.

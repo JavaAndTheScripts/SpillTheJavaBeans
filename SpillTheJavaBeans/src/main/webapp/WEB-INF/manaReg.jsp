@@ -131,6 +131,15 @@
                 <form:errors path="confirm" class="text-danger ps-2" />
             </div>
 
+            <!-- code -->
+            <div class="border py-2">
+                <section>
+                    <form:label path="code" class="border-end w-50 ps-2 me-1">Cafe Manager Code:</form:label>
+                    <form:input type="password" class="input" path="code" />
+                </section>
+                <form:errors path="code" class="text-danger ps-2" />
+            </div>
+
             <button class="btn btn-secondary my-1 w-100">Register</button>
         </form:form>
     </main>

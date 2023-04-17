@@ -3,6 +3,8 @@ package com.javaandthescripts.spillthejavabeans.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,12 @@ public class ManagerService {
 // ==========================
 //       REGISTRATION
 // ==========================
-    public Manager register(Manager newSub, BindingResult result) {
+    public Manager register(HttpSession session, Manager newSub, BindingResult result) {
+    	// if store code does not match manager code
+    	if(!newSub.getCode().equals(session.getAttribute("cafeCode"))) {
+    		result.rejectValue("code", "Matches", "Cafe Code must match set value!");
+    	}
+    	
         // if email already in use
         if(userRepo.findByEmail(newSub.getEmail()).isPresent()) {
             result.rejectValue("email", "Unique", "This email is already in use!");

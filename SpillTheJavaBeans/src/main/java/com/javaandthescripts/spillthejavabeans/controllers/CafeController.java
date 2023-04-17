@@ -26,7 +26,8 @@ public class CafeController {
         if(result.hasErrors()) { // for how this code is set up, this should NEVER trigger
             // get attribute from server
             // add attribute to model
-           
+    		model.addAttribute("cafeName", "Spill the Java Beans");
+    		
             return "index.jsp"; 
         } else {
             cafeServ.createOne(cafe);
@@ -37,10 +38,8 @@ public class CafeController {
 	// READ CAFE
 	@GetMapping("/cafe")
     public String cafe( Model model) {
-		// get the cafe id from the server
+		// get the cafe from the server
 		model.addAttribute("cafe", cafeServ.getCafe());
-        // get attribute from server
-        // add attribute to model
 
         return "cafe.jsp";
     }

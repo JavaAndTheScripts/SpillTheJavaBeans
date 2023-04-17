@@ -1,10 +1,13 @@
 package com.javaandthescripts.spillthejavabeans.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.javaandthescripts.spillthejavabeans.models.Cafe;
 import com.javaandthescripts.spillthejavabeans.services.CafeService;
 
 @Controller
@@ -14,14 +17,18 @@ public class HomeController {
     
     
     @GetMapping("/") // reserve route
-    public String index(Model model) {
-//    	Cafe cafe = cafeServ.getCafe();
+    public String index(HttpSession session, Model model) {
+    	Cafe cafe = cafeServ.getCafe();
     	// if there is not a Cafe in the database
-    	if(cafeServ.getCafe() == null) {	//	cafe == null
+    	if(cafe == null) {	//	cafeServ.getCafe() == null
     		model.addAttribute("cafeName", "Spill the Java Beans");
     		// make a cafe
     		return "index.jsp"; // page where form exists
     	}
-        return "redirect:/cafe"; // page that 
+    	// set cafe code - for creating MANAGERS
+    	session.setAttribute("cafeCode","STJB$%4242");
+    	// set cafe id in session - for delete (if adding later)
+    	session.setAttribute("cafeID", cafe.getId());
+        return "redirect:/cafe"; // page that will show the cafe
     }
 }
