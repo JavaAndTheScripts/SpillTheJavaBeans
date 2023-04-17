@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Coffee</title>
+    <title>${cafe.name}</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -63,42 +63,6 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
-        <h1 class="">See all of our Featured Coffees</h1>
-
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
-                <c:forEach items="${allCoffee}" var="c">
-                    <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                                <a href="#" class="mx-1">Edit (not set)</a> |
-                                <a href="#" class="mx-1">Delete (not set)</a>
-                            </td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-        <!-- Allow manager to add a new coffee -->
-        <c:if test="${ userTYPE.equals('Manager') }">
-            <a href="/coffee/create">Add a New Coffee</a>
-        </c:if>
         
     </main>
     <!-- FOOTER -->

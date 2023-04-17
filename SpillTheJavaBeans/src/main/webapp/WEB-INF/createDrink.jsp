@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +26,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Coffee</title>
+    <title>${cafe.name}</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -63,43 +68,73 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
-        <h1 class="">See all of our Featured Coffees</h1>
-
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
-                <c:forEach items="${allCoffee}" var="c">
-                    <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                                <a href="#" class="mx-1">Edit (not set)</a> |
-                                <a href="#" class="mx-1">Delete (not set)</a>
-                            </td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-        <!-- Allow manager to add a new coffee -->
-        <c:if test="${ userTYPE.equals('Manager') }">
-            <a href="/coffee/create">Add a New Coffee</a>
-        </c:if>
-        
+        <h2>Create a Drink</h2>
+        <form:form action="/drink/create" method="post" modelAttribute="modelForm" class="d-flex flex-column">
+            <!-- String name -->                
+            <div class="my-2">
+                <label for="name">Name: </label>
+                <input type="text" name="name">
+                <!-- Validation Error -->
+                <form:errors path="name" class="text-warning"/>
+            </div>
+            <!-- String description --> 
+            <div class="my-2">
+                <label for="description">Description:</label>
+                <input type="text" name="description">
+                <!-- Validation Error -->
+                <form:errors path="description" class="text-warning"/>
+            </div>
+            <!-- String ingredients --> 
+            <div class="my-2">
+                <label for="ingredients">Ingredients:</label>
+                <input type="text" name="ingredients">
+                <!-- Validation Error -->
+                <form:errors path="ingredients" class="text-warning"/>
+            </div>
+            <!-- Boolean isHot --> 
+            <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                <label for="cafe">Temperature of the drink: </label>
+                <fieldset class="my-2">
+                    <label for="isHot">Hot</label>
+                    <input type="radio" name="isHot" value="${true}">
+                    <label for="isHot">Cold</label>
+                    <input type="radio" name="isHot" value="${false}">
+                </fieldset>
+                <!-- Validation Error -->
+                <form:errors path="isHot" class="text-warning"/>
+            </div>
+            <!-- Double price --> 
+            <div class="my-2">
+                <label for="price">Price:</label>
+                <input type="number" step=".01" name="price">
+                <!-- Validation Error -->
+                <form:errors path="price" class="text-warning"/>
+            </div>
+            <!-- Coffee coffee --> 
+            <div class="my-2">
+                <label for="coffee">Coffee:</label>
+                <select name="coffee" id="">
+                    <option selected hidden disabled>--- Select Coffee ---</option>
+                    <c:forEach items="${allCoffee}" var="c">
+                        <option value="${c.id}">${c.region}; ${c.flavors}; ${c.roastType()}</option>
+                    </c:forEach>
+                </select>
+                <!-- Validation Error -->
+                <form:errors path="coffee" class="text-warning"/>
+            </div>
+            <!-- Cafe cafe --> 
+            <div class="d-flex flex-row justify-content-between align-items-center my-2">
+                <label for="cafe">Do you want to add to the avaliable menu?</label>
+                <fieldset class="my-2">
+                    <label for="cafe">Yes</label>
+                    <input type="radio" name="cafe" value="${cafeID}">
+                    <label for="cafe">No</label>
+                    <input type="radio" name="cafe" value="${null}" checked>
+                </fieldset>
+            </div>
+            <!-- Submission button -->
+            <button class="btn btn-primary">Add Drink</button>
+        </form:form>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">

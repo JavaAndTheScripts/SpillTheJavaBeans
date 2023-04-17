@@ -50,6 +50,15 @@ public class CafeController {
         return "cafe.jsp";
     }// cafe
 	
+	// READ MENU
+	@GetMapping("/cafe/menu")
+    public String menu(HttpSession session, Model model) {
+		// get the cafe from the server
+		model.addAttribute("cafe", cafeServ.getCafe());
+
+        return "menu.jsp";
+    }
+	
 	// UPDATE Coffee of the Month
 	@GetMapping("/cafe/coffee/edit")
     public String monthlyCoffee(HttpSession session, Model model) {
@@ -66,7 +75,11 @@ public class CafeController {
         return "monthlyCoffee.jsp";
     }// monthlyCoffee (get)
 	@PutMapping("/cafe/coffee/edit")
-    public String monthlyCoffee(@Valid @ModelAttribute("modelForm") Cafe cafe, BindingResult result, Model model) {
+    public String monthlyCoffee(@Valid @ModelAttribute("modelForm") Cafe cafe, BindingResult result, Model model) {		
+		System.out.println("=".repeat(20));
+		System.out.printf("\n\tVARIABLES:\t %s\n\n", cafe.getId());
+		System.out.println("=".repeat(20));
+		
 		if(result.hasErrors()) {
             return "monthlyCoffee.jsp";
         }// if 

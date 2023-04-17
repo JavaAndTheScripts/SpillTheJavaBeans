@@ -37,7 +37,7 @@
                 <a class="nav-link" href="/coffee">Featured Coffee</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/menu">Menu</a>
+                <a class="nav-link" href="/cafe/menu">Menu</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
@@ -73,6 +73,7 @@
         <form:form action="/cafe/coffee/edit" method="post" modelAttribute="modelForm">    
             <input type="hidden" name="_method" value="put">
             
+            <input value="${cafe.id}" name="id" hidden>
             <input value="${cafe.name}" name="name" hidden>
 
             <select name="monthlyCoffee" value="${cafe.monthlyCoffee.id}">

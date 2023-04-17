@@ -32,7 +32,7 @@
                 <a class="nav-link" href="/coffee">Featured Coffee</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/menu">Menu</a>
+                <a class="nav-link" href="/cafe/menu">Menu</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
