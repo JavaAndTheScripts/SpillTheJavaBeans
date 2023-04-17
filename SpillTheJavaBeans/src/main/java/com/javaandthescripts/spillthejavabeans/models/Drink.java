@@ -57,6 +57,7 @@ public class Drink {
     // single coffee
     // Many-to-One
     // <Drink> >--- <coffee>
+    @NotNull // this one cannot be empty
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="coffee_id")
     private Coffee coffee;
@@ -64,6 +65,7 @@ public class Drink {
     // single cafe
     // Many-to-One
     // <Drink> >--- <cafe>
+    // this one can be empty
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cafe_id")
     private Cafe cafe;

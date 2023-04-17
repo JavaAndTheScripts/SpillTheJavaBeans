@@ -10,15 +10,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.javaandthescripts.spillthejavabeans.models.Cafe;
 import com.javaandthescripts.spillthejavabeans.services.CafeService;
+import com.javaandthescripts.spillthejavabeans.services.CoffeeService;
 
 @Controller
 public class CafeController {
 	
 	@Autowired
-	private CafeService cafeServ;	
+	private CafeService cafeServ;
+	
+	@Autowired
+	private CoffeeService coffeeServ;
 	
 	// CREATE CAFE
 	@PostMapping("/cafe/create")
@@ -44,6 +49,32 @@ public class CafeController {
 
         return "cafe.jsp";
     }// cafe
+	
+	// UPDATE Coffee of the Month
+	@GetMapping("/cafe/coffee/edit")
+    public String monthlyCoffee(HttpSession session, Model model) {
+		// make sure the manager is signed in
+		if(session.getAttribute("userID") == null || session.getAttribute("userTYPE").equals("Subscriber")) {
+	        return "redirect:/";
+	    }// if
+		
+		// get cafe from server
+		model.addAttribute("cafe", cafeServ.getCafe());
+		// get all coffee from server
+		model.addAttribute("allCoffee", coffeeServ.getAll());
+		
+        return "monthlyCoffee.jsp";
+    }// monthlyCoffee (get)
+	@PutMapping("/cafe/coffee/edit")
+    public String monthlyCoffee(@Valid @ModelAttribute("modelForm") Cafe cafe, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+            return "monthlyCoffee.jsp";
+        }// if 
+        // update cafe in server
+        cafeServ.updateOne(cafe);
+        
+        return "redirect:/cafe";
+    }// monthlyCoffee (put)
 	
 	// DELETE CAFE
 	

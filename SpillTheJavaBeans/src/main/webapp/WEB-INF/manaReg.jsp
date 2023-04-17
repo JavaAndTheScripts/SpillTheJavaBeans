@@ -27,14 +27,41 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Project Title</title>
+    <title>Manager Registration</title>
 </head>
 <body>
     <!-- HEADER -->
     <header>
-        <nav>
-
-        </nav>
+        <h1>${cafe.name}</h1>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="/coffee">Featured Coffee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
+            </li>
+            <c:if test="${ !userTYPE.equals('Manager') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
+                    <div class="dropdown-menu">
+                        <!-- Not logged in -->
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/subs/login">Login</a>
+                            <a class="dropdown-item" href="/subs/register">Sign Up</a>
+                        </c:if>
+                        <!-- Logged in -->
+                        <c:if test="${ userID != null }">
+                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li>
+            </c:if>
+        </ul>
     </header>
     <!-- MAIN -->
     <main>
@@ -145,7 +172,25 @@
     </main>
     <!-- FOOTER -->
     <footer>
-
+        <ul class="nav nav-pills justify-content-end">
+            <c:if test="${ !userTYPE.equals('Subscriber') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <div class="dropdown-menu">
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/mana/login">Login</a>
+                            <a class="dropdown-item" href="/mana/register">Register</a>
+                        </c:if>
+                        <c:if test="${ userID != null }">
+                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
+                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li> 
+            </c:if>            
+        </ul>
     </footer>
 </body>
 </html>

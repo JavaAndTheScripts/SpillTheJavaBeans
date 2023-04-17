@@ -21,29 +21,108 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Project Title</title>
+    <title>Coffee</title>
 </head>
 <body>
     <!-- HEADER -->
-    <header>
-        <h1>Coffee</h1>
-        <nav>
-			<h1>Different Types of Coffee</h1>
-			<h2> table or chart</h2>
-			<a href="/coffee/create">Create a Coffee</a>
-			
-        </nav>
+    <header class="text-center m-3">
+        <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="/coffee">Featured Coffee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
+            </li>
+            <!-- Make sure manager is not signed in -->
+            <c:if test="${ !userTYPE.equals('Manager') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
+                    <div class="dropdown-menu">
+                        <!-- Not logged in -->
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/subs/login">Login</a>
+                            <a class="dropdown-item" href="/subs/register">Sign Up</a>
+                        </c:if>
+                        <!-- Logged in -->
+                        <c:if test="${ userID != null }">
+                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li>
+            </c:if>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+        </ul>
     </header>
     <!-- MAIN -->
-    <main>
-    	<c:forEach items="${allCoffee}" var="c">
-    		<p>${c.region}</p>
-		</c:forEach>
+    <main class="m-3">
+        <h1 class="">See all of our Featured Coffees</h1>
 
+        <table class="table">
+            <thead>
+                <!--- Column Labels --->
+                <tr>
+                    <th scope="col">Region</th>
+                    <th scope="col">Flavors</th>
+                    <th scope="col">Roast</th>
+                    <c:if test="${ userTYPE.equals('Manager') }">
+                        <th scope="col">Action</th>
+                    </c:if>
+                </tr>
+            </thead>
+            <tbody>
+                <!--- Row Data --->
+                <c:forEach items="${allCoffee}" var="c">
+                    <tr>
+                        <th scope="row">${c.region}</th>
+                        <td>${c.flavors}</td>
+                        <td>${c.roastType()}</td>
+                        <c:if test="${ userTYPE.equals('Manager') }">
+                            <td>
+                                <a href="#" class="mx-1">Edit (not set)</a> |
+                                <a href="#" class="mx-1">Delete (not set)</a>
+                            </td>
+                        </c:if>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
+        <!-- Allow manager to add a new coffee -->
+        <c:if test="${ userTYPE.equals('Manager') }">
+            <a href="/coffee/create">Add a New Coffee</a>
+        </c:if>
+        
     </main>
     <!-- FOOTER -->
-    <footer>
-
+    <footer class="m-3">
+        <ul class="nav nav-pills justify-content-end">
+            <!-- Make sure subscriber is not signed in -->
+            <c:if test="${ !userTYPE.equals('Subscriber') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <div class="dropdown-menu">
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/mana/login">Login</a>
+                            <a class="dropdown-item" href="/mana/register">Register</a>
+                        </c:if>
+                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
+                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li>
+            </c:if>            
+        </ul>
     </footer>
 </body>
 </html>

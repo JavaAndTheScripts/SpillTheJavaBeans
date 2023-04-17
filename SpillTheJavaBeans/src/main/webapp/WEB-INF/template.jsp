@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Cafe</title>
+    <title>${cafe.name}</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -37,6 +37,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
             </li>
+            <!-- Make sure manager is not signed in -->
             <c:if test="${ !userTYPE.equals('Manager') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
@@ -61,30 +62,13 @@
         </ul>
     </header>
     <!-- MAIN -->
-    <main class="d-flex flex-row m-3">
-        <!-- Coffee of the month -->
-        <div class="container border text-center m-1">
-            <h3>Coffee of the Month</h3>
-            <!-- com not selected yet -->
-            <c:if test="${ cafe.monthlyCoffee == null }">
-                <br>
-                <h5>A Coffee has not been selected as the monthly special yet.</h5>
-            </c:if>
-            <!-- com has been selected -->
-            <c:if test="${ cafe.monthlyCoffee != null }">
-                <h5>${cafe.monthlyCoffee.region}</h5>
-                <h5>${cafe.monthlyCoffee.flavors}</h5>
-                <h5>${cafe.monthlyCoffee.roastType()}</h5>
-            </c:if>
-        </div>
-        <div class="container border m-1">
-            
-        </div>
+    <main class="m-3">
 
     </main>
     <!-- FOOTER -->
     <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
+            <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
@@ -99,8 +83,6 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
                 </li>
             </c:if>            

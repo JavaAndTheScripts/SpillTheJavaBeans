@@ -70,105 +70,44 @@ public class Coffee {
 // ==========================
 //        CONSTRUCTOR
 // ==========================
-	public Coffee() {
-	}
+	public Coffee() {}
 
 // ==========================
 //     GETTERS / SETTERS
 // ==========================
 	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
-
+	protected void onCreate() {	this.createdAt = new Date();	}
+	public Date getCreatedAt() {	return createdAt;	}
+	public void setCreatedAt(Date createdAt) {	this.createdAt = createdAt;	}
+	
 	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+	protected void onUpdate() {	this.updatedAt = new Date();	}
+	public Date getUpdatedAt() {	return updatedAt;	}
+	public void setUpdatedAt(Date updatedAt) {	this.updatedAt = updatedAt;	}
 	// add getters/setters for ALL attributes
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId() {	return id;	}
+	public void setId(Long id) {	this.id = id;	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public Short getRoast() {	return roast;	}
+	public void setRoast(Short roast) {	this.roast = roast;	}
 
-	public Short getRoast() {
-		return roast;
-	}
+	public String getRegion() {	return region;	}
+	public void setRegion(String region) {	this.region = region;	}
 
-	public void setRoast(Short roast) {
-		this.roast = roast;
-	}
+	public String getFlavors() {	return flavors;	}
+	public void setFlavors(String flavors) {	this.flavors = flavors;	}
 
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-	public String getFlavors() {
-		return flavors;
-	}
-
-	public void setFlavors(String flavors) {
-		this.flavors = flavors;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+	// Relationship getters and setters
+	public Cafe getCafe() {	return cafe;	}
+	public void setCafe(Cafe cafe) {	this.cafe = cafe;	}
 	
-	// TODO: Relationship getters and setters
-	/**
-	 * @return the drinks
-	 */
-	
-	/**
-	 * @return the cafe
-	 */
-	public Cafe getCafe() {
-		return cafe;
-	}
+	public List<Drink> getDrinks() {	return drinks;	}
+	public void setDrinks(List<Drink> drinks) {		this.drinks = drinks;	}
 
-	/**
-	 * @param cafe the cafe to set
-	 */
-	public void setCafe(Cafe cafe) {
-		this.cafe = cafe;
-	}
-	
-	public List<Drink> getDrinks() {
-		return drinks;
-	}
-
-	/**
-	 * @param drinks the drinks to set
-	 */
-	public void setDrinks(List<Drink> drinks) {
-		this.drinks = drinks;
-	}
-	
-
-	// ==========================
-	// METHODS
-	// ==========================
+// ==========================
+// 			METHODS
+// ==========================
 
 	public String roastType() {
 		switch(this.roast) {
@@ -181,6 +120,6 @@ public class Coffee {
 			default:
 				return null;
 		}
-	}
+	}// roastType
 
-} // end of coffee model
+} // Coffee

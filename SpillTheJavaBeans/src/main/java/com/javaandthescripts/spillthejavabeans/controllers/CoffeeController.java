@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.javaandthescripts.spillthejavabeans.controllers;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.javaandthescripts.spillthejavabeans.models.Coffee;
+import com.javaandthescripts.spillthejavabeans.services.CafeService;
 import com.javaandthescripts.spillthejavabeans.services.CoffeeService;
 
 @Controller
@@ -22,9 +20,13 @@ public class CoffeeController {
 	@Autowired
 	private CoffeeService coffeeServ;
 	
+	@Autowired
+	private CafeService cafeServ;
+	
 	// read all
 	@GetMapping("/coffee")
 	public String coffee(Model model) {
+		model.addAttribute("cafe", cafeServ.getCafe());
 		model.addAttribute("allCoffee", coffeeServ.getAll());
 		return "coffee.jsp";
 	}

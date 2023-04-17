@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +26,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Cafe</title>
+    <title>Monthly Coffee</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -37,6 +42,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
             </li>
+            <!-- Make sure manager is not signed in -->
             <c:if test="${ !userTYPE.equals('Manager') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
@@ -61,30 +67,32 @@
         </ul>
     </header>
     <!-- MAIN -->
-    <main class="d-flex flex-row m-3">
-        <!-- Coffee of the month -->
-        <div class="container border text-center m-1">
-            <h3>Coffee of the Month</h3>
-            <!-- com not selected yet -->
-            <c:if test="${ cafe.monthlyCoffee == null }">
-                <br>
-                <h5>A Coffee has not been selected as the monthly special yet.</h5>
-            </c:if>
-            <!-- com has been selected -->
-            <c:if test="${ cafe.monthlyCoffee != null }">
-                <h5>${cafe.monthlyCoffee.region}</h5>
-                <h5>${cafe.monthlyCoffee.flavors}</h5>
-                <h5>${cafe.monthlyCoffee.roastType()}</h5>
-            </c:if>
-        </div>
-        <div class="container border m-1">
+    <main class="m-3">
+        <h2>Select a new Monthly Coffee</h2>
+        <!-- Select drop of all coffee's avaliable -->
+        <form:form action="/cafe/coffee/edit" method="post" modelAttribute="modelForm">    
+            <input type="hidden" name="_method" value="put">
             
-        </div>
+            <input value="${cafe.name}" name="name" hidden>
 
+            <select name="monthlyCoffee" value="${cafe.monthlyCoffee.id}">
+                <c:if test="${ cafe.monthlyCoffee == null }">
+                    <option selected hidden disabled>-- A Monthly Coffee has yet to be Selected --</option>
+                </c:if>
+                <c:forEach items="${allCoffee}" var="c">
+                    <option value="${c.id}">${c.region}; ${c.flavors}; ${c.roastType()}</option>
+                </c:forEach>                
+            </select>
+            <!-- Validation Error -->
+            <form:errors path="monthlyCoffee" class="text-warning"/>
+            <br>
+            <button class="btn btn-secondary my-3">Change Monthly Coffee</button>
+        </form:form>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
+            <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
