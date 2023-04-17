@@ -1,5 +1,6 @@
 package com.javaandthescripts.spillthejavabeans.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.javaandthescripts.spillthejavabeans.models.Cafe;
@@ -33,16 +33,17 @@ public class CafeController {
             cafeServ.createOne(cafe);
             return "redirect:/cafe";
         }
-    }
+    }// createCafe (post)
 	
-	// READ CAFE
+	// READ CAFE 
+	// - should only reach here if cafe exists in database [HomeController -> index()]
 	@GetMapping("/cafe")
-    public String cafe( Model model) {
+    public String cafe(HttpSession session, Model model) {
 		// get the cafe from the server
 		model.addAttribute("cafe", cafeServ.getCafe());
 
         return "cafe.jsp";
-    }
+    }// cafe
 	
 	// DELETE CAFE
 	

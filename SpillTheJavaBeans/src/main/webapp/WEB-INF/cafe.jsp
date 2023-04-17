@@ -25,21 +25,66 @@
 </head>
 <body>
     <!-- HEADER -->
-    <header>
+    <header class="text-center m-3">
         <h1>${cafe.name}</h1>
-        <nav>
-			<a href="/subs/login">Subscription Login</a>
-            <a href="/mana/login">Manager Login</a>
-            <a href="/coffee">Coffee</a>
-        </nav>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="/coffee">Featured Coffee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
+            </li>
+            <c:if test="${ !userTYPE.equals('Manager') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
+                    <div class="dropdown-menu">
+                        <!-- Not logged in -->
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/subs/login">Login</a>
+                            <a class="dropdown-item" href="/subs/register">Sign Up</a>
+                        </c:if>
+                        <!-- Logged in -->
+                        <c:if test="${ userID != null }">
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li>
+            </c:if>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+        </ul>
     </header>
     <!-- MAIN -->
-    <main>
+    <main class="m-3">
 
     </main>
     <!-- FOOTER -->
-    <footer>
-
+    <footer class="m-3">
+        <ul class="nav nav-pills">
+            <c:if test="${ !userTYPE.equals('Subscriber') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <div class="dropdown-menu">
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/mana/login">Login</a>
+                            <a class="dropdown-item" href="/mana/register">Register</a>
+                        </c:if>
+                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a> -->
+                    </div>
+                </li>
+            </c:if>            
+        </ul>
     </footer>
 </body>
 </html>
