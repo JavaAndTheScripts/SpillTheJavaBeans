@@ -1,14 +1,9 @@
 package com.javaandthescripts.spillthejavabeans.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +19,7 @@ public class Subscriber extends User{
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     
+    private Boolean solvedPuzzle = false;
     private Boolean usedPuzzle = false;
     private Boolean usedBday = false;
 
@@ -35,13 +31,29 @@ public class Subscriber extends User{
 // ==========================
 //     GETTERS / SETTERS
 // ==========================
-
 	public Date getBirthday() {	return birthday;	}
 	public void setBirthday(Date birthday) {	this.birthday = birthday;	}
+
+	public Boolean getSolvedPuzzle() {	return solvedPuzzle;	}
+	public void setSolvedPuzzle(Boolean solvedPuzzle) {	this.solvedPuzzle = solvedPuzzle;	}
 
 	public Boolean getUsedPuzzle() {	return usedPuzzle;	}
 	public void setUsedPuzzle(Boolean usedPuzzle) {	this.usedPuzzle = usedPuzzle;	}
 
 	public Boolean getUsedBday() {	return usedBday;	}
-	public void setUsedBday(Boolean usedBday) {	this.usedBday = usedBday;	}    
+	public void setUsedBday(Boolean usedBday) {	this.usedBday = usedBday;	}  
+	
+// ==========================
+//  		METHODS
+// ==========================	
+	public boolean thisMonth() {
+		// convert birthday to LocalDate
+		// get the now LocalDate
+		
+		// find the month for both LocalDates
+		
+		
+		
+		return true;
+	}
 }

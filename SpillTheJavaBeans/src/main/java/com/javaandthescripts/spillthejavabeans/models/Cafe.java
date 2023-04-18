@@ -34,7 +34,8 @@ public class Cafe {
     @NotBlank
     private String name;
 
-    private String puzzle;
+    private String puzzleCont;
+    private String puzzleSolv;
     
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -82,8 +83,11 @@ public class Cafe {
 	public String getName() {	return name;	}
 	public void setName(String name) {	this.name = name;	}	
 	
-	public String getPuzzle() {	return puzzle;	}
-	public void setPuzzle(String puzzle) {	this.puzzle = puzzle;	}
+	public String getPuzzleCont() {	return puzzleCont;	}
+	public void setPuzzleCont(String puzzleCont) {	this.puzzleCont = puzzleCont;	}
+
+	public String getPuzzleSolv() {	return puzzleSolv;	}
+	public void setPuzzleSolv(String puzzleSolv) {	this.puzzleSolv = puzzleSolv;	}
 
 	// Relationship getters and setters
 	public Coffee getMonthlyCoffee() {	return monthlyCoffee;	}
