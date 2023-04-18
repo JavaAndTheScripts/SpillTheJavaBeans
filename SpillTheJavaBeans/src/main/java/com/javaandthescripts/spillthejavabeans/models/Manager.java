@@ -2,6 +2,7 @@ package com.javaandthescripts.spillthejavabeans.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -24,6 +25,10 @@ public class Manager extends User {
     
     @NotBlank
     private String zipcode;
+    
+    @Transient // don't go to the db
+    @NotBlank(message="You must put in the Code for the Cafe in order to register as a manager.")
+    private String code;    
     
 // ==========================
 //  	 RELATIONSHIPS
@@ -51,4 +56,7 @@ public class Manager extends User {
 
 	public String getZipcode() {	return zipcode;	}
 	public void setZipcode(String zipcode) {	this.zipcode = zipcode;	}
-}
+	
+	public String getCode() {	return code;	}
+	public void setCode(String code) {	this.code = code;	}
+}//Manager

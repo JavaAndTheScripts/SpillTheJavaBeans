@@ -7,10 +7,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.javaandthescripts.spillthejavabeans.models.Cafe;
 
-
+@Repository
 public interface CafeRepo extends CrudRepository<Cafe, Long>{
 //	Model gets imported here	
   List<Cafe> findAll();

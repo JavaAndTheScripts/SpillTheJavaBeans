@@ -21,25 +21,90 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Project Title</title>
+    <title>Cafe</title>
 </head>
 <body>
     <!-- HEADER -->
-    <header>
-        <h1>${cafe.name}</h1>
-        <nav>
-			<a href="/subs/login">Subscription Login</a>
-            <a href="/mana/login">Manager Login</a>
-            <a href="/coffee">Coffee</a>
-        </nav>
+    <header class="text-center m-3">
+        <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="/coffee">Featured Coffee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cafe/menu">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
+            </li>
+            <c:if test="${ !userTYPE.equals('Manager') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
+                    <div class="dropdown-menu">
+                        <!-- Not logged in -->
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/subs/login">Login</a>
+                            <a class="dropdown-item" href="/subs/register">Sign Up</a>
+                        </c:if>
+                        <!-- Logged in -->
+                        <c:if test="${ userID != null }">
+                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li>
+            </c:if>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+        </ul>
     </header>
     <!-- MAIN -->
-    <main>
+    <main class="d-flex flex-row m-3">
+        <!-- Coffee of the month -->
+        <div class="container border text-center m-1">
+            <h3>Coffee of the Month</h3>
+            <!-- com not selected yet -->
+            <c:if test="${ cafe.monthlyCoffee == null }">
+                <br>
+                <h5>A Coffee has not been selected as the monthly special yet.</h5>
+            </c:if>
+            <!-- com has been selected -->
+            <c:if test="${ cafe.monthlyCoffee != null }">
+                <h5>${cafe.monthlyCoffee.region}</h5>
+                <h5>${cafe.monthlyCoffee.flavors}</h5>
+                <h5>${cafe.monthlyCoffee.roastType()}</h5>
+            </c:if>
+        </div>
+        <div class="container border m-1">
+            
+        </div>
 
     </main>
     <!-- FOOTER -->
-    <footer>
-
+    <footer class="m-3">
+        <ul class="nav nav-pills justify-content-end">
+            <c:if test="${ !userTYPE.equals('Subscriber') }">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <div class="dropdown-menu">
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/mana/login">Login</a>
+                            <a class="dropdown-item" href="/mana/register">Register</a>
+                        </c:if>
+                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
+                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a> -->
+                    </div>
+                </li>
+            </c:if>            
+        </ul>
     </footer>
 </body>
 </html>

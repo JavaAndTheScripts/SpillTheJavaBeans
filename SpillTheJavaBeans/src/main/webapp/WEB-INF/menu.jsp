@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- formatting decimal values -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +24,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Coffee</title>
+    <title>${cafe.name}</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -63,43 +66,56 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
-        <h1 class="">See all of our Featured Coffees</h1>
-
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
-                <c:forEach items="${allCoffee}" var="c">
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                                <a href="#" class="mx-1">Edit (not set)</a> |
-                                <a href="#" class="mx-1">Delete (not set)</a>
-                            </td>
-                        </c:if>
+                    <th>Drink Menu</th>
+                    <th></th>
+                    <th><img src="/images/byteSize.png" alt="byteSize" style="max-height: 60px;"></th>
+                    <th><img src="/images/intSize.png" alt="intSize" style="max-height: 60px;"></th>
+                    <th><img src="/images/longSize.png" alt="longSize" style="max-height: 60px;"></th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-        <!-- Allow manager to add a new coffee -->
-        <c:if test="${ userTYPE.equals('Manager') }">
-            <a href="/coffee/create">Add a New Coffee</a>
-        </c:if>
-        
+                </thead>
+                <tbody class="">
+                    <c:forEach items="${allDrinks}" var="d">
+                        <tr>
+                        <td class="">
+                            <!-- Drink name -->
+                            <div class="">
+                                ${d.name}
+                            </div>
+                            <!-- Drink description -->
+                            <div class="">
+                                ${d.description}
+                            </div>
+                            <!-- Drink ingredients -->
+                            <div class="">
+                                ${d.ingredients}
+                            </div>
+                        </td>
+                        <!-- Drink temperature -->
+                        <td class="">
+                            <!-- Hot -->
+                            <c:if test="${ d.isHot }">
+                                <img src="/images/hotIcon.png" alt="hotIcon" style="max-width: 40px;"/>
+                            </c:if>
+                            <!-- Cold -->
+                            <c:if test="${ d.isCold }">
+                                <img src="/images/coldIcon.png" alt="coldIcon" style="max-width: 40px;"/>
+                            </c:if>
+                        </td>
+                        <!-- Drink price - byte (small) -->
+                        <td><fmt:formatNumber value="${d.bytePrice}" type="currency"/></td>
+                        <!-- Drink price - int (medium) -->
+                        <td><fmt:formatNumber value="${d.intPrice}" type="currency" /></td>
+                        <!-- Drink price - Long (Large) -->
+                        <td><fmt:formatNumber value="${d.longPrice}" type="currency" /></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">

@@ -34,7 +34,7 @@ public class UserController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/";
-    }
+    } // logout
     
 // ==========================
 //        SUBSCRIBER
@@ -50,8 +50,8 @@ public class UserController {
         // to capture the form input
         model.addAttribute("newUser", new Subscriber());
         model.addAttribute("newLogin", new LoginUser());
-        return "subsLog.jsp"; // HERE
-    }
+        return "subsLog.jsp"; 
+    }// subsLogin (get)
     @PostMapping("/subs/login")
     public String subsLogin(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
             BindingResult result, Model model, HttpSession session) {    
@@ -60,7 +60,7 @@ public class UserController {
 
         if(result.hasErrors()) {
             model.addAttribute("newUser", new Subscriber());
-            return "subsLog.jsp"; // HERE
+            return "subsLog.jsp"; 
         }
 
         // No errors! 
@@ -68,7 +68,7 @@ public class UserController {
         session.setAttribute("userID", subscriber.getId());
         session.setAttribute("userTYPE", "Subscriber");
         return "redirect:/";
-    }
+    }// subsLogin (post)
     
     // register a new subscriber
     @GetMapping("/subs/register")
@@ -76,13 +76,13 @@ public class UserController {
         // check for session
         if(session.getAttribute("userID") != null) {
             return "redirect:/";
-        }
+        }// if
         // Bind empty Subscriber and LoginUser objects to the JSP
         // to capture the form input
         model.addAttribute("newUser", new Subscriber());
         model.addAttribute("newLogin", new LoginUser());
-        return "subsReg.jsp"; // HERE
-    }
+        return "subsReg.jsp"; 
+    }// subsReg (get)
     @PostMapping("/subs/register")
     public String subsReg(@Valid @ModelAttribute("newUser") Subscriber newUser, 
             BindingResult result, Model model, HttpSession session) {
@@ -93,80 +93,80 @@ public class UserController {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.
             model.addAttribute("newLogin", new LoginUser());
-            return "subsReg.jsp"; // HERE
-        }
+            return "subsReg.jsp"; 
+        }// if
 
         // No errors! 
         // Store their ID from the DB in session, i.e. log them in.
         session.setAttribute("userID", newUser.getId());
         session.setAttribute("userTYPE", "Subscriber");
         return "redirect:/";
-    }
+    }// subsReg (post)
     
 // ==========================
 //  	   MANAGER
 // ========================== 
- // subscriber login
+ // manager login
     @GetMapping("/mana/login")
     public String manaLogin(Model model, HttpSession session){
         // check for session
         if(session.getAttribute("userID") != null) {
             return "redirect:/";
-        }
+        }// if
         // Bind empty Subscriber and LoginUser objects to the JSP
         // to capture the form input
-        model.addAttribute("newUser", new Subscriber());
+        model.addAttribute("newUser", new Manager());
         model.addAttribute("newLogin", new LoginUser());
         return "manaLog.jsp"; 
-    }
+    }// manaLogin (get)
     @PostMapping("/mana/login")
     public String manaLogin(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
             BindingResult result, Model model, HttpSession session) {    
         // Add once service is implemented:
-        Subscriber subscriber = (Subscriber) subServ.login(newLogin, result);
+        Manager manager = (Manager) manaServ.login(newLogin, result);
 
         if(result.hasErrors()) {
             model.addAttribute("newUser", new Subscriber());
             return "manaLog.jsp"; 
-        }
+        }// if
 
         // No errors! 
         // Store their ID from the DB in session, i.e. log them in.
-        session.setAttribute("userID", subscriber.getId());
-        session.setAttribute("userTYPE", "Subscriber");
+        session.setAttribute("userID", manager.getId());
+        session.setAttribute("userTYPE", "Manager");
         return "redirect:/";
-    }
+    }// manaLogin (post)
     
-    // register a new subscriber
+    // register a new manager
     @GetMapping("/mana/register")
     public String manaReg(Model model, HttpSession session){
         // check for session
         if(session.getAttribute("userID") != null) {
             return "redirect:/";
-        }
+        }// if
         // Bind empty Subscriber and LoginUser objects to the JSP
         // to capture the form input
         model.addAttribute("newUser", new Manager());
         model.addAttribute("newLogin", new LoginUser());
         return "manaReg.jsp"; 
-    }
+    }// manaReg (get)
     @PostMapping("/mana/register")
     public String manaReg(@Valid @ModelAttribute("newUser") Manager newUser, 
-            BindingResult result, Model model, HttpSession session) {
+            BindingResult result, Model model, HttpSession session) {    	
         // call a register method in the service 
         // to do some extra validations and create a new user!
-        manaServ.register(newUser, result);
+        manaServ.register(session, newUser, result);
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.
             model.addAttribute("newLogin", new LoginUser());
             return "manaReg.jsp"; 
-        }
+        }// if
 
         // No errors! 
         // Store their ID from the DB in session, i.e. log them in.
         session.setAttribute("userID", newUser.getId());
-        session.setAttribute("userTYPE", "Subscriber");
+        session.setAttribute("userTYPE", "Manager");
         return "redirect:/";
-    }
-}
+    }// manaReg (post)
+}// UserController

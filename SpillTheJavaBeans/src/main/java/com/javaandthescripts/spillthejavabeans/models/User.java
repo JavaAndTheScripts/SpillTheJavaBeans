@@ -64,11 +64,6 @@ public abstract class User {
 //==========================
 //      RELATIONSHIPS
 //==========================
-	// Many-to-One
-	// <User> >--- <cafe>
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="cafe_id")
-//	private Cafe cafe;
 	
 
 //==========================
@@ -106,22 +101,5 @@ public abstract class User {
 	public void setPassword(String password) {	this.password = password; }
 	
 	public String getConfirm() {	return confirm;	}
-	public void setConfirm(String confirm) {	this.confirm = confirm;	}
-
-	//Relationships - getters and setters
-
-	/**
-	 * @return the cafe
-	 */
-//	public Cafe getCafe() {
-//		return cafe;
-//	}
-//
-//	/**
-//	 * @param cafe the cafe to set
-//	 */
-//	public void setCafe(Cafe cafe) {
-//		this.cafe = cafe;
-//	}
-		
+	public void setConfirm(String confirm) {	this.confirm = confirm;	}		
 }

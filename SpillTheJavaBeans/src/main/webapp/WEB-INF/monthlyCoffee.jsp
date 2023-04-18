@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +26,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Coffee</title>
+    <title>Monthly Coffee</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -63,43 +68,27 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
-        <h1 class="">See all of our Featured Coffees</h1>
+        <h2>Select a new Monthly Coffee</h2>
+        <!-- Select drop of all coffee's avaliable -->
+        <form:form action="/cafe/coffee/edit" method="post" modelAttribute="modelForm">    
+            <input type="hidden" name="_method" value="put">
+            
+            <input value="${cafe.id}" name="id" hidden>
+            <input value="${cafe.name}" name="name" hidden>
 
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
+            <select name="monthlyCoffee" value="${cafe.monthlyCoffee.id}">
+                <c:if test="${ cafe.monthlyCoffee == null }">
+                    <option selected hidden disabled>-- A Monthly Coffee has yet to be Selected --</option>
+                </c:if>
                 <c:forEach items="${allCoffee}" var="c">
-                    <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                                <a href="#" class="mx-1">Edit (not set)</a> |
-                                <a href="#" class="mx-1">Delete (not set)</a>
-                            </td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-        <!-- Allow manager to add a new coffee -->
-        <c:if test="${ userTYPE.equals('Manager') }">
-            <a href="/coffee/create">Add a New Coffee</a>
-        </c:if>
-        
+                    <option value="${c.id}">${c.region}; ${c.flavors}; ${c.roastType()}</option>
+                </c:forEach>                
+            </select>
+            <!-- Validation Error -->
+            <form:errors path="monthlyCoffee" class="text-warning"/>
+            <br>
+            <button class="btn btn-secondary my-3">Change Monthly Coffee</button>
+        </form:form>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">
@@ -119,6 +108,8 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
                 </li>
             </c:if>            

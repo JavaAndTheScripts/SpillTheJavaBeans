@@ -1,7 +1,5 @@
 package com.javaandthescripts.spillthejavabeans.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +31,12 @@ public class CafeService {
 
 	// update
 	public Cafe updateOne(Cafe i) {
-	        return cafeRepo.save(i);
-	    }
+        return cafeRepo.save(i);
+    }
 
 	// delete
 	public void deleteOne(Long id) {
-	        cafeRepo.deleteById(id);
+        cafeRepo.deleteById(id);
     }
 
 }
