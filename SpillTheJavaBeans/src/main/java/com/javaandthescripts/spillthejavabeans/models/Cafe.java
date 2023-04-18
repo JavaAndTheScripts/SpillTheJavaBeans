@@ -33,6 +33,9 @@ public class Cafe {
     
     @NotBlank
     private String name;
+    
+    @NotBlank
+    private String code;
 
     private String puzzleCont;
     private String puzzleSolv;
@@ -83,6 +86,9 @@ public class Cafe {
 	public String getName() {	return name;	}
 	public void setName(String name) {	this.name = name;	}	
 	
+	public String getCode() {	return code;	}
+	public void setCode(String code) {	this.code = code;	}
+
 	public String getPuzzleCont() {	return puzzleCont;	}
 	public void setPuzzleCont(String puzzleCont) {	this.puzzleCont = puzzleCont;	}
 
