@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,20 +30,29 @@ public class Drink {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank
+    @NotBlank(message="The Drink must have a name to display on the menu.")
     private String name;
     
-    @NotBlank
+    @NotBlank(message="A description for the drink is required.")
     private String description;
     
-    @NotBlank
+    @NotBlank(message="Ingredients for making the drink is required.")
     private String ingredients;
     
-    @NotNull
+    @NotNull(message="Select if the drink can be served hot.")
     private Boolean isHot;
     
-    @NotNull
-    private Double price;
+    @NotNull(message="Select if the drink can be served cold.")
+    private Boolean isCold;
+    
+    @NotNull(message="A price must be entered for a small sized cup.")
+    private Double bytePrice;
+    
+    @NotNull(message="A price must be entered for a medium sized cup.")
+    private Double intPrice;
+    
+    @NotNull(message="A price must be entered for a large sized cup.")
+    private Double longPrice;
 
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -57,7 +67,7 @@ public class Drink {
     // single coffee
     // Many-to-One
     // <Drink> >--- <coffee>
-    @NotNull // this one cannot be empty
+    @NotNull(message="A coffee must be selected for the drink.") // this one cannot be empty
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="coffee_id")
     private Coffee coffee;
@@ -104,38 +114,23 @@ public class Drink {
 
 	public Boolean getIsHot() {	return isHot;	}
 	public void setIsHot(Boolean isHot) {	this.isHot = isHot;	}
-
-	public Double getPrice() {	return price;	}
-	public void setPrice(Double price) {	this.price = price;	}
-
-    // Relationship getters and setters
-
-	/**
-	 * @return the coffee
-	 */
-	public Coffee getCoffee() {
-		return coffee;
-	}
-
-	/**
-	 * @param coffee the coffee to set
-	 */
-	public void setCoffee(Coffee coffee) {
-		this.coffee = coffee;
-	}
-
-	/**
-	 * @return the cafe
-	 */
-	public Cafe getCafe() {
-		return cafe;
-	}
-
-	/**
-	 * @param cafe the cafe to set
-	 */
-	public void setCafe(Cafe cafe) {
-		this.cafe = cafe;
-	}	
 	
+	public Boolean getIsCold() {	return isCold;	}
+	public void setIsCold(Boolean isCold) {	this.isCold = isCold;	}
+
+    public Double getBytePrice() {	return bytePrice;	}
+	public void setBytePrice(Double bytePrice) {	this.bytePrice = bytePrice;	}
+
+	public Double getIntPrice() {	return intPrice;	}
+	public void setIntPrice(Double intPrice) {	this.intPrice = intPrice;	}
+
+	public Double getLongPrice() {	return longPrice;	}
+	public void setLongPrice(Double longPrice) {	this.longPrice = longPrice;	}
+
+	// Relationship getters and setters
+	public Coffee getCoffee() {	return coffee;	}
+	public void setCoffee(Coffee coffee) {	this.coffee = coffee;	}
+
+	public Cafe getCafe() {	return cafe;	}
+	public void setCafe(Cafe cafe) {	this.cafe = cafe;	}		
 }

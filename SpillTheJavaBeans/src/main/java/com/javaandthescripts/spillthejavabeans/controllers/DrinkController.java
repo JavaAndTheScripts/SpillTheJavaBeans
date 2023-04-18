@@ -26,11 +26,6 @@ public class DrinkController {
     
     @Autowired
     private CoffeeService coffeeServ;
-
-    @GetMapping("/drink")
-    public String drink() {
-        return "drink.jsp";
-    }
     
     // CREATE DRINK
     @GetMapping("/drink/create")
@@ -54,10 +49,10 @@ public class DrinkController {
     		model.addAttribute("allCoffee", coffeeServ.getAll());
     		
             return "createDrink.jsp";
-        } else {
-            drinkServ.createOne(drink);
-            return "redirect:/cafe";
-        }
+        }// if
+        
+        drinkServ.createOne(drink);
+        return "redirect:/cafe";        
     }
     
     // READ DRINKS - in [CafeController -> menu()]

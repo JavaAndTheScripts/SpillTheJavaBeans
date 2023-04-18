@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- formatting decimal values -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -63,7 +66,56 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
-        
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th>Drink Menu</th>
+                    <th></th>
+                    <th><img src="/images/byteSize.png" alt="byteSize" style="max-height: 60px;"></th>
+                    <th><img src="/images/intSize.png" alt="intSize" style="max-height: 60px;"></th>
+                    <th><img src="/images/longSize.png" alt="longSize" style="max-height: 60px;"></th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <c:forEach items="${allDrinks}" var="d">
+                        <tr>
+                        <td class="">
+                            <!-- Drink name -->
+                            <div class="">
+                                ${d.name}
+                            </div>
+                            <!-- Drink description -->
+                            <div class="">
+                                ${d.description}
+                            </div>
+                            <!-- Drink ingredients -->
+                            <div class="">
+                                ${d.ingredients}
+                            </div>
+                        </td>
+                        <!-- Drink temperature -->
+                        <td class="">
+                            <!-- Hot -->
+                            <c:if test="${ d.isHot }">
+                                <img src="/images/hotIcon.png" alt="hotIcon" style="max-width: 40px;"/>
+                            </c:if>
+                            <!-- Cold -->
+                            <c:if test="${ d.isCold }">
+                                <img src="/images/coldIcon.png" alt="coldIcon" style="max-width: 40px;"/>
+                            </c:if>
+                        </td>
+                        <!-- Drink price - byte (small) -->
+                        <td><fmt:formatNumber value="${d.bytePrice}" type="currency"/></td>
+                        <!-- Drink price - int (medium) -->
+                        <td><fmt:formatNumber value="${d.intPrice}" type="currency" /></td>
+                        <!-- Drink price - Long (Large) -->
+                        <td><fmt:formatNumber value="${d.longPrice}" type="currency" /></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">
