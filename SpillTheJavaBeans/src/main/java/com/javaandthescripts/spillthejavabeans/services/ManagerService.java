@@ -3,13 +3,12 @@ package com.javaandthescripts.spillthejavabeans.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpSession;
-
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.javaandthescripts.spillthejavabeans.models.Cafe;
 import com.javaandthescripts.spillthejavabeans.models.LoginUser;
 import com.javaandthescripts.spillthejavabeans.models.Manager;
 import com.javaandthescripts.spillthejavabeans.models.User;
@@ -23,9 +22,12 @@ public class ManagerService {
 // ==========================
 //       REGISTRATION
 // ==========================
-    public Manager register(HttpSession session, Manager newSub, BindingResult result) {
+    public Manager register(Cafe cafe, Manager newSub, BindingResult result) {
     	// if store code does not match manager code
-    	if(!newSub.getCode().equals(session.getAttribute("cafeCode"))) {
+    	if(!newSub.getCode().equals(cafe.getCode())) {
+    		System.out.println("=".repeat(20));
+    		System.out.printf("\n\tVARIABLES:\t session: %s input: %s \n\n",cafe.getCode() , newSub.getCode());
+    		System.out.println("=".repeat(20));
     		result.rejectValue("code", "Matches", "Cafe Code must match set value!");
     	}
     	

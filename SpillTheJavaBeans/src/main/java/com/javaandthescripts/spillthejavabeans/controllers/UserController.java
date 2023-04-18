@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.javaandthescripts.spillthejavabeans.models.LoginUser;
 import com.javaandthescripts.spillthejavabeans.models.Manager;
 import com.javaandthescripts.spillthejavabeans.models.Subscriber;
+import com.javaandthescripts.spillthejavabeans.services.CafeService;
 import com.javaandthescripts.spillthejavabeans.services.ManagerService;
 import com.javaandthescripts.spillthejavabeans.services.SubscriberService;
 
@@ -25,6 +26,9 @@ public class UserController {
     
     @Autowired
     private ManagerService manaServ;
+    
+    @Autowired
+    private CafeService cafeServ;
     
 // ==========================
 //  	    USER
@@ -155,7 +159,7 @@ public class UserController {
             BindingResult result, Model model, HttpSession session) {    	
         // call a register method in the service 
         // to do some extra validations and create a new user!
-        manaServ.register(session, newUser, result);
+        manaServ.register(cafeServ.getCafe(), newUser, result);
         if(result.hasErrors()) {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.

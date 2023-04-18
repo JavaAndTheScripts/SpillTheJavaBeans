@@ -75,6 +75,7 @@
             
             <input value="${cafe.id}" name="id" hidden>
             <input value="${cafe.name}" name="name" hidden>
+            <input value="${cafe.code}" name="code" hidden>
 
             <select name="monthlyCoffee" value="${cafe.monthlyCoffee.id}">
                 <c:if test="${ cafe.monthlyCoffee == null }">

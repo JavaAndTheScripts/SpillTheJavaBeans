@@ -39,6 +39,7 @@
         <h1>Welcome</h1>
         <form:form action="/cafe/create" method="post" modelAttribute="modelForm">                
             <input value="${cafeName}" name="name" hidden>
+            <input value="STJB%$4242" name="code" hidden>
             <button>Open ${cafeName}</button>
         </form:form>
     </main>

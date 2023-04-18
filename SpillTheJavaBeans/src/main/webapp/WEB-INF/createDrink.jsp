@@ -155,7 +155,7 @@
                 <form:errors path="coffee" class="text-warning ms-2"/>
             </div>
             <!-- Cafe cafe --> 
-            <div class="d-flex flex-row justify-content-between align-items-center my-2">
+            <!-- <div class="d-flex flex-row justify-content-between align-items-center my-2">
                 <label for="cafe">Do you want to add to the avaliable menu?</label>
                 <fieldset class="my-2">
                     <label for="cafe">Yes</label>
@@ -163,7 +163,8 @@
                     <label for="cafe">No</label>
                     <input type="radio" name="cafe" value="${null}" checked>
                 </fieldset>
-            </div>
+            </div> -->
+            <input name="cafe" value="${cafeID}" hidden>
             <!-- Submission button -->
             <div class=""><button class="btn btn-primary">Add Drink</button></div>
         </form:form>
