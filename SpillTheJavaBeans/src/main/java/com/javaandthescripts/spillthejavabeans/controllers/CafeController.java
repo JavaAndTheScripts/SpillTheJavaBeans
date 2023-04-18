@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.javaandthescripts.spillthejavabeans.models.Cafe;
+import com.javaandthescripts.spillthejavabeans.models.Puzzle;
 import com.javaandthescripts.spillthejavabeans.services.CafeService;
 import com.javaandthescripts.spillthejavabeans.services.CoffeeService;
 import com.javaandthescripts.spillthejavabeans.services.DrinkService;
@@ -93,6 +94,6 @@ public class CafeController {
         return "redirect:/cafe";
     }// monthlyCoffee (put)
 	
-	// DELETE CAFE
+	// DELETE CAFE    
 	
 }// CafeController

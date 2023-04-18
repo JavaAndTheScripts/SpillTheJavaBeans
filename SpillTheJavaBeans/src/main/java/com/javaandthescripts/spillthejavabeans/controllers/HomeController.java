@@ -25,8 +25,6 @@ public class HomeController {
     		// make a cafe
     		return "index.jsp"; // page where form exists
     	}
-    	// set cafe code - for creating MANAGERS
-    	session.setAttribute("cafeCode","STJB$%4242");
     	// set cafe id in session 
     	session.setAttribute("cafeID", cafe.getId());
         return "redirect:/cafe"; // page that will show the cafe

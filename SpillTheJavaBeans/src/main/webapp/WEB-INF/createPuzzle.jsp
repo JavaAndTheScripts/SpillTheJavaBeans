@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +26,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Coffee</title>
+    <title>${cafe.name}</title>
 </head>
 <body>
     <!-- HEADER -->
@@ -61,49 +66,74 @@
             </li> -->
         </ul>
     </header>
+
+    
     <!-- MAIN -->
     <main class="m-3">
-        <h1 class="">See all of our Featured Coffees</h1>
+        <h2>Monthly Puzzle</h2>
+        <!-- FORM -->
+        <form:form action="/puzzle/create" method="post" modelAttribute="modelForm"> 
+            <!-- Cafe cafe -->
+            <input name="cafe" value="${cafe.id}" hidden>
 
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
-                <c:forEach items="${allCoffee}" var="c">
-                    <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                                <a href="#" class="mx-1">Edit (not set)</a> |
-                                <a href="#" class="mx-1">Delete (not set)</a>
-                            </td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+            <!-- String title -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="title">Title:</label>
+                <input type="text" name="title">
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="title" class="text-warning"/>
 
-        <!-- Allow manager to add a new coffee -->
-        <c:if test="${ userTYPE.equals('Manager') }">
-            <a href="/coffee/create">Add a New Coffee</a>
-        </c:if>
-        
+            <!-- String contents -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="contents">Contents:</label>
+                <input type="text" name="contents">
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="contents" class="text-warning"/>
+
+            <!-- String solution -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="solution">Solution:</label>
+                <input type="text" name="solution">
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="solution" class="text-warning"/>
+
+            <!-- String reward -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="reward">Reward:</label>
+                <input type="text" name="reward">
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="reward" class="text-warning"/>
+
+            <!-- Float percent -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="percent">Discount Percentage:</label>
+                <input type="number" step="1" name="percent">
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="percent" class="text-warning"/>
+
+            <div class="">
+                <button>Submit</button>
+        </div>
+
+        </form:form>
+
     </main>
+
+
     <!-- FOOTER -->
     <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
+            <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
@@ -114,13 +144,11 @@
                         </c:if>
                         <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
                             <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/puzzle/edit">Update Cafe Puzzle</a>
+                            <a class="dropdown-item" href="/puzzle/edit" disabled>Update Cafe Puzzle</a>
                             <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
                 </li>
             </c:if>            
