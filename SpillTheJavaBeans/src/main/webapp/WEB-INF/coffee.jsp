@@ -49,7 +49,7 @@
                         </c:if>
                         <!-- Logged in -->
                         <c:if test="${ userID != null }">
-                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <a class="dropdown-item" href="/cafe/coupons">Avaliable Coupons</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>

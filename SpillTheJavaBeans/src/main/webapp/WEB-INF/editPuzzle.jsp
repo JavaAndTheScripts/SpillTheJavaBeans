@@ -66,56 +66,73 @@
             </li> -->
         </ul>
     </header>
+
+    
     <!-- MAIN -->
     <main class="m-3">
         <h2>Monthly Puzzle</h2>
+        <!-- FORM -->
+        <form:form action="/puzzle/edit" method="post" modelAttribute="modelForm"> 
+            <input type="hidden" name="_method" value="put">
+            <!-- Cafe cafe -->
+            <form:input path="cafe" value="${cafe.id}" type="hidden"/>
+            <!-- Long id -->
+            <form:input path="id" value="${puzzle.id}" type="hidden"/>
 
-        <c:if test="${ puzzle == null }">
-            <h4>No monthly puzzle has been added.</h4>
-            <p>Please come back when the manager has added the monthly puzzle.</p>
-        </c:if>
-        <c:if test="${ puzzle != null }">
-            <div>
-                <h4>${puzzle.title}</h4>
-                <p>${puzzle.contents}</p>
-                <c:if test="${ puzzle.percent == 100 }">
-                    <p>For a reward of one free ${puzzle.reward}!</p>
-                </c:if>
-                <c:if test="${ puzzle.percent != 100 }">
-                    <p>For a reward of ${puzzle.percent}% off of ${puzzle.reward}!</p>
-                </c:if>
-                <!-- Form for guess submission -->
-                <form action="/puzzle/guess" method="post"> 
-                    <!-- If they are not a user -->
-                    <c:if test="${ subscriber == null }">
-                        <label for="guess">Returned Value:</label>
-                        <input type="text" name="guess" placeholder="You must be a subscriber and logged in to try solving the puzzle." disabled>
-                        
-                        <button disabled>Guess</button>
-                    </c:if>
-                    <!-- If they are logged in AND have attempted the puzzle -->
-                    <c:if test="${ subscriber != null && subscriber.solvedPuzzle }">
-                        <label for="guess">Returned Value:</label>
-                        <input type="text" name="guess" placeholder="You have already used your guess for this puzzle." disabled>
-                        <c:if test="${ subscriber.puzzle != null}">
-                            <p>Congrats you figured it out!</p>
-                        </c:if>
-                        <button disabled>Guess</button>
-                    </c:if>
-                    <!-- if they are logged in AND have not attempted the puzzle -->
-                    <c:if test="${ subscriber != null && !subscriber.solvedPuzzle }">
-                        <label for="guess">Returned Value:</label>
-                        <input type="text" name="guess">
-                        
-                        <button>Guess</button>
-                    </c:if>                    
-                    
-                </form>
+            <!-- String title -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="title">Title:</label>
+                <form:input type="text" path="title" value="${puzzle.title}"/>
             </div>
-        </c:if>
+            <!-- Validation Error -->
+            <form:errors path="title" class="text-warning"/>
 
-        
+            <!-- String contents -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="contents">Contents:</label>
+                <form:input type="text" path="contents" value="${puzzle.contents}"/>
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="contents" class="text-warning"/>
+
+            <!-- String solution -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="solution">Solution:</label>
+                <form:input type="text" path="solution" value="${puzzle.solution}"/>
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="solution" class="text-warning"/>
+
+            <!-- String reward -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="reward">Reward:</label>
+                <form:input type="text" path="reward" value="${puzzle.reward}"/>
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="reward" class="text-warning"/>
+
+            <!-- Float percent -->
+            <!-- Attribute Information -->
+            <div class="d-flex">
+                <label for="percent">Discount Percentage:</label>
+                <form:input type="number" step="1" path="percent" value="${puzzle.percent}"/>
+            </div>
+            <!-- Validation Error -->
+            <form:errors path="percent" class="text-warning"/>
+
+            <div class="">
+                <button>Submit</button>
+        </div>
+
+        </form:form>
+
     </main>
+
+
     <!-- FOOTER -->
     <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
@@ -130,7 +147,7 @@
                         </c:if>
                         <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
                             <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/puzzle/edit">Update Cafe Puzzle</a>
+                            <a class="dropdown-item" href="/puzzle/edit" disabled>Update Cafe Puzzle</a>
                             <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>

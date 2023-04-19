@@ -24,10 +24,10 @@
     <!-- background image ?-->
     <style>
         body {
-           background-image: url('/images/javabeans2.png');
-           background-repeat: repeat-y;
-           background-attachment: scroll;
-           background-size: cover;
+            background-image: url('/images/javabeans2.png');
+            background-repeat: repeat-y;
+            background-attachment: scroll;
+            background-size: cover;
         }
     </style>
 

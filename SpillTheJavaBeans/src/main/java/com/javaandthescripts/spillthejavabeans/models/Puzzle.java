@@ -1,7 +1,9 @@
 package com.javaandthescripts.spillthejavabeans.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -64,6 +67,12 @@ public class Puzzle {
  	@OneToOne(fetch=FetchType.LAZY)
  	@JoinColumn(name="cafe_id")
 	private Cafe cafe;
+ 
+	// subscriber
+	// One-to-Many
+	// Puzzle ---< Subscriber
+	@OneToMany(mappedBy="puzzle", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Subscriber> subs;
     
 // ==========================
 //        CONSTRUCTOR
@@ -105,5 +114,8 @@ public class Puzzle {
 	// Relationship getters and setters
 	public Cafe getCafe() {	return cafe;	}
 	public void setCafe(Cafe cafe) {	this.cafe = cafe;	}
+
+	public List<Subscriber> getSubs() {	return subs;	}
+	public void setSubs(List<Subscriber> subs) {	this.subs = subs;	}
 	
 }//Puzzle
