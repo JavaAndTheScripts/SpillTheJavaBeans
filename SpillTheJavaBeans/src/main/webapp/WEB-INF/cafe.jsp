@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
 
     <!-- background image ?-->
-    <style>
+    <style class="cafepg">
         body {
            background-image: url('/images/javabeans2.png');
            background-repeat: repeat-y;
@@ -39,7 +39,7 @@
     <header class="navHead text-center m-3">
         <!-- add logo here ishhh - apv -->
         <img  src="/images/logo.png" class="logoPic" alt="logo">
-        <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+        <h1><a class="title" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
         <div><br>
         <ul class="navTabs nav-pills">
             <li class="nav-item">
@@ -76,7 +76,7 @@
     </div>
     </header>
     <!-- MAIN -->
-    <main class="main d-flex flex-row m-3">
+    <main class="mainCafe d-flex flex-row m-3">
         
         <!-- Coffee of the month -->
         <style>
@@ -114,7 +114,7 @@
                 <h5>${cafe.monthlyCoffee.roastType()}</h5>
             </c:if>
         </div>
-        <div class="container border m-2">
+        <div class="container m-2">
 
             <div class='wrapper'>
                 <div class='carousel'>
@@ -123,7 +123,7 @@
                       <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>Latte</p>
+                      <p class='caroTitle'>Latte</p>
                       <p>Description:</p>
                     </div>
                   </div>
@@ -132,7 +132,7 @@
                       <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>Espresso</p>
+                      <p class='caroTitle'>Espresso</p>
                       <p>Description:</p>
                     </div>
                   </div>
@@ -141,7 +141,7 @@
                       <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>Chamomile Tea</p>
+                      <p class='caroTitle'>Chamomile Tea</p>
                       <p>Description:</p>
                     </div>
                   </div>
@@ -150,7 +150,7 @@
                       <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>Frappuccino</p>
+                      <p class='caroTitle'>Frappuccino</p>
                       <p>Description:</p>
                     </div>
                   </div>
@@ -159,7 +159,7 @@
                       <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>Latte</p>
+                      <p class='caroTitle'>Latte</p>
                       <p>Description:</p>
                     </div>
                   </div>
@@ -168,7 +168,7 @@
                       🐋
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>whale</p>
+                      <p class='caroTitle'>whale</p>
                       <p>Description: this is the best coffee of your life</p>
                     </div>
                   </div>
@@ -177,7 +177,7 @@
                       🐬
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='title'>Coffee</p>
+                      <p class='caroTitle'>Coffee</p>
                       <p>Description: it will rock your world!</p>
                     </div>
                   </div>

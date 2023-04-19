@@ -4,12 +4,25 @@
 	align-content: center;
 	justify-content: space-around;
 	flex-direction: row;
+	margin: 50px;
 }
 
 .logoPic {
 	width: 125px;
 	height: 150px;
 	margin: 40px;
+	border-radius: 20px;
+}
+
+.title {
+	text-transform: uppercase;
+	font-size: 50px;
+	font-family: monospace;
+	display: flex;
+	justify-content: center;
+	align-items: space-around;
+	border-radius: 20px;
+	margin: 20px;
 }
 
 a {
@@ -27,6 +40,7 @@ a {
 	align-content: center;
 	justify-content: center;
 	flex-direction: column;
+	border-radius: 10px;
 }
 .nav-link {
 	color: white;
@@ -38,6 +52,9 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: #d8dbe4ba;
+	font-family: monospace;
+	font-weight: 400;
+	height: 100vh;
 }
 
 body header {
@@ -47,9 +64,10 @@ body header {
 	align-items: center;
 	width: 95%;
 	background-color: rgba(131, 85, 44, 0.753);
-	/* padding: 20px;
-	margin-bottom: 20px; */
+	margin-bottom: 30px;
+	border-radius: 80px;
 }
+
 body header nav {
 	flex-direction: row;
 	justify-content: flex-start;
@@ -58,6 +76,14 @@ body header nav {
 	height: auto;
 	justify-content: space-evenly;
 }
+
+.mainCafe {
+	margin: 50px;
+	padding: 50px;
+	width: auto;
+	background-image: url('/images/javabeans.png');
+}
+
 .box {
 	width: 300px;
 	height: 200px;
@@ -68,28 +94,18 @@ body header nav {
 	color: white;
 	text-align: center;
 	font-family: monospace;
+	border-radius: 10px;
 }
+
 .coffeeMonth {
 	background: rgb(35, 92, 108);
 	font-family: monospace;
+	border-radius: 10px;
 }
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
-}
-
-body {
-	font-family: monospace;
-	font-weight: 400;
-	height: 100vh;
-}
-
-main {
-	margin: 50px;
-	padding: 50px;
-	width: auto;
-	background-image: url('/images/javabeans.png');
 }
 
 .wrapper {
@@ -102,6 +118,7 @@ main {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	border-radius: 10px;
 }
 
 .carousel {
@@ -111,6 +128,17 @@ main {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+}
+
+.caroTitle {
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: monospace;
+	display: flex;
+	justify-content: center;
+	align-items: space-around;
+	border-radius: 20px;
+	margin: 20px;
 }
 
 .carousel__item {
@@ -192,13 +220,6 @@ main {
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 16px 20px 16px 70px;
-	font-family: monospace;
-}
-
-.title {
-	text-transform: uppercase;
-	font-size: 20px;
-	margin-top: 10px;
 	font-family: monospace;
 }
 
@@ -315,4 +336,26 @@ button {
 	.button-52 {
 		padding: 13px 50px 13px;
 	}
+}
+
+/* <-- drink menu page --> */
+.drinkName {
+	display: flex;
+	justify-content: center;
+	align-items: space-around;
+	border-radius: 20px;
+	margin: 20px;
+}
+.drinkSizeContainer {
+	border: solid rgba(138, 110, 76, 0.658) 2px;
+	font-family: monospace;
+	font-size: 25px;
+	font-weight: 20;
+	letter-spacing: 1px;
+	padding: 13px 20px 13px;
+	outline: 0;
+}
+
+.cupSize {
+	font-size: 10px;
 }
