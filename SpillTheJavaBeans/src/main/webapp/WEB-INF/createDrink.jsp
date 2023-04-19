@@ -54,7 +54,7 @@
                         </c:if>
                         <!-- Logged in -->
                         <c:if test="${ userID != null }">
-                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <a class="dropdown-item" href="/cafe/coupons">Avaliable Coupons</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
@@ -154,16 +154,6 @@
                 <!-- Validation Error -->
                 <form:errors path="coffee" class="text-warning ms-2"/>
             </div>
-            <!-- Cafe cafe --> 
-            <!-- <div class="d-flex flex-row justify-content-between align-items-center my-2">
-                <label for="cafe">Do you want to add to the avaliable menu?</label>
-                <fieldset class="my-2">
-                    <label for="cafe">Yes</label>
-                    <input type="radio" name="cafe" value="${cafeID}">
-                    <label for="cafe">No</label>
-                    <input type="radio" name="cafe" value="${null}" checked>
-                </fieldset>
-            </div> -->
             <input name="cafe" value="${cafeID}" hidden>
             <!-- Submission button -->
             <div class=""><button class="btn btn-primary">Add Drink</button></div>
@@ -172,7 +162,6 @@
     <!-- FOOTER -->
     <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
-            <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
@@ -183,10 +172,13 @@
                         </c:if>
                         <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
                             <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                            <a class="dropdown-item" href="/puzzle/edit">Update Cafe Puzzle</a>
+                            <a class="dropdown-item" href="/drink/create" disabled>Create a new Drink</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
                 </li>
             </c:if>            

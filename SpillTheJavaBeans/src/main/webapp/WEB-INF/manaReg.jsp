@@ -31,14 +31,14 @@
 </head>
 <body>
     <!-- HEADER -->
-    <header>
-        <h1>${cafe.name}</h1>
+    <header class="text-center m-3">
+        <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
         <ul class="nav nav-pills">
             <li class="nav-item">
                 <a class="nav-link" href="/coffee">Featured Coffee</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/menu">Menu</a>
+                <a class="nav-link" href="/cafe/menu">Menu</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
@@ -61,6 +61,9 @@
                     </div>
                 </li>
             </c:if>
+            <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
         </ul>
     </header>
     <!-- MAIN -->
