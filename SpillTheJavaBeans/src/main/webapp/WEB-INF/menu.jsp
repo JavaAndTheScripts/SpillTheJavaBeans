@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- formatting decimal values -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -75,6 +78,7 @@
                     <th><img src="/images/byteSize.png" alt="byteSize" style="max-height: 60px;"></th>
                     <th><img src="/images/intSize.png" alt="intSize" style="max-height: 60px;"></th>
                     <th><img src="/images/longSize.png" alt="longSize" style="max-height: 60px;"></th>
+                    <th>Action</th>
                     </tr>
                 </thead>
                 <tbody class="">
@@ -111,7 +115,19 @@
                         <td><fmt:formatNumber value="${d.intPrice}" type="currency" /></td>
                         <!-- Drink price - Long (Large) -->
                         <td><fmt:formatNumber value="${d.longPrice}" type="currency" /></td>
+                         <c:if test="${ userTYPE.equals('Manager') }">
+                            <td>
+                                <a href="/drink/${d.id}/updateDrink" class="mx-1">  Edit</a> |
+                                
+                                <form:form id="deleteForm" action="/drink/${d.id}/deleteDrink" method="post" modelAttribute="deleteForm">
+                                	<input type="hidden" name="_method" value="delete">
+                                	<input type="submit" value="Delete" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this drink?')" />
+                                </form:form>
+                                
+                            </td>
+                        </c:if>
                         </tr>
+                       
                     </c:forEach>
                 </tbody>
             </table>
