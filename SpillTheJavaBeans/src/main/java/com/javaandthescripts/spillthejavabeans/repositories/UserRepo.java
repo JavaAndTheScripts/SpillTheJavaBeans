@@ -17,11 +17,13 @@ public interface UserRepo extends CrudRepository<User, Long> {
     List<User> findAll(); // probably not going to be used unless admin 
     
     // READ ALL (Subscribers) - used to get all subscribers in the list
-    @Query(value="SELECT * FROM users WHERE dtype = ?Subscriber", nativeQuery=true)
+	// NOTE: the format for the value is VERY important!
+    @Query(value="SELECT * FROM users WHERE dtype= 'Subscriber' ", nativeQuery=true)
     public List<Subscriber> findAllSubscribers();
     
     // READ ALL (Managers) - used to get all managers in the list
-    @Query(value="SELECT * FROM users WHERE dtype = ?Manager", nativeQuery=true)
+	// NOTE: the format for the value is VERY important!
+    @Query(value="SELECT * FROM users WHERE dtype= 'Manager' ", nativeQuery=true)
     public List<Manager> findAllManagers();
 
     Optional<User> findByEmail(String email);

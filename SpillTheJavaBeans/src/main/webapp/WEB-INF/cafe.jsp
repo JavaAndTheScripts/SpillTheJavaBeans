@@ -24,10 +24,10 @@
     <!-- background image ?-->
     <style class="cafepg">
         body {
-           background-image: url('/images/javabeans2.png');
-           background-repeat: repeat-y;
-           background-attachment: scroll;
-           background-size: cover;
+            background-image: url('/images/javabeans2.png');
+            background-repeat: repeat-y;
+            background-attachment: scroll;
+            background-size: cover;
         }
     </style>
 
@@ -203,6 +203,7 @@
                         </c:if>
                         <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
                             <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
+                            <a class="dropdown-item" href="/puzzle/edit">Update Cafe Puzzle</a>
                             <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
