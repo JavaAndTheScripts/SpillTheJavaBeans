@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- My CSS -->
     <link rel='stylesheet' href='/css/styles.css'>
+    <link rel="stylesheet" href="/css/flickity.css" media="screen">
     <!-- JS for Bootstrap / jQuery -->
     <script src='/webjars/jquery/jquery.min.js'>    </script>
     <script src='/webjars/bootstrap/js/boostrap.min.js'>    </script>
@@ -20,14 +21,27 @@
     <script type = "text/javascript" src='/js/scripts.js'></script>
     <meta charset="UTF-8">
 
+    <!-- background image ?-->
+    <style>
+        body {
+           background-image: url('/images/javabeans2.png');
+           background-repeat: repeat-y;
+           background-attachment: scroll;
+           background-size: cover;
+        }
+    </style>
+
     <!-- Title -->
     <title>Cafe</title>
 </head>
 <body>
     <!-- HEADER -->
-    <header class="text-center m-3">
+    <header class="navHead text-center m-3">
+        <!-- add logo here ishhh - apv -->
+        <img  src="/images/logo.png" class="logoPic" alt="logo">
         <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
-        <ul class="nav nav-pills">
+        <div><br>
+        <ul class="navTabs nav-pills">
             <li class="nav-item">
                 <a class="nav-link" href="/coffee">Featured Coffee</a>
             </li>
@@ -59,13 +73,36 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
         </ul>
+    </div>
     </header>
     <!-- MAIN -->
-    <main class="d-flex flex-row m-3">
+    <main class="main d-flex flex-row m-3">
+        
         <!-- Coffee of the month -->
-        <div class="container border text-center m-1">
+        <style>
+            @keyframes slide-in {
+              from {
+                transform: translateX(-100%);
+              }
+              to {
+                transform: translateX(0%);
+              }
+            }
+          
+            .box {
+              animation: slide-in 1000ms;
+              animation-timing-function: linear;
+            }
+          </style>
+          
+          <div class="box container border text-center">
+            <!-- Hello World
+          </div>
+        <div class="container border text-center m-1"> -->
             <h3>Coffee of the Month</h3>
+        </div>
             <!-- com not selected yet -->
+        <div class="coffeeMonth">
             <c:if test="${ cafe.monthlyCoffee == null }">
                 <br>
                 <h5>A Coffee has not been selected as the monthly special yet.</h5>
@@ -77,13 +114,84 @@
                 <h5>${cafe.monthlyCoffee.roastType()}</h5>
             </c:if>
         </div>
-        <div class="container border m-1">
-            
+        <div class="container border m-2">
+
+            <div class='wrapper'>
+                <div class='carousel'>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>Latte</p>
+                      <p>Description:</p>
+                    </div>
+                  </div>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>Espresso</p>
+                      <p>Description:</p>
+                    </div>
+                  </div>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>Chamomile Tea</p>
+                      <p>Description:</p>
+                    </div>
+                  </div>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>Frappuccino</p>
+                      <p>Description:</p>
+                    </div>
+                  </div>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      <img src="/SpillTheJavaBeans/src/main/resources/static/images/coldIcon.png" alt="cold">
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>Latte</p>
+                      <p>Description:</p>
+                    </div>
+                  </div>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      🐋
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>whale</p>
+                      <p>Description: this is the best coffee of your life</p>
+                    </div>
+                  </div>
+                  <div class='carousel__item'>
+                    <div class='carousel__item-head'>
+                      🐬
+                    </div>
+                    <div class='carousel__item-body'>
+                      <p class='title'>Coffee</p>
+                      <p>Description: it will rock your world!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
         </div>
 
     </main>
     <!-- FOOTER -->
-    <footer class="m-3">
+    <footer class="container m-3">
+        <div class="button">
+            <button class="button-52" role="button">Monthly Puzzle</button>
+        </div>
         <ul class="nav nav-pills justify-content-end">
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
