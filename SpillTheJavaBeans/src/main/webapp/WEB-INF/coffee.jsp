@@ -49,7 +49,7 @@
                         </c:if>
                         <!-- Logged in -->
                         <c:if test="${ userID != null }">
-                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <a class="dropdown-item" href="/cafe/coupons">Avaliable Coupons</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
@@ -104,7 +104,6 @@
     <!-- FOOTER -->
     <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
-            <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
@@ -115,10 +114,13 @@
                         </c:if>
                         <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
                             <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
+                            <a class="dropdown-item" href="/puzzle/edit">Update Cafe Puzzle</a>
                             <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
+                        <!-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
                 </li>
             </c:if>            

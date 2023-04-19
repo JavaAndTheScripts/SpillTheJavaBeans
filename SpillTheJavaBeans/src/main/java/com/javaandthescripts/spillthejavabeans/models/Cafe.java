@@ -36,9 +36,6 @@ public class Cafe {
     
     @NotBlank
     private String code;
-
-    private String puzzleCont;
-    private String puzzleSolv;
     
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -51,11 +48,17 @@ public class Cafe {
 // 	      RELATIONSHIPS
 // ==========================
     // coffee - COFFEE OF THE MONTH
-	 // One-to-One Attached Side
-	 // Coffee ---- Cafe
-	 @OneToOne(fetch=FetchType.LAZY)
-	 @JoinColumn(name="coffee_id")
-	 private Coffee monthlyCoffee;
+	// One-to-One Attached Side
+	// Coffee ---- Cafe
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="coffee_id")
+	private Coffee monthlyCoffee;
+	
+	// puzzle - PUZZLE OF THE MONTH
+	// One-to-One Dominate Side
+	// Cafe ---- Puzzle
+	@OneToOne(mappedBy="cafe", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Puzzle puzzle;
     
     // list of drinks - list of drinks called menu
 	 @OneToMany(mappedBy="cafe", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -89,15 +92,12 @@ public class Cafe {
 	public String getCode() {	return code;	}
 	public void setCode(String code) {	this.code = code;	}
 
-	public String getPuzzleCont() {	return puzzleCont;	}
-	public void setPuzzleCont(String puzzleCont) {	this.puzzleCont = puzzleCont;	}
-
-	public String getPuzzleSolv() {	return puzzleSolv;	}
-	public void setPuzzleSolv(String puzzleSolv) {	this.puzzleSolv = puzzleSolv;	}
-
 	// Relationship getters and setters
 	public Coffee getMonthlyCoffee() {	return monthlyCoffee;	}
 	public void setMonthlyCoffee(Coffee monthlyCoffee) {	this.monthlyCoffee = monthlyCoffee;	}
+
+	public Puzzle getPuzzle() {	return puzzle;	}
+	public void setPuzzle(Puzzle puzzle) {	this.puzzle = puzzle;	}
 
 	public List<Drink> getMenu() {	return menu;	}
 	public void setMenu(List<Drink> menu) {		this.menu = menu;	}		

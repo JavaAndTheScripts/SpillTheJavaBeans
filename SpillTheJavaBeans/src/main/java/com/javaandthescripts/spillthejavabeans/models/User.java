@@ -50,7 +50,7 @@ public abstract class User {
 	private String password;
 	
 	@Transient // don't go to the db
-	@NotEmpty(message="Confirm Password is required!")
+//	@NotEmpty(message="Confirm Password is required!")
 	@Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
 	private String confirm;
 	

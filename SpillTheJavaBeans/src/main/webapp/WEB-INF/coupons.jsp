@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -49,7 +54,7 @@
                         </c:if>
                         <!-- Logged in -->
                         <c:if test="${ userID != null }">
-                            <a class="dropdown-item" href="/cafe/coupons">See Avaliable Coupons</a>
+                            <a class="dropdown-item" href="/cafe/coupons" disabled>Avaliable Coupons</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
@@ -63,7 +68,53 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
+        <h2>Welcome to your coupons ${ subscriber.firstName }!</h2>
+        <c:if test="${ subscriber.bdayCheck() }">
+            <div class="">
+                <h2>Bday Coupon</h2>
+                <form:form action="/cafe/coupons/useBday" method="post" modelAttribute="subForm" class=""> 
+                    <input type="hidden" name="_method" value="put">
+                    <!-- Subscriber Hidden Attributes -->
+                    <form:input path="id" value="${ subscriber.id }" type="hidden"/>
+                    <form:input path="firstName" value="${ subscriber.firstName }" type="hidden"/>
+                    <form:input path="lastName" value="${ subscriber.lastName }" type="hidden"/>
+                    <form:input path="email" value="${ subscriber.email }" type="hidden"/>
+                    <form:input path="password" value="${ subscriber.password }" type="hidden"/>
+                    <form:input path="birthday" value="${ subscriber.birthday }" type="hidden"/>
+                    <form:input path="solvedPuzzle" value="${ subscriber.solvedPuzzle }" type="hidden"/>
+                    <form:input path="usedBday" value="${ true }" type="hidden"/>
+                    <form:input path="puzzle" value="${ subscriber.puzzle.id }" type="hidden"/>
+                    <!-- Button -->
+                    <button>Use Coupon</button>
+                </form:form>
+            </div>
+        </c:if>
 
+        <!-- Puzzle coupon **HERE** -->
+        <c:if test="${ subscriber.puzzle != null }">
+            <h2>Puzzle Coupon</h2>
+            <form:form action="/cafe/coupons/usePuzzle" method="post" modelAttribute="subForm" class=""> 
+                    <input type="hidden" name="_method" value="put">
+                    <!-- Subscriber Hidden Attributes -->
+                    <form:input path="id" value="${ subscriber.id }" type="hidden"/>
+                    <form:input path="firstName" value="${ subscriber.firstName }" type="hidden"/>
+                    <form:input path="lastName" value="${ subscriber.lastName }" type="hidden"/>
+                    <form:input path="email" value="${ subscriber.email }" type="hidden"/>
+                    <form:input path="password" value="${ subscriber.password }" type="hidden"/>
+                    <form:input path="birthday" value="${ subscriber.birthday }" type="hidden"/>
+                    <form:input path="solvedPuzzle" value="${ subscriber.solvedPuzzle }" type="hidden"/>
+                    <form:input path="usedBday" value="${ subscriber.usedBday }" type="hidden"/>
+                    <form:input path="puzzle" value="${ null }" type="hidden"/>
+                    <!-- Button -->
+                    <button>Use Coupon</button>
+                </form:form>
+        </c:if>
+
+        <c:if test="${ !subscriber.bdayCheck() }">
+            <div class="">
+                <h2>Unfortunetly, it seems like you do not have any coupons avaliable. :(</h2>
+            </div>
+        </c:if>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">

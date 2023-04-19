@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -63,7 +68,53 @@
     </header>
     <!-- MAIN -->
     <main class="m-3">
+        <h2>Monthly Puzzle</h2>
 
+        <c:if test="${ puzzle == null }">
+            <h4>No monthly puzzle has been added.</h4>
+            <p>Please come back when the manager has added the monthly puzzle.</p>
+        </c:if>
+        <c:if test="${ puzzle != null }">
+            <div>
+                <h4>${puzzle.title}</h4>
+                <p>${puzzle.contents}</p>
+                <c:if test="${ puzzle.percent == 100 }">
+                    <p>For a reward of one free ${puzzle.reward}!</p>
+                </c:if>
+                <c:if test="${ puzzle.percent != 100 }">
+                    <p>For a reward of ${puzzle.percent}% off of ${puzzle.reward}!</p>
+                </c:if>
+                <!-- Form for guess submission -->
+                <form action="/puzzle/guess" method="post"> 
+                    <!-- If they are not a user -->
+                    <c:if test="${ subscriber == null }">
+                        <label for="guess">Returned Value:</label>
+                        <input type="text" name="guess" placeholder="You must be a subscriber and logged in to try solving the puzzle." disabled>
+                        
+                        <button disabled>Guess</button>
+                    </c:if>
+                    <!-- If they are logged in AND have attempted the puzzle -->
+                    <c:if test="${ subscriber != null && subscriber.solvedPuzzle }">
+                        <label for="guess">Returned Value:</label>
+                        <input type="text" name="guess" placeholder="You have already used your guess for this puzzle." disabled>
+                        <c:if test="${ subscriber.puzzle != null}">
+                            <p>Congrats you figured it out!</p>
+                        </c:if>
+                        <button disabled>Guess</button>
+                    </c:if>
+                    <!-- if they are logged in AND have not attempted the puzzle -->
+                    <c:if test="${ subscriber != null && !subscriber.solvedPuzzle }">
+                        <label for="guess">Returned Value:</label>
+                        <input type="text" name="guess">
+                        
+                        <button>Guess</button>
+                    </c:if>                    
+                    
+                </form>
+            </div>
+        </c:if>
+
+        
     </main>
     <!-- FOOTER -->
     <footer class="m-3">
