@@ -1,0 +1,63 @@
+
+.fallingBeans{
+    position: relative;
+    background-color: #252525;
+	height: 75vh;
+    width: 95vw;
+	overflow: hidden;
+
+    .i{
+    display: inline-flex;
+    height: 8%;
+    animation: anim 5.0s ease-in-out infinite;
+    transform:  translateY(-120%) rotate(0deg);
+    z-index: -1;
+    }
+    .n1{
+        animation-delay: 0.1s;
+    }
+    .n2{
+        animation-delay: 1.7s;
+    }
+    .n3{
+        animation-delay: 3.3s;
+    }
+    .n4{
+        animation-delay: 1.3s;
+    }
+    .n5{
+        animation-delay: 2.9s;
+    }
+    .n6{
+        animation-delay: 4.5s;	
+    }
+    .n7{
+        animation-delay: 0.7s;
+    }
+    .n8{
+        animation-delay: 2.3s;
+    }
+    .n9{
+        animation-delay: 3.9s;
+    }
+    .display{
+        position: absolute;
+        background: transparent;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #252525;
+        padding-left: 5%;
+    }
+}
+
+@keyframes anim{
+	0%{
+		transform:  translateY(-120%) rotate(0deg);
+	}
+	100%{
+		transform: translateY(120vh) rotate(-360deg);
+	}
+}
