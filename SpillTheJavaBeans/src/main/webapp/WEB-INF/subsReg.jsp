@@ -31,9 +31,12 @@
 </head>
 <body>
     <!-- HEADER -->
-    <header class="text-center m-3">
-        <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
-        <ul class="nav nav-pills">
+    <header class="navHead">
+        <!-- add logo here ishhh - apv -->
+        <img  src="/images/logo.png" class="logoPic" alt="logo">
+        <h1><a class="title" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+        <div><br>
+        <ul class="navTabs nav-pills">
             <li class="nav-item">
                 <a class="nav-link" href="/coffee">Featured Coffee</a>
             </li>
@@ -65,6 +68,7 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
         </ul>
+    </div>
     </header>
     <!-- MAIN -->
     <main>
