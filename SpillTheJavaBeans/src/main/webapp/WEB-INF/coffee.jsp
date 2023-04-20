@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- formatting decimal values -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -86,35 +92,39 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 		<main class="m-3">
 			<h1 class="coffeeMain">See all of our Featured Coffees</h1>
 
-			<table class="table">
-				<thead>
-					<!--- Column Labels --->
-					<tr>
-						<th scope="col">Region</th>
-						<th scope="col">Flavors</th>
-						<th scope="col">Roast</th>
-						<c:if test="${ userTYPE.equals('Manager') }">
-							<th scope="col">Action</th>
-						</c:if>
-					</tr>
-				</thead>
-				<tbody>
-					<!--- Row Data --->
-					<c:forEach items="${allCoffee}" var="c">
-						<tr>
-							<th scope="row">${c.region}</th>
-							<td>${c.flavors}</td>
-							<td>${c.roastType()}</td>
-							<c:if test="${ userTYPE.equals('Manager') }">
-								<td>
-									<a href="#" class="mx-1">Edit (not set)</a> |
-									<a href="#" class="mx-1">Delete (not set)</a>
-								</td>
-							</c:if>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+        <table class="table">
+            <thead>
+                <!--- Column Labels --->
+                <tr>
+                    <th scope="col">Region</th>
+                    <th scope="col">Flavors</th>
+                    <th scope="col">Roast</th>
+                    <c:if test="${ userTYPE.equals('Manager') }">
+                        <th scope="col">Action</th>
+                    </c:if>
+                </tr>
+            </thead>
+            <tbody>
+                <!--- Row Data --->
+                <c:forEach items="${allCoffee}" var="c">
+                    <tr>
+                        <th scope="row">${c.region}</th>
+                        <td>${c.flavors}</td>
+                        <td>${c.roastType()}</td>
+                        <c:if test="${ userTYPE.equals('Manager') }">
+                            <td>
+                                <a href="/coffee/${c.id}/updateCoffee" class="mx-1"> Edit</a> |
+                                
+                                <form:form id="deleteForm" action="/coffee/${c.id}/deleteCoffee" method="post" modelAttribute="deleteForm">
+                                	<input type="hidden" name="_method" value="delete">
+                                	<input type="submit" value="Delete" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this drink?')" />
+                                </form:form>
+                            </td>
+                        </c:if>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
 
 			<!-- Allow manager to add a new coffee -->
 			<c:if test="${ userTYPE.equals('Manager') }">
