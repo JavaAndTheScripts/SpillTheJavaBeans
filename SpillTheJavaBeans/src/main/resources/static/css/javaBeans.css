@@ -1,53 +1,46 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  overflow: hidden;
-}
-main {
-  background: url("https://tse4.mm.bing.net/th?id=OIP.dZNV9nvmS-hE50FuyLAikwHaE7&pid=Api") no-repeat center / cover;
+.fallingBeans {
+  position: relative;
+  background-color: #252525;
   height: 75vh;
   width: 95vw;
   overflow: hidden;
 }
-main .i {
+.fallingBeans .i {
   display: inline-flex;
   height: 8%;
   animation: anim 5s ease-in-out infinite;
   transform: translateY(-120%) rotate(0deg);
   z-index: -1;
 }
-main .n1 {
+.fallingBeans .n1 {
   animation-delay: 0.1s;
 }
-main .n2 {
+.fallingBeans .n2 {
   animation-delay: 1.7s;
 }
-main .n3 {
+.fallingBeans .n3 {
   animation-delay: 3.3s;
 }
-main .n4 {
+.fallingBeans .n4 {
   animation-delay: 1.3s;
 }
-main .n5 {
+.fallingBeans .n5 {
   animation-delay: 2.9s;
 }
-main .n6 {
+.fallingBeans .n6 {
   animation-delay: 4.5s;
 }
-main .n7 {
+.fallingBeans .n7 {
   animation-delay: 0.7s;
 }
-main .n8 {
+.fallingBeans .n8 {
   animation-delay: 2.3s;
 }
-main .n9 {
+.fallingBeans .n9 {
   animation-delay: 3.9s;
 }
-main .display {
+.fallingBeans .display {
   position: absolute;
-  top: 15%;
-  left: 5%;
   background: transparent;
   z-index: 2;
   display: flex;
@@ -55,6 +48,7 @@ main .display {
   justify-content: center;
   align-items: center;
   color: #252525;
+  padding-left: 5%;
 }
 @keyframes anim {
   0% {

@@ -41,11 +41,12 @@
 	</head>
 	<body>
 		<!-- HEADER -->
-		<header class="text-center m-3">
-			<h1>
-				<a class="" href="/cafe" style="text-decoration: none">${cafe.name}</a>
-			</h1>
-			<ul class="nav nav-pills">
+		<header class="navHead">
+			<!-- add logo here ishhh - apv -->
+			<img  src="/images/logo.png" class="logoPic" alt="logo">
+			<h1><a class="title" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+			<div><br>
+			<ul class="navTabs nav-pills">
 				<li class="nav-item">
 					<a class="nav-link" href="/coffee">Featured Coffee</a>
 				</li>
@@ -55,18 +56,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
 				</li>
-				<!-- Make sure manager is not signed in -->
 				<c:if test="${ !userTYPE.equals('Manager') }">
 					<li class="nav-item dropdown">
-						<a
-							class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"
-							href="#"
-							role="button"
-							aria-haspopup="true"
-							aria-expanded="false"
-							>Subscription</a
-						>
+						<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
 						<div class="dropdown-menu">
 							<!-- Not logged in -->
 							<c:if test="${ userID == null }">
@@ -75,9 +67,7 @@
 							</c:if>
 							<!-- Logged in -->
 							<c:if test="${ userID != null }">
-								<a class="dropdown-item" href="/cafe/coupons"
-									>See Avaliable Coupons</a
-								>
+								<a class="dropdown-item" href="/cafe/coupons">Avaliable Coupons</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/logout">Logout</a>
 							</c:if>
@@ -85,11 +75,13 @@
 					</li>
 				</c:if>
 				<!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li> -->
 			</ul>
+		</div>
 		</header>
-		<main>
+		<!-- MAIN -->
+		<main class="fallingBeans">
 			<!-- BEANS -->
 			<img src="/images/javaBean1.png" class="i n1"></img>
 			<img src="/images/javaBean1.png" class="i n2"></img>

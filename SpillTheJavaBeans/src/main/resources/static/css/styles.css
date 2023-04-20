@@ -47,6 +47,7 @@ a {
 }
 
 body {
+	background: url("https://t3.ftcdn.net/jpg/02/88/40/06/360_F_288400615_EmThMgtmPt995hCfn8pXetLS0bF9Pa0T.jpg");
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -77,11 +78,23 @@ body header nav {
 	justify-content: space-evenly;
 }
 
+body main {
+	display: flex;
+	flex-direction: row;
+	height: 75vh;
+    width: 95vw;
+}
+
 .mainCafe {
+    width: 95 vw;
+    height: 75 vh;
 	margin: 50px;
 	padding: 50px;
-	width: auto;
-	background-image: url('/images/javabeans.png');
+	background: url('/images/javabeans.png');
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
 }
 
 .box {
@@ -152,6 +165,10 @@ body header nav {
 	will-change: transform, opacity;
 	-webkit-animation: carousel-animate-vertical 27s linear infinite;
 	animation: carousel-animate-vertical 27s linear infinite;
+}
+
+.carousel_img{
+	max-height: 20px;
 }
 
 .carousel__item:nth-child(1) {
