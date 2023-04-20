@@ -40,55 +40,44 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 	</head>
 	<body>
 		<!-- HEADER -->
-		<header class="text-center m-3">
-			<h1>
-				<a class="drinkName" href="/cafe" style="text-decoration: none"
-					>${cafe.name}</a
-				>
-			</h1>
-			<ul class="nav nav-pills">
-				<li class="nav-item">
-					<a class="nav-link" href="/coffee">Featured Coffee</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/cafe/menu">Menu</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
-				</li>
-				<!-- Make sure manager is not signed in -->
-				<c:if test="${ !userTYPE.equals('Manager') }">
-					<li class="nav-item dropdown">
-						<a
-							class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"
-							href="#"
-							role="button"
-							aria-haspopup="true"
-							aria-expanded="false"
-							>Subscription</a
-						>
-						<div class="dropdown-menu">
-							<!-- Not logged in -->
-							<c:if test="${ userID == null }">
-								<a class="dropdown-item" href="/subs/login">Login</a>
-								<a class="dropdown-item" href="/subs/register">Sign Up</a>
-							</c:if>
-							<!-- Logged in -->
-							<c:if test="${ userID != null }">
-								<a class="dropdown-item" href="/cafe/coupons"
-									>See Avaliable Coupons</a
-								>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/logout">Logout</a>
-							</c:if>
-						</div>
-					</li>
-				</c:if>
-				<!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
-        </ul>
+		<header class="navHead">
+            <!-- add logo here ishhh - apv -->
+            <img  src="/images/logo.png" class="logoPic" alt="logo">
+            <h1><a class="title" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+            <div><br>
+            <ul class="navTabs nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/coffee">Featured Coffee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cafe/menu">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
+                </li>
+                <c:if test="${ !userTYPE.equals('Manager') }">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
+                        <div class="dropdown-menu">
+                            <!-- Not logged in -->
+                            <c:if test="${ userID == null }">
+                                <a class="dropdown-item" href="/subs/login">Login</a>
+                                <a class="dropdown-item" href="/subs/register">Sign Up</a>
+                            </c:if>
+                            <!-- Logged in -->
+                            <c:if test="${ userID != null }">
+                                <a class="dropdown-item" href="/cafe/coupons">Avaliable Coupons</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </c:if>
+                        </div>
+                    </li>
+                </c:if>
+                <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li> -->
+            </ul>
+        </div>
     </header>
     <!-- MAIN -->
     <main class="m-3">

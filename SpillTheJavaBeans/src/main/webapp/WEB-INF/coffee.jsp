@@ -22,6 +22,7 @@
 		/>
 		<!-- My CSS -->
 		<link rel="stylesheet" href="/css/styles.css" />
+		<link rel="stylesheet" href="/css/javaBeans.css" />
 		<!-- JS for Bootstrap / jQuery -->
 		<script src="/webjars/jquery/jquery.min.js"></script>
 		<script src="/webjars/bootstrap/js/boostrap.min.js"></script>
@@ -40,11 +41,12 @@
 	</head>
 	<body>
 		<!-- HEADER -->
-		<header class="text-center m-3">
-			<h1>
-				<a class="" href="/cafe" style="text-decoration: none">${cafe.name}</a>
-			</h1>
-			<ul class="nav nav-pills">
+		<header class="navHead">
+			<!-- add logo here ishhh - apv -->
+			<img  src="/images/logo.png" class="logoPic" alt="logo">
+			<h1><a class="title" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
+			<div><br>
+			<ul class="navTabs nav-pills">
 				<li class="nav-item">
 					<a class="nav-link" href="/coffee">Featured Coffee</a>
 				</li>
@@ -54,18 +56,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/cafe/puzzle">Monthly Puzzle</a>
 				</li>
-				<!-- Make sure manager is not signed in -->
 				<c:if test="${ !userTYPE.equals('Manager') }">
 					<li class="nav-item dropdown">
-						<a
-							class="nav-link dropdown-toggle"
-							data-bs-toggle="dropdown"
-							href="#"
-							role="button"
-							aria-haspopup="true"
-							aria-expanded="false"
-							>Subscription</a
-						>
+						<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Subscription</a>
 						<div class="dropdown-menu">
 							<!-- Not logged in -->
 							<c:if test="${ userID == null }">
@@ -74,9 +67,7 @@
 							</c:if>
 							<!-- Logged in -->
 							<c:if test="${ userID != null }">
-								<a class="dropdown-item" href="/cafe/coupons"
-									>See Avaliable Coupons</a
-								>
+								<a class="dropdown-item" href="/cafe/coupons">Avaliable Coupons</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/logout">Logout</a>
 							</c:if>
@@ -84,52 +75,95 @@
 					</li>
 				</c:if>
 				<!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li> -->
 			</ul>
+		</div>
 		</header>
 		<!-- MAIN -->
-		<main class="m-3">
-			<h1 class="coffeeMain">See all of our Featured Coffees</h1>
+		<main class="fallingBeans">
+			<!-- BEANS -->
+			<img src="/images/javaBean1.png" class="i n1"></img>
+			<img src="/images/javaBean1.png" class="i n2"></img>
+			<img src="/images/javaBean0.png" class="i n3"></img>
+			<img src="/images/javaBean0.png" class="i n4"></img>
+			<img src="/images/javaBean1.png" class="i n5"></img>
+			<img src="/images/javaBean1.png" class="i n6"></img>
+			<img src="/images/javaBean0.png" class="i n7"></img>
+			<img src="/images/javaBean0.png" class="i n8"></img>
+			<img src="/images/javaBean1.png" class="i n9"></img>
+			
+			<img src="/images/javaBean0.png" class="i n1"></img>
+			<img src="/images/javaBean0.png" class="i n2"></img>
+			<img src="/images/javaBean1.png" class="i n3"></img>
+			<img src="/images/javaBean1.png" class="i n4"></img>
+			<img src="/images/javaBean0.png" class="i n5"></img>
+			<img src="/images/javaBean0.png" class="i n6"></img>
+			<img src="/images/javaBean1.png" class="i n7"></img>
+			<img src="/images/javaBean1.png" class="i n8"></img>
+			<img src="/images/javaBean0.png" class="i n9"></img>
 
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
-                <c:forEach items="${allCoffee}" var="c">
-                    <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                                <a href="/coffee/${c.id}/updateCoffee" class="mx-1"> Edit</a> |
-                                
-                                <form:form id="deleteForm" action="/coffee/${c.id}/deleteCoffee" method="post" modelAttribute="deleteForm">
-                                	<input type="hidden" name="_method" value="delete">
-                                	<input type="submit" value="Delete" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this drink?')" />
-                                </form:form>
-                            </td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+			<img src="/images/javaBean1.png" class="i n1"></img>
+			<img src="/images/javaBean1.png" class="i n2"></img>
+			<img src="/images/javaBean0.png" class="i n3"></img>
+			<img src="/images/javaBean0.png" class="i n4"></img>
+			<img src="/images/javaBean1.png" class="i n5"></img>
+			<img src="/images/javaBean1.png" class="i n6"></img>
+			<img src="/images/javaBean0.png" class="i n7"></img>
+			<img src="/images/javaBean0.png" class="i n8"></img>
+			<img src="/images/javaBean1.png" class="i n9"></img>
 
-			<!-- Allow manager to add a new coffee -->
-			<c:if test="${ userTYPE.equals('Manager') }">
-				<a href="/coffee/create">Add a New Coffee</a>
-			</c:if>
+			<img src="/images/javaBean0.png" class="i n1"></img>
+			<img src="/images/javaBean0.png" class="i n2"></img>
+			<img src="/images/javaBean1.png" class="i n3"></img>
+			<!-- <img src="/images/javaBean1.png" class="i n4"></img>
+			<img src="/images/javaBean0.png" class="i n5"></img>
+			<img src="/images/javaBean0.png" class="i n6"></img>
+			<img src="/images/javaBean1.png" class="i n7"></img>
+			<img src="/images/javaBean1.png" class="i n8"></img>
+			<img src="/images/javaBean0.png" class="i n9"></img> -->
+
+			<!-- Featured Coffee -->
+			<div class="display mx-auto">
+				<h1 class="coffeeMain">See all of our Featured Coffees</h1>
+				<table class="table">
+					<thead>
+						<!--- Column Labels --->
+						<tr>
+							<th scope="col">Region</th>
+							<th scope="col">Flavors</th>
+							<th scope="col">Roast</th>
+							<c:if test="${ userTYPE.equals('Manager') }">
+								<th scope="col">Action</th>
+							</c:if>
+						</tr>
+					</thead>
+					<tbody>
+						<!--- Row Data --->
+						<c:forEach items="${allCoffee}" var="c">
+							<tr>
+								<th scope="row">${c.region}</th>
+								<td>${c.flavors}</td>
+								<td>${c.roastType()}</td>
+								<c:if test="${ userTYPE.equals('Manager') }">
+									<td>
+										<a href="/coffee/${c.id}/updateCoffee" class="mx-1"> Edit</a> |
+										
+										<form:form id="deleteForm" action="/coffee/${c.id}/deleteCoffee" method="post" modelAttribute="deleteForm">
+											<input type="hidden" name="_method" value="delete">
+											<input type="submit" value="Delete" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this drink?')" />
+										</form:form>
+									</td>
+								</c:if>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<!-- Allow manager to add a new coffee -->
+				<c:if test="${ userTYPE.equals('Manager') }">
+					<a href="/coffee/create">Add a New Coffee</a>
+				</c:if>
+			</div>
 		</main>
 		<!-- FOOTER -->
 		<footer class="m-3">
