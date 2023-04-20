@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="managers")
@@ -11,19 +12,20 @@ public class Manager extends User {
 // ==========================
 //        ATTRIBUTES
 // ==========================    
-    @NotBlank
+    @NotBlank(message="Please provide a phone number.")
+    @Pattern(regexp = "^\\d{10}$", message="Phone number must be 10 digits.")
     private String phoneNum;
     
-    @NotBlank
+    @NotBlank(message="Please provide a street address.")
     private String address;
     
-    @NotBlank
+    @NotBlank(message="Please provide a city.")
     private String city;
     
-    @NotBlank
+    @NotBlank(message="Please provide a state.")
     private String state;
     
-    @NotBlank
+    @NotBlank(message="Please provide a zip code.")
     private String zipcode;
     
     @Transient // don't go to the db

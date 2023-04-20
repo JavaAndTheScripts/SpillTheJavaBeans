@@ -190,7 +190,7 @@
     <!-- FOOTER -->
     <footer class="container m-3">
         <div class="button">
-            <button class="button-52" role="button">Monthly Puzzle</button>
+            <button class="button-52" role="button" onclick="window.location.href='/cafe/puzzle';" >Monthly Puzzle</button>
         </div>
         <ul class="nav nav-pills justify-content-end">
             <c:if test="${ !userTYPE.equals('Subscriber') }">

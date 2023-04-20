@@ -30,6 +30,7 @@
     <title>Manager Registration</title>
 </head>
 <body>
+
     <!-- HEADER -->
     <header class="text-center m-3">
         <h1><a class="" href="/cafe" style="text-decoration: none;">${cafe.name}</a></h1>
@@ -72,7 +73,7 @@
         <form:form action="/mana/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
             <div class="border text-center py-3">
                 <h3>Register</h3>
-            </div>
+            </div >
             <!-- firstName and lastName -->
             <div class="d-flex flex-row border py-2">
                 <div class="d-flex flex-column w-50">
@@ -82,8 +83,8 @@
                     </section>
                     <form:errors path="firstName" class="text-danger ps-2" />
                 </div>
-                <div class="d-flex flex-column">
-                    <section class="d-flex flex-row">
+                <div >
+                    <section >
                         <form:label path="lastName" class="border-end w-50 ps-2 me-1">Last Name:</form:label>
                         <form:input type="text" class="input" path="lastName" />
                     </section>
@@ -172,6 +173,7 @@
 
             <button class="btn btn-secondary my-1 w-100">Register</button>
         </form:form>
+        
     </main>
     <!-- FOOTER -->
     <footer>
@@ -193,7 +195,7 @@
                     </div>
                 </li> 
             </c:if>            
-        </ul>
+        </ul>		
     </footer>
 </body>
 </html>

@@ -113,12 +113,14 @@
                         <td>${c.roastType()}</td>
                         <c:if test="${ userTYPE.equals('Manager') }">
                             <td>
-                                <a href="/coffee/${c.id}/updateCoffee" class="mx-1"> Edit</a> |
+                            
+                                <a href="/coffee/${c.id}/updateCoffee" class="mx-1"> Edit</a>
                                 
                                 <form:form id="deleteForm" action="/coffee/${c.id}/deleteCoffee" method="post" modelAttribute="deleteForm">
                                 	<input type="hidden" name="_method" value="delete">
-                                	<input type="submit" value="Delete" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this drink?')" />
+                                	<input type="submit" value="Delete" class="deleteBtn" onclick="return confirm('Are you sure you want to delete this drink?')" />
                                 </form:form>
+                               
                             </td>
                         </c:if>
                     </tr>

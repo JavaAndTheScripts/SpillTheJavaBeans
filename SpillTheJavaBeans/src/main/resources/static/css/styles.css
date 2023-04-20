@@ -359,3 +359,15 @@ button {
 .cupSize {
 	font-size: 10px;
 }
+
+.deleteBtn {
+	border: 1px solid darkcyan;
+	text-decoration: none;
+	background-color: rgb(35, 92, 108);
+	padding: 0.5em;
+	margin-top: 0.5em;
+	color: #fefcfc;
+	/* border-radius: 50%; */
+	font-family: monospace;
+	font-size: 80%;
+}

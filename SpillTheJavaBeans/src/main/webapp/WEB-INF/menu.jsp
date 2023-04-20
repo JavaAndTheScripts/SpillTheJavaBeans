@@ -140,11 +140,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                         <td><fmt:formatNumber value="${d.longPrice}" type="currency" /></td>
                          <c:if test="${ userTYPE.equals('Manager') }">
                             <td>
-                                <a href="/drink/${d.id}/updateDrink" class="mx-1">  Edit</a> |
+                                <a href="/drink/${d.id}/updateDrink" class="mx-1">  Edit</a>
                                 
                                 <form:form id="deleteForm" action="/drink/${d.id}/deleteDrink" method="post" modelAttribute="deleteForm">
                                 	<input type="hidden" name="_method" value="delete">
-                                	<input type="submit" value="Delete" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this drink?')" />
+                                	<input type="submit" value="Delete" class="deleteBtn" onclick="return confirm('Are you sure you want to delete this drink?')" />
                                 </form:form>
                                 
                             </td>

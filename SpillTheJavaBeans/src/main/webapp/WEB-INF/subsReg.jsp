@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
 
     <!-- Title -->
-    <title>Project Title</title>
+    <title>Subscribe</title>
 </head>
 <body>
     <!-- HEADER -->

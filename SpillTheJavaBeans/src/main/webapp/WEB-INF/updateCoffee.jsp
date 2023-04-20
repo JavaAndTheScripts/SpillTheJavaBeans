@@ -101,7 +101,7 @@
 				<option value="0">Light Roast</option>
 				<option value="1">Medium Roast</option>
 				<option value="2">Dark Roast</option>
-				<option value="-1" selected="true" disabled hidden> <c:out value="${ coffee.roastType() }"> </c:out> </option>	
+				<option value="${ coffee.roast }" selected="true" disabled hidden> <c:out value="${ coffee.roastType() }"> </c:out> </option>	
 			</select>
 			<!-- Validation Error -->
 			<form:errors path="roast" class="text-warning" />

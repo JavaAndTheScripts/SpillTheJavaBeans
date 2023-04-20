@@ -19,6 +19,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -33,15 +34,17 @@ public class Coffee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
-	@Min(0)
+	@NotNull (message = "Please select a roast darkness.")
+	@Min(0) 
 	@Max(2)
 	private Short roast; // 0 - Light, 1 - Medium, 2 - Dark
 
 	@NotBlank
+	@Size(min = 3, max = 50, message = "Please provide a region.")
 	private String region;
 
 	@NotBlank
+	@Size(min = 3, max = 100, message = "Please provide a flavor.")
 	private String flavors;
 
 	// This will not allow the createdAt column to be updated after creation
