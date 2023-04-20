@@ -156,7 +156,7 @@
             <div class="border py-2">
                 <section>
                     <form:label path="confirm" class="border-end w-50 ps-2 me-1">Confirm Password:</form:label>
-                    <form:input type="password" class="input" path="confirm" />
+                    <form:input type="password" class="input" path="confirm" required="true"/>
                 </section>
                 <form:errors path="confirm" class="text-danger ps-2" />
             </div>

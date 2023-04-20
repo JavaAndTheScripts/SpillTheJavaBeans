@@ -359,3 +359,56 @@ button {
 .cupSize {
 	font-size: 10px;
 }
+
+ /* FALLING JAVA BEANS */
+/*.i{
+	
+	display: inline-flex;
+	width: 16%;
+	animation: anim 2.5s ease-in-out infinite;
+	transform:  translateY(-120%) rotate(0deg);
+
+}
+.n1{
+    animation-delay: 0.1s;
+}
+.n2{
+	animation-delay: 1.2s;
+}
+.n3{
+	animation-delay: 2s;
+}
+.n4{
+	animation-delay: 1.4s;
+}
+.n5{
+	animation-delay: 2.4s;
+}
+.n6{
+	animation-delay: 0.6s;	
+}
+.autumn{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) rotate(45deg);
+	width: 320px;
+	height: 320px;
+	background: transparent;
+	z-index: 2;
+	border:20px solid #252525;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #252525;
+	text-transform: uppercase;
+
+}
+@keyframes anim{
+	0%{
+		transform:  translateY(-120%) rotate(0deg);
+	}
+	100%{
+		transform: translateY(120vh) rotate(-360deg);
+	}
+} */
