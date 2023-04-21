@@ -81,52 +81,55 @@
 		</div>
 		</header>
 		<!-- MAIN -->
-		<main class="fallingBeans">
+		<main>
 			<!-- BEANS -->
-			<img src="/images/javaBean1.png" class="i n1"></img>
-			<img src="/images/javaBean1.png" class="i n2"></img>
-			<img src="/images/javaBean0.png" class="i n3"></img>
-			<img src="/images/javaBean0.png" class="i n4"></img>
-			<img src="/images/javaBean1.png" class="i n5"></img>
-			<img src="/images/javaBean1.png" class="i n6"></img>
-			<img src="/images/javaBean0.png" class="i n7"></img>
-			<img src="/images/javaBean0.png" class="i n8"></img>
-			<img src="/images/javaBean1.png" class="i n9"></img>
-			
-			<img src="/images/javaBean0.png" class="i n1"></img>
-			<img src="/images/javaBean0.png" class="i n2"></img>
-			<img src="/images/javaBean1.png" class="i n3"></img>
-			<img src="/images/javaBean1.png" class="i n4"></img>
-			<img src="/images/javaBean0.png" class="i n5"></img>
-			<img src="/images/javaBean0.png" class="i n6"></img>
-			<img src="/images/javaBean1.png" class="i n7"></img>
-			<img src="/images/javaBean1.png" class="i n8"></img>
-			<img src="/images/javaBean0.png" class="i n9"></img>
+            <div class="beansMain">
+                <div class="fallingBeans">
+                    <img src="/images/javaBean1.png" class="i n1"></img>
+                    <img src="/images/javaBean1.png" class="i n2"></img>
+                    <img src="/images/javaBean0.png" class="i n3"></img>
+                    <img src="/images/javaBean0.png" class="i n4"></img>
+                    <img src="/images/javaBean1.png" class="i n5"></img>
+                    <img src="/images/javaBean1.png" class="i n6"></img>
+                    <img src="/images/javaBean0.png" class="i n7"></img>
+                    <img src="/images/javaBean0.png" class="i n8"></img>
+                    <img src="/images/javaBean1.png" class="i n9"></img>
+                    
+                    <img src="/images/javaBean0.png" class="i n1"></img>
+                    <img src="/images/javaBean0.png" class="i n2"></img>
+                    <img src="/images/javaBean1.png" class="i n3"></img>
+                    <img src="/images/javaBean1.png" class="i n4"></img>
+                    <img src="/images/javaBean0.png" class="i n5"></img>
+                    <img src="/images/javaBean0.png" class="i n6"></img>
+                    <img src="/images/javaBean1.png" class="i n7"></img>
+                    <img src="/images/javaBean1.png" class="i n8"></img>
+                    <img src="/images/javaBean0.png" class="i n9"></img>
 
-			<img src="/images/javaBean1.png" class="i n1"></img>
-			<img src="/images/javaBean1.png" class="i n2"></img>
-			<img src="/images/javaBean0.png" class="i n3"></img>
-			<img src="/images/javaBean0.png" class="i n4"></img>
-			<img src="/images/javaBean1.png" class="i n5"></img>
-			<img src="/images/javaBean1.png" class="i n6"></img>
-			<img src="/images/javaBean0.png" class="i n7"></img>
-			<img src="/images/javaBean0.png" class="i n8"></img>
-			<img src="/images/javaBean1.png" class="i n9"></img>
+                    <img src="/images/javaBean1.png" class="i n1"></img>
+                    <img src="/images/javaBean1.png" class="i n2"></img>
+                    <img src="/images/javaBean0.png" class="i n3"></img>
+                    <img src="/images/javaBean0.png" class="i n4"></img>
+                    <img src="/images/javaBean1.png" class="i n5"></img>
+                    <img src="/images/javaBean1.png" class="i n6"></img>
+                    <img src="/images/javaBean0.png" class="i n7"></img>
+                    <img src="/images/javaBean0.png" class="i n8"></img>
+                    <img src="/images/javaBean1.png" class="i n9"></img>
 
-			<img src="/images/javaBean0.png" class="i n1"></img>
-			<img src="/images/javaBean0.png" class="i n2"></img>
-			<img src="/images/javaBean1.png" class="i n3"></img>
-			<!-- <img src="/images/javaBean1.png" class="i n4"></img>
-			<img src="/images/javaBean0.png" class="i n5"></img>
-			<img src="/images/javaBean0.png" class="i n6"></img>
-			<img src="/images/javaBean1.png" class="i n7"></img>
-			<img src="/images/javaBean1.png" class="i n8"></img>
-			<img src="/images/javaBean0.png" class="i n9"></img> -->
+                    <img src="/images/javaBean0.png" class="i n1"></img>
+                    <img src="/images/javaBean0.png" class="i n2"></img>
+                    <img src="/images/javaBean1.png" class="i n3"></img>
+                    <!-- <img src="/images/javaBean1.png" class="i n4"></img>
+                    <img src="/images/javaBean0.png" class="i n5"></img>
+                    <img src="/images/javaBean0.png" class="i n6"></img>
+                    <img src="/images/javaBean1.png" class="i n7"></img>
+                    <img src="/images/javaBean1.png" class="i n8"></img>
+                    <img src="/images/javaBean0.png" class="i n9"></img> -->
+                
 
 			<!-- Featured Coffee -->
-			<div class="display mx-auto">
+			<div class="featCoffee">
 				<h1 class="coffeeMain">See all of our Featured Coffees</h1>
-				<table class="table">
+				<table class="coffeeTable">
 					<thead>
 						<!--- Column Labels --->
 						<tr>
@@ -164,6 +167,8 @@
 					<a href="/coffee/create">Add a New Coffee</a>
 				</c:if>
 			</div>
+        </div>
+        </div>
 		</main>
 		<!-- FOOTER -->
 		<footer class="m-3">

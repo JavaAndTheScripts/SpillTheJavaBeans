@@ -80,7 +80,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
     </header>
     <!-- MAIN -->
-    <main class="m-3">
+    <main class="drinkSize m-3">
         <div class="container">
             <table class="table table-hover">
                 <thead>
