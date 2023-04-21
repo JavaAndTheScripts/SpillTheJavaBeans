@@ -15,6 +15,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- My CSS -->
+    <link rel='stylesheet' href='/css/puzzle.css'>
     <link rel='stylesheet' href='/css/styles.css'>
     <!-- JS for Bootstrap / jQuery -->
     <script src='/webjars/jquery/jquery.min.js'>    </script>
@@ -70,54 +71,66 @@
     </div>
     </header>
     <!-- MAIN -->
-    <main class="puzzleMain m-3">
-        <h2>Monthly Puzzle</h2>
-
+    <main class="puzzle">
         <c:if test="${ puzzle == null }">
-            <h4>No monthly puzzle has been added.</h4>
+            <div class="column">
+                <h2>Monthly Puzzle</h2>
+                <h4>No monthly puzzle has been added.</h4>
+            </div>
             <p>Please come back when the manager has added the monthly puzzle.</p>
         </c:if>
         <c:if test="${ puzzle != null }">
-            <div>
+            <div class="column larger">
                 <h4>${puzzle.title}</h4>
                 <p>${puzzle.contents}</p>
-                <c:if test="${ puzzle.percent == 100 }">
-                    <p>For a reward of one free ${puzzle.reward}!</p>
-                </c:if>
-                <c:if test="${ puzzle.percent != 100 }">
-                    <p>For a reward of ${puzzle.percent}% off of ${puzzle.reward}!</p>
-                </c:if>
-                <!-- Form for guess submission -->
-                <form action="/puzzle/guess" method="post"> 
-                    <!-- If they are not a user -->
-                    <c:if test="${ subscriber == null }">
-                        <label for="guess">Returned Value:</label>
-                        <input type="text" name="guess" placeholder="You must be a subscriber and logged in to try solving the puzzle." disabled>
-                        
-                        <button disabled>Guess</button>
-                    </c:if>
-                    <!-- If they are logged in AND have attempted the puzzle -->
-                    <c:if test="${ subscriber != null && subscriber.solvedPuzzle }">
-                        <label for="guess">Returned Value:</label>
-                        <input type="text" name="guess" placeholder="You have already used your guess for this puzzle." disabled>
-                        <c:if test="${ subscriber.puzzle != null}">
-                            <p>Congrats you figured it out!</p>
-                        </c:if>
-                        <button disabled>Guess</button>
-                    </c:if>
-                    <!-- if they are logged in AND have not attempted the puzzle -->
-                    <c:if test="${ subscriber != null && !subscriber.solvedPuzzle }">
-                        <label for="guess">Returned Value:</label>
-                        <input type="text" name="guess">
-                        
-                        <button>Guess</button>
-                    </c:if>                    
-                    
-                </form>
             </div>
+            <!-- Form for guess submission -->
+            <form action="/puzzle/guess" method="post" class="column"> 
+                <c:if test="${ puzzle.percent == 100 }">
+                    <p>Correct guesses will recieve one free ${puzzle.reward}!</p>
+                </c:if>
+                <c:if test="${ puzzle.percent != 100 }"> 
+                    <p>Correct guesses get a reward of ${puzzle.percent}% off of ${puzzle.reward}!</p>
+                </c:if>
+                <!-- If they are not a user -->
+                <c:if test="${ subscriber == null }">
+                    <label for="guess">Enter your guess on what the Returned Value will be:</label>
+                    <div class="textarea-like">
+                        You must be a subscriber and logged in to try solving the puzzle.
+                    </div>
+                    
+                    <div class="button">
+                        <button class="button-52" role="button" disabled>Guess</button>
+                    </div>
+                </c:if>
+                <!-- If they are logged in AND have attempted the puzzle -->
+                <c:if test="${ subscriber != null && subscriber.solvedPuzzle }">
+                    <c:if test="${ subscriber.puzzle == null}">
+                        <label for="guess">Enter your guess on what the Returned Value will be:</label>
+                        <div class="textarea-like">
+                            You have already used your guess for this puzzle.
+                        </div>
+                        <div class="button">
+                            <button class="button-52" role="button" disabled>Guess</button>
+                        </div>
+                    </c:if>
+                    <c:if test="${ subscriber.puzzle != null}">
+                        <h4 class="congrats">Congrats you figured it out!</h4>
+                        <p>Check out your Available Coupons to use your reward.</p>
+                    </c:if>
+                </c:if>
+                <!-- if they are logged in AND have not attempted the puzzle -->
+                <c:if test="${ subscriber != null && !subscriber.solvedPuzzle }">
+                    <label for="guess">Enter your guess on what the Returned Value will be:</label>
+                    <input type="text" name="guess">
+                    
+                    <div class="button">
+                        <button class="button-52" role="button">Guess</button>
+                    </div>
+                </c:if>                    
+                
+            </form>
         </c:if>
-
-        
     </main>
     <!-- FOOTER -->
     <footer class="m-3">
