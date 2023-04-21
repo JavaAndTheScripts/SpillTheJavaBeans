@@ -72,6 +72,8 @@
     </header>
     <!-- MAIN -->
     <main>
+    <div class="container">
+    <div class="bg-light">
         <!-- login box -->
         <form:form action="/mana/login" method="POST" modelAttribute="newLogin" class="mx-5 mt-3">
             <div class="border text-center py-3">
@@ -93,9 +95,10 @@
                 <form:errors path="password" class="text-danger" />
             </div>
 
-            <button class="btn btn-primary my-1 w-100">Login</button>
+            <button class="btn btn-secondary my-1 w-100">Login</button>
         </form:form>
-
+    </div>
+	</div>
     </main>
     <!-- FOOTER -->
     <footer>

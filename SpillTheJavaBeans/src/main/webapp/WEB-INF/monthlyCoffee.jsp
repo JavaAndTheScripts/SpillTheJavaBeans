@@ -70,29 +70,34 @@
         </div>
     </header>
     <!-- MAIN -->
-    <main class="m-3">
-        <h2>Select a new Monthly Coffee</h2>
+    <main class="">
+    <div class="container">
+    <div class="bg-light">
+        <h2 class="text-center">Select a new Monthly Coffee</h2>
         <!-- Select drop of all coffee's avaliable -->
-        <form:form action="/cafe/coffee/edit" method="post" modelAttribute="modelForm">    
+        <form:form action="/cafe/coffee/edit" method="post" modelAttribute="modelForm" class="mx-auto col-10 col-md-10 col-lg-10">    
             <input type="hidden" name="_method" value="put">
             
             <input value="${cafe.id}" name="id" hidden>
             <input value="${cafe.name}" name="name" hidden>
             <input value="${cafe.code}" name="code" hidden>
-
-            <select name="monthlyCoffee" value="${cafe.monthlyCoffee.id}">
-                <c:if test="${ cafe.monthlyCoffee == null }">
-                    <option selected hidden disabled>-- A Monthly Coffee has yet to be Selected --</option>
-                </c:if>
-                <c:forEach items="${allCoffee}" var="c">
-                    <option value="${c.id}">${c.region}; ${c.flavors}; ${c.roastType()}</option>
-                </c:forEach>                
-            </select>
+			<div class="mb-3">
+	            <select name="monthlyCoffee" value="${cafe.monthlyCoffee.id}" class="form-control">
+	                <c:if test="${ cafe.monthlyCoffee == null }">
+	                    <option selected hidden disabled>-- A Monthly Coffee has yet to be Selected --</option>
+	                </c:if>
+	                <c:forEach items="${allCoffee}" var="c">
+	                    <option value="${c.id}">${c.region}; ${c.flavors}; ${c.roastType()}</option>
+	                </c:forEach>                
+	            </select>
+	        </div>
             <!-- Validation Error -->
             <form:errors path="monthlyCoffee" class="text-warning"/>
             <br>
             <button class="btn btn-secondary my-3">Change Monthly Coffee</button>
         </form:form>
+    </div>
+    </div>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">

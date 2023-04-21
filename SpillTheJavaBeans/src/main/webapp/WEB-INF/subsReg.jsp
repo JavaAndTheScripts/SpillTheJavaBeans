@@ -72,6 +72,8 @@
     </header>
     <!-- MAIN -->
     <main>
+    <div class="container-fluid">
+    <div class="bg-light">
         <!-- register box -->
         <form:form action="/subs/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
             <div class="border text-center py-3">
@@ -128,6 +130,8 @@
 
             <button class="btn btn-secondary my-1 w-100">Register</button>
         </form:form>
+    </div>
+    </div>
     </main>
     <!-- FOOTER -->
     <footer>

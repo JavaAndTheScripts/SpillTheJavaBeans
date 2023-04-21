@@ -70,85 +70,100 @@
     </div>
     </header>
     <!-- MAIN -->
-    <main class="m-3">
-        <h2>Create a Drink</h2>
-        <form:form action="/drink/create" method="post" modelAttribute="modelForm" class="d-flex flex-column ms-3 w-75">
+    <main class="">
+    <div class="container-fluid">
+    <div class="bg-light">
+        <h2 class="text-center">Create a Drink</h2>
+        <form:form action="/drink/create" method="post" modelAttribute="modelForm" class="mx-auto col-10 col-md-10 col-lg-10">
             <!-- String name -->                
-            <div class="my-2">
-                <legend class="w-auto me-4">Name:</legend>
-                <input type="text" name="name">
+            <div class="mb-3">
+            	<label for="name">Name:</label>
+                <input type="text" name="name" class="form-control">
                 <!-- Validation Error -->
                 <form:errors path="name" class="text-warning ms-2"/>
             </div>
             <!-- String description --> 
-            <div class="my-2">
-                <legend class="w-auto me-4">Description:</legend>
-                <input type="text" name="description">
+            <div class="mb-3">
+            	<label for="description">Description:</label>
+                <input type="text" name="description" class="form-control">
                 <!-- Validation Error -->
                 <form:errors path="description" class="text-warning ms-2"/>
             </div>
             <!-- String ingredients --> 
-            <div class="d-flex flex-row my-2">
-                <legend class="w-auto me-4">Ingredients:</legend>
-                <input type="text" name="ingredients">
+            <div class="mb-3">
+            	<label for="ingredients">Ingredients:</label>
+                <input type="text" name="ingredients" class="form-control">
                 <!-- Validation Error -->
                 <form:errors path="ingredients" class="text-warning ms-2"/>
             </div>
             <!-- Boolean --> 
-            <div class="d-flex flex-row align-items-center my-2">
-                <legend class="w-auto me-4">Temperature:</legend>
+            <div class=" row row-cols-4">
+            	<label for="temperature">Temperature:</label>
                 <!-- Boolean isHot -->
+                <div class="row row-cols-2">
                 <div class="d-flex flex-column border p-1 me-2">
                     <label for="">Hot?</label>
                     <fieldset class="my-2">
+                    <div class="form-check">
                         <label for="isHot">Yes</label>
-                        <input type="radio" name="isHot" value="${true}">
+                        <input type="radio" name="isHot" class="form-check-input" value="${true}">
+                    </div>
+                    <div class="form-check">
                         <label for="isHot">No</label>
-                        <input type="radio" name="isHot" value="${false}">
+                        <input type="radio" name="isHot" class="form-check-input" value="${false}">
+                    </div>
                     </fieldset>
                     <!-- Validation Error -->
                     <form:errors path="isHot" class="text-warning ms-2"/>
                 </div>
+                </div>
                 <!-- Boolean isCold -->
+                <div class="row row-cols-2">
                 <div class="d-flex flex-column border p-1 ms-2">
                     <label for="">Cold?</label>
                     <fieldset class="my-2">
+                    <div class="form-check">
                         <label for="isCold">Yes</label>
-                        <input type="radio" name="isCold" value="${true}">
+                        <input type="radio" name="isCold" class="form-check-input" value="${true}">
+                    </div>
+                    <div class="form-check">
                         <label for="isCold">No</label>
-                        <input type="radio" name="isCold" value="${false}">
+                        <input type="radio" name="isCold" class="form-check-input" value="${false}">
+                    </div>
                     </fieldset>
                     <!-- Validation Error -->
                     <form:errors path="isCold" class="text-warning ms-2"/>
                 </div>
+                </div>
             </div>
             <!-- Double price --> 
             <div class="d-flex flex-row align-items-center my-2">
-                <legend class="me-2">Prices:</legend>
-                <div class="d-flex flex-column mx-1">
+            	<div class="mb-6"><label>Prices:</label> </div>
+                
+                <div class="mb-3">
                     <label for="bytePrice">Byte</label>
-                    <input type="number" step=".01" name="bytePrice">
+                    <input type="number" step=".01" name="bytePrice" class="form-control">
                     <!-- Validation Error -->
                     <form:errors path="bytePrice" class="text-warning ms-2"/>
                 </div>
-                <div class="d-flex flex-column mx-1">
+                <div class="mb-3">
                     <label for="intPrice">Integer</label>
-                    <input type="number" step=".01" name="intPrice">
+                    <input type="number" step=".01" name="intPrice" class="form-control">
                     <!-- Validation Error -->
                     <form:errors path="intPrice" class="text-warning"/>
                 </div>
-                <div class="d-flex flex-column mx-1">
+                <div class="mb-3">
                     <label for="longPrice">Long</label>
-                    <input type="number" step=".01" name="longPrice">
+                    <input type="number" step=".01" name="longPrice" class="form-control">
                     <!-- Validation Error -->
                     <form:errors path="longPrice" class="text-warning ms-2"/>
                 </div>
                 
             </div>
             <!-- Coffee coffee --> 
-            <div class="my-2">
-                <legend class="w-auto me-4">Coffee:</legend>
-                <select name="coffee" id="">
+            <div class="mb-3">
+            	<label for="coffee">Coffee:</label>
+                <select name="coffee" id="" class="form-control">
                     <option selected hidden disabled>--- Select Coffee ---</option>
                     <c:forEach items="${allCoffee}" var="c">
                         <option value="${c.id}">${c.region}; ${c.flavors}; ${c.roastType()}</option>
@@ -159,8 +174,11 @@
             </div>
             <input name="cafe" value="${cafeID}" hidden>
             <!-- Submission button -->
-            <div class=""><button class="btn btn-primary">Add Drink</button></div>
+            <div class=""><button class="btn btn-dark">Add Drink</button></div>
+            <br>
         </form:form>
+    </div>
+    </div>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">

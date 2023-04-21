@@ -84,42 +84,50 @@
     </div>
     </header>
 	<!-- MAIN -->
-	<main>
-		<h1>Add a New Coffee</h1>
-		<!-- register box -->
-		<form:form action="/coffee/create" method="POST"
-			modelAttribute="coffeeForm" class="mx-5 my-2">
-
-			<!-- Attribute Information -->
-			<div class="d-flex">
-				<label for="region">Region</label> 
-				<input type="text" name="region">
-			</div>
-
-			<!-- Validation Error -->
-			<form:errors path="region" class="text-warning" />
-
-			<label for="roast">Roast</label>
-			<select name="roast">
-				<option value="0">Light Roast</option>
-				<option value="1">Medium Roast</option>
-				<option value="2">Dark Roast</option>
-				<option value="-1" selected="true" disabled hidden>Select from the options listed</option>	
-			</select>
-			<!-- Validation Error -->
-			<form:errors path="roast" class="text-warning" />
-			
-			<!-- Attribute Information -->
-			<div class="d-flex">
-				<label for="flavors">Flavors</label> 
-				<input type="text" name="flavors">
-			</div>
-			<!-- Validation Error -->
-			<form:errors path="flavors" class="text-warning" />
-
-			<button class="btn btn-primary my-1">Create</button>
-			<a class="btn btn-danger" href="/coffee">Cancel</a>
-		</form:form>
+	<main >
+	<div class="container">
+		
+		<div class="bg-light">
+				<h1 class="text-center">Add a New Coffee</h1>
+				<!-- register box -->
+				<form:form action="/coffee/create" method="POST"
+					modelAttribute="coffeeForm" class="mx-5 my-2">
+		
+					<!-- Attribute Information -->
+					<div class="mb-3">
+						<label for="region">Region</label> 
+						<input type="text" name="region" class="form-control">
+					</div>
+		
+					<!-- Validation Error -->
+					<form:errors path="region" class="text-warning" />
+					<div class="mb-3">
+						<label for="roast">Roast</label>
+						<select name="roast">
+							<option value="0">Light Roast</option>
+							<option value="1">Medium Roast</option>
+							<option value="2">Dark Roast</option>
+							<option value="-1" selected="true" disabled hidden>Select from the options listed</option>	
+						</select>
+					</div>
+					<!-- Validation Error -->
+					<form:errors path="roast" class="text-warning" />
+					
+					<!-- Attribute Information -->
+					<div class="mb-3">
+						<label for="flavors">Flavors</label> 
+						<input type="text" name="flavors" class="form-control">
+					</div>
+					<!-- Validation Error -->
+					<form:errors path="flavors" class="text-warning" />
+		
+					<button class="btn btn-dark my-1">Create</button>
+					<a class="btn btn-secondary" href="/coffee">Cancel</a>
+				</form:form>
+		</div>
+		
+	
+	</div>
 	</main>
 	<!-- FOOTER -->
     <footer class="m-3">
