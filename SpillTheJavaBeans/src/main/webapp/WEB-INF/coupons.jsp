@@ -144,7 +144,7 @@
             </c:if>
             <c:if test="${ !subscriber.bdayCheck() && subscriber.puzzle == null }">
                 <div class="none">
-                    <h2>Unfortunetly, it seems like you do not have any coupons avaliable. <br> :(</h2>
+                    <h2>Unfortunately, it seems like you do not have any coupons available. <br> :(</h2>
                 </div>
             </c:if>
         </div>

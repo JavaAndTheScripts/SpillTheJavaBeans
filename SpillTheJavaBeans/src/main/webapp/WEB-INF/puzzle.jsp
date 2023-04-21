@@ -87,7 +87,7 @@
             <!-- Form for guess submission -->
             <form action="/puzzle/guess" method="post" class="column"> 
                 <c:if test="${ puzzle.percent == 100 }">
-                    <p>Correct guesses will recieve one free ${puzzle.reward}!</p>
+                    <p>Correct guesses will receive one free ${puzzle.reward}!</p>
                 </c:if>
                 <c:if test="${ puzzle.percent != 100 }"> 
                     <p>Correct guesses get a reward of ${puzzle.percent}% off of ${puzzle.reward}!</p>
