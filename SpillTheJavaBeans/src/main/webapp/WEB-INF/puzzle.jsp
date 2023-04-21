@@ -70,7 +70,7 @@
     </div>
     </header>
     <!-- MAIN -->
-    <main class="m-3">
+    <main class="puzzleMain m-3">
         <h2>Monthly Puzzle</h2>
 
         <c:if test="${ puzzle == null }">

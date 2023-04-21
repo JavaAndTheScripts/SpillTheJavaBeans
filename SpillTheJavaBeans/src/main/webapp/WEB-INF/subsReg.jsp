@@ -71,7 +71,7 @@
     </div>
     </header>
     <!-- MAIN -->
-    <main>
+    <main class="registerMain">
         <!-- register box -->
         <form:form action="/subs/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
             <div class="border text-center py-3">

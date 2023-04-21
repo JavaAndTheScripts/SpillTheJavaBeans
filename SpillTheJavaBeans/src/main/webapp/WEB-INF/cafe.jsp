@@ -95,14 +95,14 @@
             }
           </style>
           
-          <div class="box container border text-center">
+          <div class="box container border">
             <!-- Hello World
           </div>
         <div class="container border text-center m-1"> -->
             <h3>Coffee of the Month</h3>
         </div>
             <!-- com not selected yet -->
-        <div class="coffeeMonth">
+        <div class="box container border coffeeMonth">
             <c:if test="${ cafe.monthlyCoffee == null }">
                 <br>
                 <h5>A Coffee has not been selected as the monthly special yet.</h5>
@@ -123,8 +123,8 @@
                       <img src="/images/coldIcon.png" alt="cold" class="carousel_img">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>Latte</p>
-                      <p>Description:</p>
+                      <p class='caroTitle'>New Item: Java Jolt</p>
+                      <p>A strong espresso shot with a hint of chocolate and hazelnut, topped with whipped cream and a drizzle of caramel sauce.</p>
                     </div>
                   </div>
                   <div class='carousel__item'>
@@ -132,8 +132,8 @@
                       <img src="/images/coldIcon.png" alt="cold" class="carousel_img">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>Espresso</p>
-                      <p>Description:</p>
+                      <p class='caroTitle'>Try Our Monthly Puzzle</p>
+                      <p>Link:</p>
                     </div>
                   </div>
                   <div class='carousel__item'>
@@ -141,8 +141,8 @@
                       <img src="/images/coldIcon.png" alt="cold" class="carousel_img">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>Chamomile Tea</p>
-                      <p>Description:</p>
+                      <p class='caroTitle'>Coffee of the Month: C# Cappuccino</p>
+                      <p>A classic cappuccino with a creamy foam topping and a sprinkle of cocoa powder.</p>
                     </div>
                   </div>
                   <div class='carousel__item'>
@@ -150,8 +150,8 @@
                       <img src="/images/coldIcon.png" alt="cold" class="carousel_img">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>Frappuccino</p>
-                      <p>Description:</p>
+                      <p class='caroTitle'>Join our Monthly Membership for FREE goodies</p>
+                      <p>Sign Up Here! </p>
                     </div>
                   </div>
                   <div class='carousel__item'>
@@ -159,8 +159,8 @@
                       <img src="/images/coldIcon.png" alt="cold" class="carousel_img">
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>Latte</p>
-                      <p>Description:</p>
+                      <p class='caroTitle'>Try Our NEW Summer Refresher: Python Punch</p>
+                      <p>A refreshing blend of tropical fruits and juices with a splash of ginger ale.</p>
                     </div>
                   </div>
                   <div class='carousel__item'>
@@ -168,8 +168,8 @@
                       🐋
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>whale</p>
-                      <p>Description: this is the best coffee of your life</p>
+                      <p class='caroTitle'>Get it While it Lasts: CSS Cooler</p>
+                      <p>A tangy mix of lemonade and raspberry syrup, garnished with fresh mint leaves.</p>
                     </div>
                   </div>
                   <div class='carousel__item'>
@@ -177,8 +177,8 @@
                       🐬
                     </div>
                     <div class='carousel__item-body'>
-                      <p class='caroTitle'>Coffee</p>
-                      <p>Description: it will rock your world!</p>
+                      <p class='caroTitle'>Shop our Merch </p>
+                      <p>Cool Stuff</p>
                     </div>
                   </div>
                 </div>
