@@ -188,32 +188,42 @@
 
     </main>
     <!-- FOOTER -->
-    <footer class="container m-3">
-        <div class="button">
-            <button class="button-52" role="button" onclick="window.location.href='/cafe/puzzle';" >Monthly Puzzle</button>
-        </div>
-        <ul class="nav nav-pills justify-content-end">
-            <c:if test="${ !userTYPE.equals('Subscriber') }">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
-                    <div class="dropdown-menu">
-                        <c:if test="${ userID == null }">
-                            <a class="dropdown-item" href="/mana/login">Login</a>
-                            <a class="dropdown-item" href="/mana/register">Register</a>
-                        </c:if>
-                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
-                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/puzzle/edit">Update Cafe Puzzle</a>
-                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout">Logout</a>
-                        </c:if>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a> -->
-                    </div>
-                </li>
-            </c:if>            
-        </ul>
-    </footer>
+    <footer class="m-3">
+			<ul class="nav nav-pills justify-content-end">
+				<!-- Make sure subscriber is not signed in -->
+				<c:if test="${ !userTYPE.equals('Subscriber') }">
+					<li class="nav-item dropdown">
+						<a
+							class="nav-link dropdown-toggle"
+							data-bs-toggle="dropdown"
+							href="#"
+							role="button"
+							aria-haspopup="true"
+							aria-expanded="false"
+							>Manager</a
+						>
+						<div class="dropdown-menu">
+							<c:if test="${ userID == null }">
+								<a class="dropdown-item" href="/mana/login">Login</a>
+								<a class="dropdown-item" href="/mana/register">Register</a>
+							</c:if>
+							<c:if test="${ userID != null }">
+								<!-- Allow manager to add a new coffee -->
+								<a class="dropdown-item" href="/coffee/create">Add a New Coffee</a>
+								<!-- && userTYPE.equals('Manager') -->
+								<a class="dropdown-item" href="/cafe/coffee/edit"
+									>Change Coffee of the Month</a
+								>
+								<a class="dropdown-item" href="/drink/create"
+									>Create a new Drink</a
+								>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="/logout">Logout</a>
+							</c:if>
+						</div>
+					</li>
+				</c:if>
+			</ul>
+		</footer>
 </body>
 </html>

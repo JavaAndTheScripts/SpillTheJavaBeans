@@ -74,14 +74,14 @@
     <!-- MAIN -->
     <main>
     <div class="container">
-    <div class="bg-light">
+    <div style="background-color: rgba(131, 85, 44, 0.753);">
         <!-- register box -->
         <form:form action="/mana/register" method="POST" modelAttribute="newUser"  class="mx-5 my-2">
-            <div class="border text-center py-3">
+            <div class="text-center py-3">
                 <h3>Register</h3>
             </div >
             <!-- firstName and lastName -->
-            <div class="d-flex flex-row border py-2">
+            <div class="d-flex flex-rowpy-2">
                 <div class="d-flex flex-column w-50">
                     <section class="d-flex flex-row">
                         <form:label path="firstName" class="border-end w-50 ps-2 me-1">First Name:</form:label>
@@ -99,7 +99,7 @@
             </div>
 
             <!-- phoneNum -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section class="">
                     <form:label path="phoneNum" class="border-end w-50 ps-2 me-1">Phone Number:</form:label>
                     <input type="text" name="phoneNum" pattern="[0-9]{10}" title="10 digits required.">
@@ -108,7 +108,7 @@
             </div>
 
             <!-- email -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="email" class="border-end w-50 ps-2 me-1">Email:</form:label>
                     <form:input type="email" class="input" path="email" />
@@ -117,7 +117,7 @@
             </div>
 
             <!-- address -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="address" class="border-end w-50 ps-2 me-1">Street Address:</form:label>
                     <form:input type="text" class="input" path="address" />
@@ -126,7 +126,7 @@
             </div>
 
             <!-- city -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="city" class="border-end w-50 ps-2 me-1">City:</form:label>
                     <form:input type="text" class="input" path="city" />
@@ -135,7 +135,7 @@
             </div>
 
             <!-- state -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="state" class="border-end w-50 ps-2 me-1">State:</form:label>
                     <form:input type="text" class="input" path="state" />
@@ -144,7 +144,7 @@
             </div>
 
             <!-- zipcode -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="zipcode" class="border-end w-50 ps-2 me-1">Zip Code:</form:label>
                     <form:input type="text" class="input" path="zipcode" />
@@ -153,14 +153,14 @@
             </div>
 
             <!-- password -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="password" class="border-end w-50 ps-2 me-1">Password:</form:label>
                     <form:input type="password" class="input" path="password" />
                 </section>
                 <form:errors path="password" class="text-danger text-right" />
             </div>
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="confirm" class="border-end w-50 ps-2 me-1">Confirm Password:</form:label>
                     <form:input type="password" class="input" path="confirm" required="true"/>
@@ -169,7 +169,7 @@
             </div>
 
             <!-- code -->
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="code" class="border-end w-50 ps-2 me-1">Cafe Manager Code:</form:label>
                     <form:input type="password" class="input" path="code" />
@@ -177,32 +177,48 @@
                 <form:errors path="code" class="text-danger ps-2" />
             </div>
 
-            <button class="btn btn-secondary my-1 w-100">Register</button>
+            <div class="pb-3"><button class="btn btn-dark my-1 w-100">Register</button></div>
         </form:form>
     </div>
     </div>    
     </main>
     <!-- FOOTER -->
-    <footer>
+    <footer class="m-3">
         <ul class="nav nav-pills justify-content-end">
+            <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Manager</a
+                    >
                     <div class="dropdown-menu">
                         <c:if test="${ userID == null }">
                             <a class="dropdown-item" href="/mana/login">Login</a>
                             <a class="dropdown-item" href="/mana/register">Register</a>
                         </c:if>
                         <c:if test="${ userID != null }">
-                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                            <!-- Allow manager to add a new coffee -->
+                            <a class="dropdown-item" href="/coffee/create">Add a New Coffee</a>
+                            <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit"
+                                >Change Coffee of the Month</a
+                            >
+                            <a class="dropdown-item" href="/drink/create"
+                                >Create a new Drink</a
+                            >
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
                     </div>
-                </li> 
-            </c:if>            
-        </ul>		
+                </li>
+            </c:if>
+        </ul>
     </footer>
 </body>
 </html>

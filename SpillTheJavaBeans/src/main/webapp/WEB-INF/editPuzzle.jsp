@@ -71,65 +71,60 @@
     </header>    
     <!-- MAIN -->
     <main class="m-3">
-        <h2>Monthly Puzzle</h2>
-        <!-- FORM -->
-        <form:form action="/puzzle/edit" method="post" modelAttribute="modelForm"> 
-            <input type="hidden" name="_method" value="put">
-            <!-- Cafe cafe -->
-            <form:input path="cafe" value="${cafe.id}" type="hidden"/>
-            <!-- Long id -->
-            <form:input path="id" value="${puzzle.id}" type="hidden"/>
-
-            <!-- String title -->
-            <!-- Attribute Information -->
-            <div class="d-flex">
-                <label for="title">Title:</label>
-                <form:input type="text" path="title" value="${puzzle.title}"/>
+        <div class="container" style="background-color: rgba(131, 85, 44, 0.753);">
+            <h2 class="text-center">Monthly Puzzle</h2>
+            <!-- FORM -->
+            <form:form action="/puzzle/edit" method="post" modelAttribute="modelForm" class="mx-4 my-2">
+                <input type="hidden" name="_method" value="put">
+                <!-- Cafe cafe -->
+                <form:input path="cafe" value="${cafe.id}" type="hidden"/>
+                <!-- Long id -->
+                <form:input path="id" value="${puzzle.id}" type="hidden"/>
+                <!-- String title -->
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="title">Title:</label>
+                    <form:input type="text" path="title" value="${puzzle.title}" class="form-control"/>
+                </div>
+                <!-- Validation Error -->
+                <form:errors path="title" class="text-warning"/>
+                <!-- String contents -->
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="contents">Contents:</label>
+                    <form:input type="text" path="contents" value="${puzzle.contents}" class="form-control"/>
+                </div>
+                <!-- Validation Error -->
+                <form:errors path="contents" class="text-warning"/>
+                <!-- String solution -->
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="solution">Solution:</label>
+                    <form:input type="text" path="solution" value="${puzzle.solution}" class="form-control"/>
+                </div>
+                <!-- Validation Error -->
+                <form:errors path="solution" class="text-warning"/>
+                <!-- String reward -->
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="reward">Reward:</label>
+                    <form:input type="text" path="reward" value="${puzzle.reward}" class="form-control"/>
+                </div>
+                <!-- Validation Error -->
+                <form:errors path="reward" class="text-warning"/>
+                <!-- Float percent -->
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="percent">Discount Percentage:</label>
+                    <form:input type="number" step="1" path="percent" value="${puzzle.percent}" class="form-control"/>
+                </div>
+                <!-- Validation Error -->
+                <form:errors path="percent" class="text-warning"/>
+                <div class="pb-3">
+                    <button class="btn btn-dark">Submit</button>
             </div>
-            <!-- Validation Error -->
-            <form:errors path="title" class="text-warning"/>
-
-            <!-- String contents -->
-            <!-- Attribute Information -->
-            <div class="d-flex">
-                <label for="contents">Contents:</label>
-                <form:input type="text" path="contents" value="${puzzle.contents}"/>
-            </div>
-            <!-- Validation Error -->
-            <form:errors path="contents" class="text-warning"/>
-
-            <!-- String solution -->
-            <!-- Attribute Information -->
-            <div class="d-flex">
-                <label for="solution">Solution:</label>
-                <form:input type="text" path="solution" value="${puzzle.solution}"/>
-            </div>
-            <!-- Validation Error -->
-            <form:errors path="solution" class="text-warning"/>
-
-            <!-- String reward -->
-            <!-- Attribute Information -->
-            <div class="d-flex">
-                <label for="reward">Reward:</label>
-                <form:input type="text" path="reward" value="${puzzle.reward}"/>
-            </div>
-            <!-- Validation Error -->
-            <form:errors path="reward" class="text-warning"/>
-
-            <!-- Float percent -->
-            <!-- Attribute Information -->
-            <div class="d-flex">
-                <label for="percent">Discount Percentage:</label>
-                <form:input type="number" step="1" path="percent" value="${puzzle.percent}"/>
-            </div>
-            <!-- Validation Error -->
-            <form:errors path="percent" class="text-warning"/>
-
-            <div class="">
-                <button>Submit</button>
+            </form:form>
         </div>
-
-        </form:form>
 
     </main>
 
@@ -140,22 +135,36 @@
             <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Manager</a
+                    >
                     <div class="dropdown-menu">
                         <c:if test="${ userID == null }">
                             <a class="dropdown-item" href="/mana/login">Login</a>
                             <a class="dropdown-item" href="/mana/register">Register</a>
                         </c:if>
-                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
-                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/puzzle/edit" disabled>Update Cafe Puzzle</a>
-                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                        <c:if test="${ userID != null }">
+                            <!-- Allow manager to add a new coffee -->
+                            <a class="dropdown-item" href="/coffee/create">Add a New Coffee</a>
+                            <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit"
+                                >Change Coffee of the Month</a
+                            >
+                            <a class="dropdown-item" href="/drink/create"
+                                >Create a new Drink</a
+                            >
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
                     </div>
                 </li>
-            </c:if>            
+            </c:if>
         </ul>
     </footer>
 </body>

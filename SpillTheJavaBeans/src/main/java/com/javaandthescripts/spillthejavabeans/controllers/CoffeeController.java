@@ -37,14 +37,17 @@ public class CoffeeController {
     // CREATE COFFEE	
 	//	GetMapping  - add coffee page (/add coffee)
 	@GetMapping("/coffee/create")
-	public String createCoffee(HttpSession session, Model model) {	
+	public String createCoffee(HttpSession session, Model model) {
+		// get the cafe from the server
+		model.addAttribute("cafe", cafeServ.getCafe());
 		return "createCoffee.jsp";
 	} //end of create coffee (get)	
 	// PostMapping - coffee create (/coffee create)
 	@PostMapping("/coffee/create")
 	public String createCoffee(@Valid @ModelAttribute("coffeeForm") Coffee newCoffee, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			
+			// get the cafe from the server
+			model.addAttribute("cafe", cafeServ.getCafe());
 			return "createCoffee.jsp";
 		} else {
 			coffeeServ.createOne(newCoffee);
@@ -64,6 +67,8 @@ public class CoffeeController {
 		//manager is signed in
 		model.addAttribute("coffee", coffeeServ.getOne(id));
 		model.addAttribute("allCoffee", coffeeServ.getAll());
+		// get the cafe from the server
+		model.addAttribute("cafe", cafeServ.getCafe());
 		return "updateCoffee.jsp";
     }//end updateCoffee (get)
     @PutMapping("/coffee/{id}/updateCoffee")
@@ -73,7 +78,8 @@ public class CoffeeController {
     		model.addAttribute("coffee", coffeeServ.getOne(id));
     		// get all coffee from server for the update/edit form
     		model.addAttribute("allCoffee", coffeeServ.getAll());
-    		
+    		// get the cafe from the server
+    		model.addAttribute("cafe", cafeServ.getCafe());
             return "updateCoffee.jsp";
         }// if
         

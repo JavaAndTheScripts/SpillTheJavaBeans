@@ -70,6 +70,8 @@ public class DrinkController {
 		//manager is signed in
 		model.addAttribute("drink", drinkServ.getOne(id));
 		model.addAttribute("allCoffee", coffeeServ.getAll());
+
+		model.addAttribute("cafe", cafeServ.getCafe());
 		return "updateDrink.jsp";
     }//updateDrink (get)
     @PutMapping("/drink/{id}/updateDrink")
@@ -79,6 +81,8 @@ public class DrinkController {
     		model.addAttribute("drink", drinkServ.getOne(id));
     		// get all coffee from server for the update/edit form
     		model.addAttribute("allCoffee", coffeeServ.getAll());
+
+    		model.addAttribute("cafe", cafeServ.getCafe());
     		
             return "updateDrink.jsp";
         }// if
