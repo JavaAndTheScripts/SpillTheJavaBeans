@@ -1,1 +1,2 @@
-*application.properties
+*.properties
+SpillTheJavaBeans/src/main/resources/application.properties

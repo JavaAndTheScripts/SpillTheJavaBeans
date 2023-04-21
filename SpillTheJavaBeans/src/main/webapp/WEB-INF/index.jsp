@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- for forms -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!-- for validation -->
+<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,14 +31,17 @@
 <body>
     <!-- HEADER -->
     <header>
-        <h1>Testing</h1>
         <nav>
-
         </nav>
     </header>
     <!-- MAIN -->
-    <main>
-
+    <main class="d-flex flex-column text-center pt-5">
+        <h1>Welcome</h1>
+        <form:form action="/cafe/create" method="post" modelAttribute="modelForm">                
+            <input value="${cafeName}" name="name" hidden>
+            <input value="STJB%$4242" name="code" hidden>
+            <button>Open ${cafeName}</button>
+        </form:form>
     </main>
     <!-- FOOTER -->
     <footer>
