@@ -47,7 +47,7 @@ a {
 }
 
 body {
-	background: url("https://t3.ftcdn.net/jpg/02/88/40/06/360_F_288400615_EmThMgtmPt995hCfn8pXetLS0bF9Pa0T.jpg");
+	background: url('https://t3.ftcdn.net/jpg/02/88/40/06/360_F_288400615_EmThMgtmPt995hCfn8pXetLS0bF9Pa0T.jpg');
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -82,24 +82,24 @@ body main {
 	display: flex;
 	flex-direction: row;
 	height: 75vh;
-    width: 95vw;
+	width: 95vw;
 }
 
 .mainCafe {
-    width: 95 vw;
-    height: 75 vh;
+	width: 95 vw;
+	height: 75 vh;
 	margin: 50px;
 	padding: 50px;
 	background: url('/images/javabeans.png');
 	background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin: 0;
 }
 
 .box {
 	width: 300px;
-	height: 200px;
+	height: auto;
 	background: rgb(35, 92, 108);
 	padding: 8px;
 	display: grid;
@@ -114,6 +114,9 @@ body main {
 	background: rgb(35, 92, 108);
 	font-family: monospace;
 	border-radius: 10px;
+	justify-content: center;
+	flex-direction: column;
+	height: auto;
 }
 *,
 *::before,
@@ -136,7 +139,7 @@ body main {
 
 .carousel {
 	position: relative;
-	width: 100%;
+	width: 90%;
 	max-width: 500px;
 	display: flex;
 	justify-content: center;
@@ -167,53 +170,53 @@ body main {
 	animation: carousel-animate-vertical 27s linear infinite;
 }
 
-.carousel_img{
+.carousel_img {
 	max-height: 20px;
 }
 
 .carousel__item:nth-child(1) {
-	-webkit-animation-delay: calc(3s * -1);
+	-webkit-animation-delay: calc(3.5s * -1);
 	animation-delay: calc(3s * -1);
 }
 
 .carousel__item:nth-child(2) {
-	-webkit-animation-delay: calc(3s * 0);
-	animation-delay: calc(3s * 0);
+	-webkit-animation-delay: calc(3.5s * 0);
+	animation-delay: calc(3.5s * 0);
 }
 
 .carousel__item:nth-child(3) {
-	-webkit-animation-delay: calc(3s * 1);
-	animation-delay: calc(3s * 1);
+	-webkit-animation-delay: calc(3.5s * 1);
+	animation-delay: calc(3.5s * 1);
 }
 
 .carousel__item:nth-child(4) {
-	-webkit-animation-delay: calc(3s * 2);
-	animation-delay: calc(3s * 2);
+	-webkit-animation-delay: calc(3.5s * 2);
+	animation-delay: calc(3.5s * 2);
 }
 
 .carousel__item:nth-child(5) {
-	-webkit-animation-delay: calc(3s * 3);
-	animation-delay: calc(3s * 3);
+	-webkit-animation-delay: calc(3.5s * 3);
+	animation-delay: calc(3.5s * 3);
 }
 
 .carousel__item:nth-child(6) {
-	-webkit-animation-delay: calc(3s * 4);
-	animation-delay: calc(3s * 4);
+	-webkit-animation-delay: calc(3.5s * 4);
+	animation-delay: calc(3.5s * 4);
 }
 
 .carousel__item:nth-child(7) {
-	-webkit-animation-delay: calc(3s * 5);
-	animation-delay: calc(3s * 5);
+	-webkit-animation-delay: calc(3.5s * 5);
+	animation-delay: calc(3.5s * 5);
 }
 
 .carousel__item:nth-child(8) {
-	-webkit-animation-delay: calc(3s * 6);
-	animation-delay: calc(3s * 6);
+	-webkit-animation-delay: calc(3.5s * 6);
+	animation-delay: calc(3.5s * 6);
 }
 
 .carousel__item:last-child {
-	-webkit-animation-delay: calc(-3s * 2);
-	animation-delay: calc(-3s * 2);
+	-webkit-animation-delay: calc(3.5s * 2);
+	animation-delay: calc(3.5s * 2);
 }
 
 .carousel__item-head {
@@ -388,3 +391,111 @@ button {
 	font-family: monospace;
 	font-size: 80%;
 }
+/* <-- login page --> */
+.loginMain {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(131, 85, 44, 0.753);
+}
+
+/* <-- registration page --> */
+.registerMain {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(131, 85, 44, 0.753);
+}
+
+/* <-- featured coffee page --> */
+.beanMain {
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(131, 85, 44, 0.753);
+	width: 90%;
+	justify-content: space-around;
+}
+.coffeeMain {
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(131, 85, 44, 0.753);
+}
+.coffeeTable {
+	color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: rgba(131, 85, 44, 0.753);
+}
+
+/* <-- cafe menu page --> */
+.drinkSize {
+	background-color: rgba(131, 85, 44, 0.753);
+}
+/* <-- puzzle page --> */
+.puzzleMain {
+	background-color: #252525;
+	color: white;
+}
+
+/* FALLING JAVA BEANS */
+/*.i{
+	
+	display: inline-flex;
+	width: 16%;
+	animation: anim 2.5s ease-in-out infinite;
+	transform:  translateY(-120%) rotate(0deg);
+
+}
+.n1{
+    animation-delay: 0.1s;
+}
+.n2{
+	animation-delay: 1.2s;
+}
+.n3{
+	animation-delay: 2s;
+}
+.n4{
+	animation-delay: 1.4s;
+}
+.n5{
+	animation-delay: 2.4s;
+}
+.n6{
+	animation-delay: 0.6s;	
+}
+.autumn{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) rotate(45deg);
+	width: 320px;
+	height: 320px;
+	background: transparent;
+	z-index: 2;
+	border:20px solid #252525;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #252525;
+	text-transform: uppercase;
+
+}
+@keyframes anim{
+	0%{
+		transform:  translateY(-120%) rotate(0deg);
+	}
+	100%{
+		transform: translateY(120vh) rotate(-360deg);
+	}
+} */ ;

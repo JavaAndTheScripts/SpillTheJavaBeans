@@ -16,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- My CSS -->
     <link rel='stylesheet' href='/css/styles.css'>
+    <link rel='stylesheet' href='/css/coupons.css'>
     <!-- JS for Bootstrap / jQuery -->
     <script src='/webjars/jquery/jquery.min.js'>    </script>
     <script src='/webjars/bootstrap/js/boostrap.min.js'>    </script>
@@ -67,57 +68,86 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li> -->
         </ul>
-    </div>
+        </div>
     </header>
     <!-- MAIN -->
     <main class="m-3">
-        <h2>Welcome to your coupons ${ subscriber.firstName }!</h2>
-        <c:if test="${ subscriber.bdayCheck() }">
-            <div class="">
-                <h2>Bday Coupon</h2>
-                <form:form action="/cafe/coupons/useBday" method="post" modelAttribute="subForm" class=""> 
-                    <input type="hidden" name="_method" value="put">
-                    <!-- Subscriber Hidden Attributes -->
-                    <form:input path="id" value="${ subscriber.id }" type="hidden"/>
-                    <form:input path="firstName" value="${ subscriber.firstName }" type="hidden"/>
-                    <form:input path="lastName" value="${ subscriber.lastName }" type="hidden"/>
-                    <form:input path="email" value="${ subscriber.email }" type="hidden"/>
-                    <form:input path="password" value="${ subscriber.password }" type="hidden"/>
-                    <form:input path="birthday" value="${ subscriber.birthday }" type="hidden"/>
-                    <form:input path="solvedPuzzle" value="${ subscriber.solvedPuzzle }" type="hidden"/>
-                    <form:input path="usedBday" value="${ true }" type="hidden"/>
-                    <form:input path="puzzle" value="${ subscriber.puzzle.id }" type="hidden"/>
-                    <!-- Button -->
-                    <button>Use Coupon</button>
-                </form:form>
-            </div>
-        </c:if>
-
-        <!-- Puzzle coupon **HERE** -->
-        <c:if test="${ subscriber.puzzle != null }">
-            <h2>Puzzle Coupon</h2>
-            <form:form action="/cafe/coupons/usePuzzle" method="post" modelAttribute="subForm" class=""> 
-                    <input type="hidden" name="_method" value="put">
-                    <!-- Subscriber Hidden Attributes -->
-                    <form:input path="id" value="${ subscriber.id }" type="hidden"/>
-                    <form:input path="firstName" value="${ subscriber.firstName }" type="hidden"/>
-                    <form:input path="lastName" value="${ subscriber.lastName }" type="hidden"/>
-                    <form:input path="email" value="${ subscriber.email }" type="hidden"/>
-                    <form:input path="password" value="${ subscriber.password }" type="hidden"/>
-                    <form:input path="birthday" value="${ subscriber.birthday }" type="hidden"/>
-                    <form:input path="solvedPuzzle" value="${ subscriber.solvedPuzzle }" type="hidden"/>
-                    <form:input path="usedBday" value="${ subscriber.usedBday }" type="hidden"/>
-                    <form:input path="puzzle" value="${ null }" type="hidden"/>
-                    <!-- Button -->
-                    <button>Use Coupon</button>
-                </form:form>
-        </c:if>
-
-        <c:if test="${ !subscriber.bdayCheck() }">
-            <div class="">
-                <h2>Unfortunetly, it seems like you do not have any coupons avaliable. :(</h2>
-            </div>
-        </c:if>
+        <div class="coupons">
+            <h2>Welcome to your coupons ${ subscriber.firstName }!</h2>
+            <c:if test="${ subscriber.bdayCheck() }">
+                <div class="bday">
+                    <h2>Happy Birthday ${ subscriber.firstName}!!</h2>
+                    <div class="firework"></div>
+                    <div class="firework"></div>
+                    <div class="firework"></div>
+                    <form:form action="/cafe/coupons/useBday" method="post" modelAttribute="subForm">
+                        <input type="hidden" name="_method" value="put">
+                        <!-- Subscriber Hidden Attributes -->
+                        <form:input path="id" value="${ subscriber.id }" type="hidden"/>
+                        <form:input path="firstName" value="${ subscriber.firstName }" type="hidden"/>
+                        <form:input path="lastName" value="${ subscriber.lastName }" type="hidden"/>
+                        <form:input path="email" value="${ subscriber.email }" type="hidden"/>
+                        <form:input path="password" value="${ subscriber.password }" type="hidden"/>
+                        <form:input path="birthday" value="${ subscriber.birthday }" type="hidden"/>
+                        <form:input path="solvedPuzzle" value="${ subscriber.solvedPuzzle }" type="hidden"/>
+                        <form:input path="usedBday" value="${ true }" type="hidden"/>
+                        <form:input path="puzzle" value="${ subscriber.puzzle.id }" type="hidden"/>
+                        <!-- Button -->
+                        <div class="button">
+                            <button class="button-57" role="button">
+                                <span class="text">Get a Free Drink</span>
+                                <span>Use Coupon</span>
+                            </button>
+                        </div>
+                    </form:form>
+                    <p>From all of us at Spill the Java Beans.</p>
+                    <p class="subscript">Coupon expires at the end of the month.</p>
+                </div>
+            </c:if>
+            <!-- Puzzle coupon  -->
+            <c:if test="${ subscriber.puzzle != null }">
+                <div class="puzzle">
+                    <h2>Congratulations</h2>
+                    <p>on solving the <br> 
+                        <span><c:out value="${subscriber.puzzle.title}"/></span> 
+                        <br> puzzle this month!</p>
+                    <form:form action="/cafe/coupons/usePuzzle" method="post" modelAttribute="subForm">
+                            <input type="hidden" name="_method" value="put">
+                            <!-- Subscriber Hidden Attributes -->
+                            <form:input path="id" value="${ subscriber.id }" type="hidden"/>
+                            <form:input path="firstName" value="${ subscriber.firstName }" type="hidden"/>
+                            <form:input path="lastName" value="${ subscriber.lastName }" type="hidden"/>
+                            <form:input path="email" value="${ subscriber.email }" type="hidden"/>
+                            <form:input path="password" value="${ subscriber.password }" type="hidden"/>
+                            <form:input path="birthday" value="${ subscriber.birthday }" type="hidden"/>
+                            <form:input path="solvedPuzzle" value="${ subscriber.solvedPuzzle }" type="hidden"/>
+                            <form:input path="usedBday" value="${ subscriber.usedBday }" type="hidden"/>
+                            <form:input path="puzzle" value="${ null }" type="hidden"/>
+                            <!-- Button -->
+                            <div class="button">
+                                <button class="button-57" role="button">
+                                        <span class="text">Get
+                                        <c:if test="${ subscriber.puzzle.percent == 100 }">
+                                            one free <c:out value="${subscriber.puzzle.reward}"/>
+                                        </c:if>
+                                        <c:if test="${ subscriber.puzzle.percent != 100 }">
+                                            <c:out value="${subscriber.puzzle.percent}"/> % off of
+                                            <c:out value="${subscriber.puzzle.reward}"/>
+                                        </c:if>
+                                        on us!</span>
+                                        <span>Use Coupon</span>
+                                </button>
+                            </div>
+                        </form:form>
+                        <p class="subscript">Coupon expires when a new puzzle is posted.</p>
+                </div>
+            </c:if>
+            <c:if test="${ !subscriber.bdayCheck() && subscriber.puzzle == null }">
+                <div class="none">
+                    <h2>Unfortunetly, it seems like you do not have any coupons avaliable. <br> :(</h2>
+                </div>
+            </c:if>
+        </div>
     </main>
     <!-- FOOTER -->
     <footer class="m-3">

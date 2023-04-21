@@ -81,87 +81,55 @@
 		</div>
 		</header>
 		<!-- MAIN -->
-		<main class="fallingBeans">
+		<main>
 			<!-- BEANS -->
-			<img src="/images/javaBean1.png" class="i n1"></img>
-			<img src="/images/javaBean1.png" class="i n2"></img>
-			<img src="/images/javaBean0.png" class="i n3"></img>
-			<img src="/images/javaBean0.png" class="i n4"></img>
-			<img src="/images/javaBean1.png" class="i n5"></img>
-			<img src="/images/javaBean1.png" class="i n6"></img>
-			<img src="/images/javaBean0.png" class="i n7"></img>
-			<img src="/images/javaBean0.png" class="i n8"></img>
-			<img src="/images/javaBean1.png" class="i n9"></img>
-			
-			<img src="/images/javaBean0.png" class="i n1"></img>
-			<img src="/images/javaBean0.png" class="i n2"></img>
-			<img src="/images/javaBean1.png" class="i n3"></img>
-			<img src="/images/javaBean1.png" class="i n4"></img>
-			<img src="/images/javaBean0.png" class="i n5"></img>
-			<img src="/images/javaBean0.png" class="i n6"></img>
-			<img src="/images/javaBean1.png" class="i n7"></img>
-			<img src="/images/javaBean1.png" class="i n8"></img>
-			<img src="/images/javaBean0.png" class="i n9"></img>
+            <div class="beansMain">
+                <div class="fallingBeans">
+                    <img src="/images/javaBean1.png" class="i n1"></img>
+                    <img src="/images/javaBean1.png" class="i n2"></img>
+                    <img src="/images/javaBean0.png" class="i n3"></img>
+                    <img src="/images/javaBean0.png" class="i n4"></img>
+                    <img src="/images/javaBean1.png" class="i n5"></img>
+                    <img src="/images/javaBean1.png" class="i n6"></img>
+                    <img src="/images/javaBean0.png" class="i n7"></img>
+                    <img src="/images/javaBean0.png" class="i n8"></img>
+                    <img src="/images/javaBean1.png" class="i n9"></img>
+                    
+                    <img src="/images/javaBean0.png" class="i n1"></img>
+                    <img src="/images/javaBean0.png" class="i n2"></img>
+                    <img src="/images/javaBean1.png" class="i n3"></img>
+                    <img src="/images/javaBean1.png" class="i n4"></img>
+                    <img src="/images/javaBean0.png" class="i n5"></img>
+                    <img src="/images/javaBean0.png" class="i n6"></img>
+                    <img src="/images/javaBean1.png" class="i n7"></img>
+                    <img src="/images/javaBean1.png" class="i n8"></img>
+                    <img src="/images/javaBean0.png" class="i n9"></img>
 
-        <table class="table">
-            <thead>
-                <!--- Column Labels --->
-                <tr>
-                    <th scope="col">Region</th>
-                    <th scope="col">Flavors</th>
-                    <th scope="col">Roast</th>
-                    <c:if test="${ userTYPE.equals('Manager') }">
-                        <th scope="col">Action</th>
-                    </c:if>
-                </tr>
-            </thead>
-            <tbody>
-                <!--- Row Data --->
-                <c:forEach items="${allCoffee}" var="c">
-                    <tr>
-                        <th scope="row">${c.region}</th>
-                        <td>${c.flavors}</td>
-                        <td>${c.roastType()}</td>
-                        <c:if test="${ userTYPE.equals('Manager') }">
-                            <td>
-                            
-                                <a href="/coffee/${c.id}/updateCoffee" class="mx-1"> Edit</a>
-                                
-                                <form:form id="deleteForm" action="/coffee/${c.id}/deleteCoffee" method="post" modelAttribute="deleteForm">
-                                	<input type="hidden" name="_method" value="delete">
-                                	<input type="submit" value="Delete" class="deleteBtn" onclick="return confirm('Are you sure you want to delete this drink?')" />
-                                </form:form>
-                               
-                            </td>
-                        </c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-			<img src="/images/javaBean1.png" class="i n1"></img>
-			<img src="/images/javaBean1.png" class="i n2"></img>
-			<img src="/images/javaBean0.png" class="i n3"></img>
-			<img src="/images/javaBean0.png" class="i n4"></img>
-			<img src="/images/javaBean1.png" class="i n5"></img>
-			<img src="/images/javaBean1.png" class="i n6"></img>
-			<img src="/images/javaBean0.png" class="i n7"></img>
-			<img src="/images/javaBean0.png" class="i n8"></img>
-			<img src="/images/javaBean1.png" class="i n9"></img>
+                    <img src="/images/javaBean1.png" class="i n1"></img>
+                    <img src="/images/javaBean1.png" class="i n2"></img>
+                    <img src="/images/javaBean0.png" class="i n3"></img>
+                    <img src="/images/javaBean0.png" class="i n4"></img>
+                    <img src="/images/javaBean1.png" class="i n5"></img>
+                    <img src="/images/javaBean1.png" class="i n6"></img>
+                    <img src="/images/javaBean0.png" class="i n7"></img>
+                    <img src="/images/javaBean0.png" class="i n8"></img>
+                    <img src="/images/javaBean1.png" class="i n9"></img>
 
-			<img src="/images/javaBean0.png" class="i n1"></img>
-			<img src="/images/javaBean0.png" class="i n2"></img>
-			<img src="/images/javaBean1.png" class="i n3"></img>
-			<!-- <img src="/images/javaBean1.png" class="i n4"></img>
-			<img src="/images/javaBean0.png" class="i n5"></img>
-			<img src="/images/javaBean0.png" class="i n6"></img>
-			<img src="/images/javaBean1.png" class="i n7"></img>
-			<img src="/images/javaBean1.png" class="i n8"></img>
-			<img src="/images/javaBean0.png" class="i n9"></img> -->
+                    <img src="/images/javaBean0.png" class="i n1"></img>
+                    <img src="/images/javaBean0.png" class="i n2"></img>
+                    <img src="/images/javaBean1.png" class="i n3"></img>
+                    <!-- <img src="/images/javaBean1.png" class="i n4"></img>
+                    <img src="/images/javaBean0.png" class="i n5"></img>
+                    <img src="/images/javaBean0.png" class="i n6"></img>
+                    <img src="/images/javaBean1.png" class="i n7"></img>
+                    <img src="/images/javaBean1.png" class="i n8"></img>
+                    <img src="/images/javaBean0.png" class="i n9"></img> -->
+                
 
 			<!-- Featured Coffee -->
-			<div class="display mx-auto">
+			<div class="featCoffee">
 				<h1 class="coffeeMain">See all of our Featured Coffees</h1>
-				<table class="table">
+				<table class="coffeeTable">
 					<thead>
 						<!--- Column Labels --->
 						<tr>
@@ -199,6 +167,8 @@
 					<a href="/coffee/create">Add a New Coffee</a>
 				</c:if>
 			</div>
+        </div>
+        </div>
 		</main>
 		<!-- FOOTER -->
 		<footer class="m-3">

@@ -80,7 +80,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
     </header>
     <!-- MAIN -->
-    <main class="m-3">
+    <main class="drinkSize m-3">
         <div class="container">
             <table class="table table-hover">
                 <thead>
@@ -90,7 +90,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     <th><img src="/images/byteSize.png" alt="byteSize" style="max-height: 60px;"></th>
                     <th><img src="/images/intSize.png" alt="intSize" style="max-height: 60px;"></th>
                     <th><img src="/images/longSize.png" alt="longSize" style="max-height: 60px;"></th>
-                    <th>Action</th>
+                    <c:if test="${ userTYPE.equals('Manager')}">
+                        <th>Action</th>
+                    </c:if>
                     </tr>
                 </thead>
                 <tbody class="">
@@ -127,7 +129,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                         <td><fmt:formatNumber value="${d.intPrice}" type="currency" /></td>
                         <!-- Drink price - Long (Large) -->
                         <td><fmt:formatNumber value="${d.longPrice}" type="currency" /></td>
-                         <c:if test="${ userTYPE.equals('Manager') }">
+                        <c:if test="${ userTYPE.equals('Manager') }">
                             <td>
                                 <a href="/drink/${d.id}/updateDrink" class="mx-1">  Edit</a>
                                 
@@ -139,7 +141,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                             </td>
                         </c:if>
                         </tr>
-                       
                     </c:forEach>
                 </tbody>
             </table>

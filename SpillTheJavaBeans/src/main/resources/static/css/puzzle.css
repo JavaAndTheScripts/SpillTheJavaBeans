@@ -1,0 +1,35 @@
+.puzzle {
+  width: 95vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #2525257f;
+  padding: 2em;
+  margin-bottom: 2em;
+}
+.puzzle .row {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+.puzzle .column {
+  display: flex;
+  flex-direction: column;
+}
+.puzzle .larger {
+  width: 75%;
+}
+.puzzle .textarea-like {
+  border: 1px solid #ccc;
+  color: gray;
+  background-color: #414141;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px;
+  min-height: 50px;
+  width: 100%;
+}
+.puzzle button {
+  margin-top: 2em;
+}
