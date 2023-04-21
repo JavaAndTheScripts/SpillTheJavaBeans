@@ -132,14 +132,14 @@
 				<table class="coffeeTable">
 					<thead>
 						<!--- Column Labels --->
-						<tr>
+						<!-- <tr>
 							<th scope="col">Region</th>
 							<th scope="col">Flavors</th>
 							<th scope="col">Roast</th>
 							<c:if test="${ userTYPE.equals('Manager') }">
 								<th scope="col">Action</th>
 							</c:if>
-						</tr>
+						</tr> -->
 					</thead>
 					<tbody>
 						<!--- Row Data --->
