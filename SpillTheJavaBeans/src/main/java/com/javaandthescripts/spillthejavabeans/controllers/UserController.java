@@ -54,6 +54,7 @@ public class UserController {
         // to capture the form input
         model.addAttribute("newUser", new Subscriber());
         model.addAttribute("newLogin", new LoginUser());
+        model.addAttribute("cafe", cafeServ.getCafe());
         return "subsLog.jsp"; 
     }// subsLogin (get)
     @PostMapping("/subs/login")
@@ -85,6 +86,7 @@ public class UserController {
         // to capture the form input
         model.addAttribute("newUser", new Subscriber());
         model.addAttribute("newLogin", new LoginUser());
+        model.addAttribute("cafe", cafeServ.getCafe());
         return "subsReg.jsp"; 
     }// subsReg (get)
     @PostMapping("/subs/register")
@@ -97,6 +99,7 @@ public class UserController {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.
             model.addAttribute("newLogin", new LoginUser());
+            model.addAttribute("cafe", cafeServ.getCafe());
             return "subsReg.jsp"; 
         }// if
 
@@ -121,6 +124,7 @@ public class UserController {
         // to capture the form input
         model.addAttribute("newUser", new Manager());
         model.addAttribute("newLogin", new LoginUser());
+        model.addAttribute("cafe", cafeServ.getCafe());
         return "manaLog.jsp"; 
     }// manaLogin (get)
     @PostMapping("/mana/login")
@@ -131,6 +135,7 @@ public class UserController {
 
         if(result.hasErrors()) {
             model.addAttribute("newUser", new Subscriber());
+            model.addAttribute("cafe", cafeServ.getCafe());
             return "manaLog.jsp"; 
         }// if
 
@@ -152,6 +157,7 @@ public class UserController {
         // to capture the form input
         model.addAttribute("newUser", new Manager());
         model.addAttribute("newLogin", new LoginUser());
+        model.addAttribute("cafe", cafeServ.getCafe());
         return "manaReg.jsp"; 
     }// manaReg (get)
     @PostMapping("/mana/register")
@@ -164,6 +170,7 @@ public class UserController {
             // Be sure to send in the empty LoginUser before 
             // re-rendering the page.
             model.addAttribute("newLogin", new LoginUser());
+            model.addAttribute("cafe", cafeServ.getCafe());
             return "manaReg.jsp"; 
         }// if
 
