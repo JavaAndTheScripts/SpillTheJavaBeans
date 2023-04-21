@@ -85,64 +85,80 @@
     </header>
 	<!-- MAIN -->
 	<main>
-		<h1>Update a Coffee</h1>
-		<!-- register box -->
-		<form:form action="/coffee/${coffee.id}/updateCoffee" method="POST"
-			modelAttribute="updateForm" class="mx-5 my-2">
-			 <input type="hidden" name="_method" value="put" />
-			<!-- Attribute Information -->
-			<div class="d-flex">
-				<label for="region">Region</label> 
-				<input type="text" name="region" value="${ coffee.region }">
-			</div>
-
-			<!-- Validation Error -->
-			<form:errors path="region" class="text-warning" />
-
-			<label for="roast">Roast</label>
-			<select name="roast">
-				<option value="0">Light Roast</option>
-				<option value="1">Medium Roast</option>
-				<option value="2">Dark Roast</option>
-				<option value="${ coffee.roast }" selected="true" disabled hidden> <c:out value="${ coffee.roastType() }"> </c:out> </option>	
-			</select>
-			<!-- Validation Error -->
-			<form:errors path="roast" class="text-warning" />
-			
-			<!-- Attribute Information -->
-			<div class="d-flex">
-				<label for="flavors">Flavors</label> 
-				<input type="text" name="flavors" value="${coffee.flavors}">
-			</div>
-			<!-- Validation Error -->
-			<form:errors path="flavors" class="text-warning" />
-	
-			<input type="hidden" name="cofee" value="${coffeeID}" />
-			<button class="btn btn-primary my-1">Update</button>
-			<a class="btn btn-danger" href="/coffee">Cancel</a>
-		</form:form>
+		<div class="container" style="background-color: rgba(131, 85, 44, 0.753);">
+            <h1 class="text-center">Update a Coffee</h1>
+            <!-- register box -->
+            <form:form action="/coffee/${coffee.id}/updateCoffee" method="POST"
+                modelAttribute="updateForm" class="mx-5 my-2">
+                 <input type="hidden" name="_method" value="put" />
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="region">Region</label>
+                    <input type="text" name="region" value="${ coffee.region }" class="form-control">
+                </div>
+                <!-- Validation Error -->
+                <div class="mb-3">
+                    <form:errors path="region" class="text-warning" />
+                    <label for="roast">Roast</label>
+                    <select name="roast" class="form-control">
+                        <option value="0">Light Roast</option>
+                        <option value="1">Medium Roast</option>
+                        <option value="2">Dark Roast</option>
+                        <option value="${ coffee.roast }" selected="true" disabled hidden> <c:out value="${ coffee.roastType() }"> </c:out> </option>
+                    </select>
+                    <!-- Validation Error -->
+                    <form:errors path="roast" class="text-warning" />
+                </div>
+            
+                <!-- Attribute Information -->
+                <div class="mb-3">
+                    <label for="flavors">Flavors</label>
+                    <input type="text" name="flavors" value="${coffee.flavors}" class="form-control">
+                </div>
+                <!-- Validation Error -->
+                <form:errors path="flavors" class="text-warning" />
+                <input type="hidden" name="coffee" value="${coffeeID}" />
+                <button class="btn btn-dark my-1">Update</button>
+                <a class="btn btn-secondary" href="/coffee">Cancel</a>
+            </form:form>
+        </div>
 	</main>
 	<!-- FOOTER -->
 	<footer class="m-3">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills justify-content-end">
             <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Manager</a
+                    >
                     <div class="dropdown-menu">
                         <c:if test="${ userID == null }">
                             <a class="dropdown-item" href="/mana/login">Login</a>
                             <a class="dropdown-item" href="/mana/register">Register</a>
                         </c:if>
-                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
-                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                        <c:if test="${ userID != null }">
+                            <!-- Allow manager to add a new coffee -->
+                            <a class="dropdown-item" href="/coffee/create">Add a New Coffee</a>
+                            <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit"
+                                >Change Coffee of the Month</a
+                            >
+                            <a class="dropdown-item" href="/drink/create"
+                                >Create a new Drink</a
+                            >
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
                     </div>
                 </li>
-            </c:if>            
+            </c:if>
         </ul>
     </footer>
 </body>

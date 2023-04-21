@@ -73,13 +73,13 @@
     <!-- MAIN -->
     <main>
     <div class="container">
-    <div class="bg-light">
+    <div  style="background-color: rgba(131, 85, 44, 0.753);">
         <!-- login box -->
         <form:form action="/mana/login" method="POST" modelAttribute="newLogin" class="mx-5 mt-3">
-            <div class="border text-center py-3">
+            <div class="text-center py-3">
                 <h3>Login</h3>
             </div>
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="email" class="border-end w-50 ps-2 me-1">Email</form:label>
                     <form:input type="email" class="input" path="email" />
@@ -87,7 +87,7 @@
                 <form:errors path="email" class="text-danger" />
             </div>
 
-            <div class="border py-2">
+            <div class="py-2">
                 <section>
                     <form:label path="password" class="border-end w-50 ps-2 me-1">Password</form:label>
                     <form:input type="password" class="input" path="password" />
@@ -95,14 +95,48 @@
                 <form:errors path="password" class="text-danger" />
             </div>
 
-            <button class="btn btn-secondary my-1 w-100">Login</button>
+            <div class="pb-3"><button class="btn btn-dark my-1 w-100">Login</button></div>
         </form:form>
     </div>
 	</div>
     </main>
     <!-- FOOTER -->
-    <footer>
-
+    <footer class="m-3">
+        <ul class="nav nav-pills justify-content-end">
+            <!-- Make sure subscriber is not signed in -->
+            <c:if test="${ !userTYPE.equals('Subscriber') }">
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Manager</a
+                    >
+                    <div class="dropdown-menu">
+                        <c:if test="${ userID == null }">
+                            <a class="dropdown-item" href="/mana/login">Login</a>
+                            <a class="dropdown-item" href="/mana/register">Register</a>
+                        </c:if>
+                        <c:if test="${ userID != null }">
+                            <!-- Allow manager to add a new coffee -->
+                            <a class="dropdown-item" href="/coffee/create">Add a New Coffee</a>
+                            <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit"
+                                >Change Coffee of the Month</a
+                            >
+                            <a class="dropdown-item" href="/drink/create"
+                                >Create a new Drink</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </c:if>
+                    </div>
+                </li>
+            </c:if>
+        </ul>
     </footer>
 </body>
 </html>

@@ -72,7 +72,7 @@
     <!-- MAIN -->
     <main class="">
     <div class="container">
-    <div class="bg-light">
+    <div  style="background-color: rgba(131, 85, 44, 0.753);">
         <h2 class="text-center">Select a new Monthly Coffee</h2>
         <!-- Select drop of all coffee's avaliable -->
         <form:form action="/cafe/coffee/edit" method="post" modelAttribute="modelForm" class="mx-auto col-10 col-md-10 col-lg-10">    
@@ -94,7 +94,8 @@
             <!-- Validation Error -->
             <form:errors path="monthlyCoffee" class="text-warning"/>
             <br>
-            <button class="btn btn-secondary my-3">Change Monthly Coffee</button>
+            <button class="btn btn-dark my-3">Change Monthly Coffee</button>
+            <br>
         </form:form>
     </div>
     </div>
@@ -105,23 +106,36 @@
             <!-- Make sure subscriber is not signed in -->
             <c:if test="${ !userTYPE.equals('Subscriber') }">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manager</a>
+                    <a
+                        class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Manager</a
+                    >
                     <div class="dropdown-menu">
                         <c:if test="${ userID == null }">
                             <a class="dropdown-item" href="/mana/login">Login</a>
                             <a class="dropdown-item" href="/mana/register">Register</a>
                         </c:if>
-                        <c:if test="${ userID != null }"> <!-- && userTYPE.equals('Manager') -->
-                            <a class="dropdown-item" href="/cafe/coffee/edit">Change Coffee of the Month</a>
-                            <a class="dropdown-item" href="/drink/create">Create a new Drink</a>
+                        <c:if test="${ userID != null }">
+                            <!-- Allow manager to add a new coffee -->
+                            <a class="dropdown-item" href="/coffee/create">Add a New Coffee</a>
+                            <!-- && userTYPE.equals('Manager') -->
+                            <a class="dropdown-item" href="/cafe/coffee/edit"
+                                >Change Coffee of the Month</a
+                            >
+                            <a class="dropdown-item" href="/drink/create"
+                                >Create a new Drink</a
+                            >
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Logout</a>
                         </c:if>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a> -->
                     </div>
                 </li>
-            </c:if>            
+            </c:if>
         </ul>
     </footer>
 </body>
